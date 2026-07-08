@@ -1,0 +1,49 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Menu from "../components/Menu.astro";
+import PixelBackground from "../components/PixelBackground.astro";
+
+interface props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+    <body class="max-w-6xl px-6 pb-12">
+        <PixelBackground />
+        <Menu />
+
+        <main class="relative z-10 grid grid-cols-12 gap-12">
+            <aside class="col-span-3 hidden lg:block">
+                <div
+                    class="sticky top-8 border-t border-dashed border-gl-muted/70 py-4 text-xl leading-7 text-gl-white"
+                >
+                    <slot name="sidebar">
+                        <p class="mb-3 text-gl-cyan">---[ about ]---</p>
+                        <p>
+                            Studio Birdcage is a retro terminal notebook for
+                            experiments, writing, glitches, web scraps, and
+                            whatever falls out of the machine.
+                        </p>
+                        <p class="mt-4 text-gl-muted">
+                            + independent web<br />
+                            + pixel noise<br />
+                            + always tinker
+                        </p>
+                    </slot>
+                </div>
+            </aside>
+
+            <article class="col-span-12 lg:col-span-9">
+                <slot />
+            </article>
+        </main>
+    </body>
+</html>

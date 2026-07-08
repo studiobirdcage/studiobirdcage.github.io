@@ -1,141 +1,332 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import "tailwindcss";
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+@theme {
+    --font-pixel: "VT323", monospace;
+
+    /* Neo Tokyo / Tokyo Night inspired palette */
+    --color-gl-black: #16161e;
+    --color-gl-deep: #1a1b26;
+    --color-gl-panel: #24283b;
+    --color-gl-muted: #565f89;
+    --color-gl-white: #c0caf5;
+    --color-gl-pink: #bb9af7;
+    --color-gl-magenta: #ff007c;
+    --color-gl-blue: #7aa2f7;
+    --color-gl-cyan: #7dcfff;
+    --color-gl-yellow: #e0af68;
+    --color-gl-green: #9ece6a;
+    --color-gl-red: #f7768e;
+    --color-gl-orange: #ff9e64;
 }
+
+html {
+    background-color: var(--color-gl-black);
+}
+
 body {
-	font-family: var(--font-atkinson);
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
-}
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
-}
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+    margin: 0 auto;
+    min-height: 100vh;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--color-gl-white);
+    background: transparent;
+    text-shadow: 0 0 0.35rem
+        color-mix(in srgb, var(--color-gl-cyan), transparent 88%);
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.09;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        color-mix(in srgb, var(--color-gl-cyan), transparent 70%) 3px
+    );
+    mix-blend-mode: screen;
+}
+
+body > header,
+body > main,
+body > footer {
+    position: relative;
+    z-index: 10;
+}
+
+@layer components {
+    .site-breadcrumb {
+        @apply mb-4 border-y border-dashed border-gl-muted/60 py-2 text-xl text-gl-muted;
+    }
+
+    .site-breadcrumb :where(a) {
+        @apply text-gl-cyan underline decoration-gl-muted decoration-1 underline-offset-4 transition-colors;
+    }
+
+    .site-breadcrumb :where(a)::before {
+        content: "[";
+        color: var(--color-gl-muted);
+    }
+
+    .site-breadcrumb :where(a)::after {
+        content: "]";
+        color: var(--color-gl-muted);
+    }
+
+    .site-breadcrumb :where(a:hover) {
+        @apply bg-gl-cyan/10 text-gl-yellow decoration-gl-yellow;
+    }
+
+    .site-breadcrumb__current {
+        @apply text-gl-white;
+    }
+
+    .prose {
+        @apply max-w-none text-gl-white;
+    }
+
+    .prose :where(p) {
+        @apply my-4 text-xl leading-7;
+    }
+
+    .prose :where(a) {
+        @apply text-gl-cyan underline decoration-gl-muted decoration-1 underline-offset-4 transition-colors;
+    }
+
+    .prose :where(a)::before {
+        content: "[";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(a)::after {
+        content: "]";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(a:hover) {
+        @apply bg-gl-cyan/10 text-gl-yellow decoration-gl-yellow;
+    }
+
+    .prose :where(h1, h2, h3, h4, h5, h6) {
+        @apply mt-10 mb-4 font-normal uppercase leading-none tracking-wider text-gl-cyan;
+        scroll-margin-top: 2rem;
+    }
+
+    .prose :where(h1) {
+        @apply border-y-4 border-double border-gl-muted py-3 text-5xl text-gl-yellow;
+    }
+
+    .prose :where(h2) {
+        @apply border-y border-dashed border-gl-muted py-2 text-4xl;
+    }
+
+    .prose :where(h3) {
+        @apply text-3xl text-gl-pink;
+    }
+
+    .prose :where(h4) {
+        @apply text-2xl text-gl-blue;
+    }
+
+    .prose :where(h2)::before {
+        content: ":: ";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(h2)::after {
+        content: " ::";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(h3)::before,
+    .prose :where(h4)::before {
+        content: ">> ";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(ul, ol) {
+        @apply my-5 space-y-1 pl-0 text-xl leading-7;
+        list-style: none;
+    }
+
+    .prose :where(li) {
+        @apply relative pl-7;
+    }
+
+    .prose :where(ul > li)::before {
+        content: "+";
+        position: absolute;
+        left: 0;
+        color: var(--color-gl-cyan);
+    }
+
+    .prose :where(ol) {
+        counter-reset: nfo-list;
+    }
+
+    .prose :where(ol > li) {
+        counter-increment: nfo-list;
+    }
+
+    .prose :where(ol > li)::before {
+        content: counter(nfo-list, decimal-leading-zero) ".";
+        position: absolute;
+        left: 0;
+        color: var(--color-gl-cyan);
+    }
+
+    .prose :where(blockquote) {
+        @apply my-7 border border-dashed border-gl-muted bg-gl-black/30 px-5 py-4 text-2xl text-gl-yellow;
+    }
+
+    .prose :where(blockquote)::before {
+        content: "---[ quote ]------------------------------------------------";
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--color-gl-muted);
+        font-size: 1rem;
+        font-style: normal;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .prose :where(blockquote p) {
+        @apply my-0;
+    }
+
+    .prose :where(hr) {
+        @apply my-9 border-0 border-t border-dashed border-gl-muted;
+    }
+
+    .prose :where(strong) {
+        @apply font-normal text-gl-yellow;
+        text-shadow: 0 0 0.45rem
+            color-mix(in srgb, var(--color-gl-yellow), transparent 76%);
+    }
+
+    .prose :where(em) {
+        @apply not-italic text-gl-pink;
+    }
+
+    .prose :where(:not(pre) > code) {
+        @apply border border-gl-muted/60 bg-gl-black/50 px-1.5 py-0.5 font-pixel text-lg text-gl-cyan;
+        border-radius: 0;
+    }
+
+    .prose :where(:not(pre) > code)::before {
+        content: "`";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(:not(pre) > code)::after {
+        content: "`";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(pre:not(.ascii-glitch__text)) {
+        @apply relative my-8 overflow-x-auto border border-gl-muted bg-gl-black/70 px-5 pt-9 pb-5 font-pixel text-lg leading-6;
+        border-radius: 0;
+        scrollbar-color: var(--color-gl-cyan) var(--color-gl-black);
+        box-shadow:
+            inset 0 0 0 1px
+                color-mix(in srgb, var(--color-gl-cyan), transparent 82%),
+            0 0 1.2rem color-mix(in srgb, var(--color-gl-blue), transparent 90%);
+    }
+
+    .prose :where(pre:not(.ascii-glitch__text))::before {
+        content: "---[ source ]------------------------------------------------";
+        position: absolute;
+        top: 0.55rem;
+        left: 1rem;
+        right: 1rem;
+        color: var(--color-gl-muted);
+        font-family: "VT323", monospace;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .prose :where(pre:not(.ascii-glitch__text))::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 1.35rem,
+            color-mix(in srgb, var(--color-gl-cyan), transparent 94%) 1.4rem
+        );
+    }
+
+    .prose :where(pre:not(.ascii-glitch__text) code) {
+        @apply border-0 bg-transparent p-0 text-base leading-6 text-inherit;
+        font-family: "VT323", monospace;
+    }
+
+    .prose :where(.astro-code) {
+        background: color-mix(
+            in srgb,
+            var(--color-gl-black),
+            var(--color-gl-deep) 34%
+        ) !important;
+    }
+
+    .prose :where(.astro-code span) {
+        background: transparent !important;
+    }
+
+    .prose :where(img) {
+        @apply my-8 max-w-full border border-dashed border-gl-muted p-1;
+        background: color-mix(in srgb, var(--color-gl-black), transparent 22%);
+    }
+
+    .prose :where(table) {
+        @apply my-8 block w-full overflow-x-auto border-collapse text-xl;
+    }
+
+    .prose :where(th, td) {
+        @apply border border-gl-muted px-3 py-2 text-left;
+    }
+
+    .prose :where(th) {
+        @apply bg-gl-black/70 font-normal uppercase tracking-wider text-gl-cyan;
+    }
+
+    .prose :where(tbody tr:nth-child(even)) {
+        @apply bg-gl-blue/5;
+    }
+
+    .prose :where(kbd, mark) {
+        @apply border border-gl-muted bg-gl-black/70 px-1 text-gl-yellow;
+    }
+
+    .toc-link {
+        @apply block text-gl-white transition-colors hover:bg-gl-cyan/10 hover:text-gl-cyan;
+    }
+
+    .toc-caret {
+        @apply text-gl-muted;
+    }
+
+    .toc-link[aria-current="location"] {
+        @apply bg-gl-cyan/10 text-gl-yellow;
+        text-shadow: 0 0 0.55rem
+            color-mix(in srgb, var(--color-gl-yellow), transparent 72%);
+    }
+
+    .toc-link[aria-current="location"] .toc-caret {
+        @apply text-gl-cyan;
+    }
+
+    .toc-item[data-active] {
+        @apply border-gl-cyan;
+    }
 }

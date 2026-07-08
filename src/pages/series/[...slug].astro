@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AsciiBanner from "../../components/AsciiBanner.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { getAllSeries } from "../../utils/series";
+import { SITE_TITLE } from "../../consts";
+
+export async function getStaticPaths() {
+    const allSeries = getAllSeries(await getCollection("blog"));
+
+    return allSeries.map((series) => ({
+        params: { slug: series.slug },
+        props: { series },
+    }));
+}
+
+const { series } = Astro.props;
+---
+
+<BaseLayout
+    title={`${series.title} | Series | ${SITE_TITLE}`}
+    description={`Posts in the ${series.title} series.`}
+>
+    <section class="border-b border-dashed border-gl-muted/70 pb-5">
+        <nav class="site-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Index</a>
+            <span aria-hidden="true"> / </span>
+            <a href="/series/">Series</a>
+            <span aria-hidden="true"> / </span>
+            <span class="site-breadcrumb__current" aria-current="page">
+                {series.title}
+            </span>
+        </nav>
+
+        <h2 class="text-3xl text-gl-pink">
+            {series.title}
+        </h2>
+
+        <p class="mt-4 text-xl text-gl-muted">
+            {series.posts.length} linked transmission{
+                series.posts.length === 1 ? "" : "s"
+            } // ordered by series index
+        </p>
+    </section>
+
+    <ol class="mt-10 flex flex-col gap-12">
+        {
+            series.posts.map((post, index) => (
+                <li class="border-l-4 border-b-4 border-double border-gl-pink px-6 pb-4">
+                    <a
+                        class="block border-b border-dashed border-gl-muted py-2 hover:bg-gl-cyan/10"
+                        href={`/blog/${post.id}/`}
+                    >
+                        <p class="text-lg uppercase tracking-wider text-gl-muted">
+                            file {String(index + 1).padStart(2, "0")}
+                        </p>
+                        <AsciiBanner
+                            text={post.data.title}
+                            font="ANSI Shadow"
+                            size="0.4rem"
+                            glitchAmount="25%"
+                            color="#e0af68"
+                            wrapAt="auto"
+                        />
+                    </a>
+                    <p class="mt-2 text-xl text-gl-white">
+                        {post.data.description}
+                    </p>
+                    <p class="mt-2 text-lg text-gl-muted">
+                        published <FormattedDate date={post.data.pubDate} />
+                    </p>
+                </li>
+            ))
+        }
+    </ol>
+</BaseLayout>

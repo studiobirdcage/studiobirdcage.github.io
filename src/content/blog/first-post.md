@@ -2,6 +2,9 @@
 title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
+series:
+  title: 'Terminal Notes'
+  order: 1
 heroImage: '../../assets/blog-placeholder-3.jpg'
 ---
 

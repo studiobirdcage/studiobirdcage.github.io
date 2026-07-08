@@ -1,49 +1,105 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AsciiBanner from "../components/AsciiBanner.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import { getAllSeries } from "../utils/series";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const newestSeries = getAllSeries(posts).slice(0, 5);
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <Fragment slot="sidebar">
+        <section class="border-b border-dashed border-gl-muted/70 pb-5">
+            <p class="mb-3 text-gl-cyan">---[ about ]---</p>
+            <p>
+                Studio Birdcage is a retro terminal notebook for experiments,
+                writing, glitches, web scraps, and whatever falls out of the
+                machine.
+            </p>
+            <p class="mt-4 text-gl-muted">
+                + independent web<br />
+                + pixel noise<br />
+                + always tinker
+            </p>
+        </section>
+
+        <section class="pt-5" aria-labelledby="series-heading">
+            <div class="mb-3 flex items-baseline justify-between gap-3">
+                <p id="series-heading" class="text-gl-cyan">
+                    ---[ newest series ]---
+                </p>
+                <a
+                    class="text-lg text-gl-muted hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                    href="/series/"
+                >
+                    [all]
+                </a>
+            </div>
+
+            {
+                newestSeries.length > 0 ? (
+                    <ol class="space-y-3">
+                        {newestSeries.map((series) => (
+                            <li class="border-b border-dashed border-gl-muted/70 pb-3">
+                                <a
+                                    class="block text-xl leading-6 text-gl-yellow hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                                    href={`/series/${series.slug}/`}
+                                >
+                                    <span class="text-gl-muted">&gt;</span>{" "}
+                                    {series.title}
+                                </a>
+                                <p class="text-base leading-5 text-gl-muted">
+                                    {series.posts.length} file
+                                    {series.posts.length === 1 ? "" : "s"}
+                                    <br />
+                                    latest{" "}
+                                    <FormattedDate date={series.latestDate} />
+                                </p>
+                            </li>
+                        ))}
+                    </ol>
+                ) : (
+                    <p class="text-gl-muted">No linked transmissions yet.</p>
+                )
+            }
+        </section>
+    </Fragment>
+
+    <ul id="posts" class="flex flex-col gap-12">
+        {
+            posts.map((post, index) => (
+                <li class="border-l-4 border-b-4 border-double border-gl-pink px-6 pb-4">
+                    <a
+                        class="block border-b border-dashed border-gl-muted py-2 hover:bg-gl-cyan/10"
+                        href={`/blog/${post.id}/`}
+                    >
+                        <p class="text-lg uppercase tracking-wider text-gl-muted mb-2">
+                            file {String(index + 1).padStart(2, "0")}
+                        </p>
+
+                        <AsciiBanner
+                            text={post.data.title}
+                            font="ANSI Shadow"
+                            size="0.4rem"
+                            glitchAmount="25%"
+                            color="#e0af68"
+                            wrapAt="auto"
+                        />
+                    </a>
+                    <p class="mt-2 text-xl text-gl-white">
+                        {post.data.description}
+                    </p>
+                    <p class="mt-2 text-lg text-gl-muted">
+                        published <FormattedDate date={post.data.pubDate} />
+                    </p>
+                </li>
+            ))
+        }
+    </ul>
+</BaseLayout>

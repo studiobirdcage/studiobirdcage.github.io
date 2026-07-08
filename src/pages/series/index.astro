@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AsciiBanner from "../../components/AsciiBanner.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { getAllSeries } from "../../utils/series";
+import { SITE_TITLE } from "../../consts";
+
+const series = getAllSeries(await getCollection("blog"));
+---
+
+<BaseLayout
+    title={`Series | ${SITE_TITLE}`}
+    description="All Studio Birdcage post series."
+>
+    <section>
+        <nav class="site-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Index</a>
+            <span aria-hidden="true"> / </span>
+            <span class="site-breadcrumb__current" aria-current="page">
+                Series
+            </span>
+        </nav>
+
+        <AsciiBanner
+            text="Series"
+            size="0.55rem"
+            wrapAt="auto"
+            font="ANSI Shadow"
+            color="var(--color-gl-yellow)"
+            glitchColor="var(--color-gl-cyan)"
+        />
+    </section>
+
+    <section class="mt-10">
+        {
+            series.length > 0 ? (
+                <ol class="flex flex-col gap-12">
+                    {series.map((item) => (
+                        <li class="border-l-4 border-b-4 border-double border-gl-pink px-6 pb-4">
+                            <a
+                                class="block border-b border-dashed border-gl-muted py-2 text-3xl text-gl-yellow hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                                href={`/series/${item.slug}/`}
+                            >
+                                <span class="text-gl-muted">&gt;</span>{" "}
+                                {item.title}
+                            </a>
+                            <p class="mt-2 text-xl text-gl-muted">
+                                {item.posts.length} post
+                                {item.posts.length === 1 ? "" : "s"} // latest{" "}
+                                <FormattedDate date={item.latestDate} />
+                            </p>
+                        </li>
+                    ))}
+                </ol>
+            ) : (
+                <p class="text-2xl text-gl-muted">
+                    No series have been indexed yet.
+                </p>
+            )
+        }
+    </section>
+</BaseLayout>
