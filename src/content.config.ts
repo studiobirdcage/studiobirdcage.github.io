@@ -29,4 +29,16 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const resources = defineCollection({
+  loader: glob({ base: "./src/content/resource", pattern: "**/*.{md,mdx}" }),
+  schema: ({}) =>
+    z.object({
+      title: z.string(),
+      pubDate: z.coerce.date(),
+      description: z.string().optional(),
+      url: z.string(),
+      tags: z.array(z.string()),
+    }),
+});
+
+export const collections = { blog, resources };

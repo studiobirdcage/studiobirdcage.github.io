@@ -34,18 +34,22 @@ const { title, description } = Astro.props;
                     class="sticky top-8 border-t border-dashed border-gl-muted/70 py-4 text-xl leading-7 text-gl-white"
                 >
                     <slot name="sidebar">
-                        <p class="mb-3 text-gl-cyan">---[ about ]---</p>
-                        <p>
-                            Studio Birdcage is a retro terminal notebook for
-                            experiments, writing, glitches, web scraps, and
-                            whatever falls out of the machine.
-                        </p>
-                        <p class="mt-4 text-gl-muted">
-                            + independent web<br />
-                            + pixel noise<br />
-                            + always tinker
-                        </p>
-                        <section class="pt-12" aria-labelledby="series-heading">
+                        <section
+                            class="border-b border-dashed border-gl-muted/70 pb-2"
+                        >
+                            <p class="mb-3 text-gl-cyan">---[ about ]---</p>
+                            <p>
+                                Studio Birdcage is my home for experiments,
+                                projects, writing, glitches, web scraps,
+                                resources and whatever falls out of the machine.
+                            </p>
+                            <p class="mt-4 text-gl-muted">
+                                + independent web<br />
+                                + pixel noise<br />
+                                + damn the man
+                            </p>
+                        </section>
+                        <section class="pt-4" aria-labelledby="series-heading">
                             <div
                                 class="mb-3 flex items-baseline justify-between gap-3"
                             >
