@@ -5,16 +5,18 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import { getAllSeries } from "../utils/series";
 
-const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const posts = await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+}).then((output) =>
+    output.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
 );
+
 const newestSeries = getAllSeries(posts).slice(0, 5);
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-<<<<<<< Updated upstream
     <Fragment slot="sidebar">
         <section class="border-b border-dashed border-gl-muted/70 pb-5">
             <p class="mb-3 text-gl-cyan">---[ about ]---</p>
@@ -65,8 +67,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         </section>
     </Fragment>
 
-=======
->>>>>>> Stashed changes
     <ul id="posts" class="flex flex-col gap-12">
         {
             posts.map((post, index) => (
