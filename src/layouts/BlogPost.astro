@@ -20,6 +20,7 @@ const {
     heroImage,
     headings = [],
     seriesNav,
+    tags,
 } = Astro.props as Props;
 
 const tocHeadings = headings.filter(
@@ -33,12 +34,13 @@ const tocHeadings = headings.filter(
         {
             tocHeadings.length > 0 ? (
                 <nav aria-label="Table of contents">
-                    <ol class="space-y-2 text-lg leading-6">
+                    <ol class="space-y-2 text-lg leading-6 border-r border-dashed border-gl-muted/60 pr-4">
                         {tocHeadings.map((heading) => (
                             <li
                                 class:list={[
-                                    "toc-item border-l border-dashed border-gl-muted/60 pl-3",
-                                    heading.depth === 3 && "ml-4 text-gl-muted",
+                                    "toc-item",
+                                    heading.depth === 3 &&
+                                        "ml-4 text-gl-muted ",
                                 ]}
                                 data-toc-item
                             >
@@ -47,9 +49,21 @@ const tocHeadings = headings.filter(
                                     href={`#${heading.slug}`}
                                     data-toc-link={heading.slug}
                                 >
-                                    <span class="toc-caret" aria-hidden="true">
-                                        &gt;
-                                    </span>{" "}
+                                    {heading.depth === 2 ? (
+                                        <span
+                                            class="toc-caret"
+                                            aria-hidden="true"
+                                        >
+                                            ++
+                                        </span>
+                                    ) : (
+                                        <span
+                                            class="toc-caret"
+                                            aria-hidden="true"
+                                        >
+                                            &gt;
+                                        </span>
+                                    )}{" "}
                                     {heading.text}
                                 </a>
                             </li>
@@ -84,15 +98,25 @@ const tocHeadings = headings.filter(
             </div>
             <AsciiBanner
                 text={title}
-                size="0.5rem"
+                size="1rem"
                 wrapAt="auto"
                 glitchAmount="25%"
-                font="ANSI Shadow"
+                font="Pagga"
                 color="var(--color-gl-yellow)"
                 glitchColor="var(--color-gl-cyan)"
+                class="mt-2"
             />
         </div>
-        <div class="hero-image py-8">
+        {
+            tags && (
+                <div class="flex flex-row items-center mt-1 tag-list">
+                    {tags.map((tag) => (
+                        <span class="tag text-gl-muted">{tag}</span>
+                    ))}
+                </div>
+            )
+        }
+        <div class="hero-image">
             {
                 heroImage && (
                     <Image width={1020} height={510} src={heroImage} alt="" />
@@ -101,34 +125,30 @@ const tocHeadings = headings.filter(
         </div>
         <div data-blog-content class="pb-[35vh]">
             <slot />
-
             {
                 seriesNav && (
                     <nav
-                        class="mt-16 border-y border-dashed border-gl-muted/70 py-6"
+                        class="mt-16 border-t border-dashed border-gl-muted/70"
                         aria-label="Series navigation"
                     >
-                        <div class="mb-5 flex flex-col gap-2 border-b border-dashed border-gl-muted/60 pb-4 md:flex-row md:items-end md:justify-between">
-                            <div>
-                                <p class="text-lg uppercase tracking-[0.18em] text-gl-muted">
-                                    linked transmission
+                        <div class="flex flex-col gap-2 border-b border-dashed border-gl-muted/60 md:flex-row md:items-end md:justify-between">
+                            <div class="py-6">
+                                <p class="text-lg uppercase tracking-[0.18em] text-gl-muted mt-0 mb-2">
+                                    ++ linked // transmission ++
                                 </p>
-                                <p class="text-2xl leading-7 text-gl-cyan">
+                                <a
+                                    class="text-2xl leading-7 text-gl-cyan hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                                    href={`/series/${seriesNav.series.slug}/`}
+                                >
                                     ---[ {seriesNav.series.title} ]---
-                                </p>
+                                </a>
                             </div>
-                            <a
-                                class="text-xl text-gl-muted hover:bg-gl-cyan/10 hover:text-gl-cyan"
-                                href={`/series/${seriesNav.series.slug}/`}
-                            >
-                                [view series index]
-                            </a>
                         </div>
 
                         <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
-                            <div class="border-l border-dashed border-gl-muted/70 py-3 pl-4">
+                            <div>
                                 <p class="mb-2 text-lg uppercase tracking-wider text-gl-muted">
-                                    previous file
+                                    ++ previous // log ++
                                 </p>
                                 {seriesNav.previous ? (
                                     <a
@@ -149,11 +169,11 @@ const tocHeadings = headings.filter(
                             <div
                                 class="hidden border-l border-dashed border-gl-muted/60 md:block"
                                 aria-hidden="true"
-                            ></div>
+                            />
 
-                            <div class="border-r border-dashed border-gl-muted/70 py-3 pr-4 md:text-right">
+                            <div class="md:text-right">
                                 <p class="mb-2 text-lg uppercase tracking-wider text-gl-muted">
-                                    next file
+                                    ++ next // log ++
                                 </p>
                                 {seriesNav.next ? (
                                     <a

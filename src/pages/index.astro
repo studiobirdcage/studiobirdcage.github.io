@@ -14,6 +14,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<<<<<<< Updated upstream
     <Fragment slot="sidebar">
         <section class="border-b border-dashed border-gl-muted/70 pb-5">
             <p class="mb-3 text-gl-cyan">---[ about ]---</p>
@@ -64,6 +65,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         </section>
     </Fragment>
 
+=======
+>>>>>>> Stashed changes
     <ul id="posts" class="flex flex-col gap-12">
         {
             posts.map((post, index) => (
@@ -78,8 +81,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
                         <AsciiBanner
                             text={post.data.title}
-                            font="ANSI Shadow"
-                            size="0.4rem"
+                            font="Pagga"
+                            size="1rem"
                             glitchAmount="25%"
                             color="#e0af68"
                             wrapAt="auto"

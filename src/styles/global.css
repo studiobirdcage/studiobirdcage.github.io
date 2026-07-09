@@ -90,12 +90,37 @@ body > footer {
         @apply max-w-none text-gl-white;
     }
 
+    .prose :where(.tag)::after {
+        content: "//";
+        padding-left: 0.75rem;
+    }
+
+    .prose .tag-list :where(.tag):last-child::after {
+        content: "";
+        padding-left: 0.75rem;
+    }
+
+    .prose :where(.tag-list)::before {
+        content: "++";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(.tag-list)::after {
+        content: "++";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(.tag)::before {
+        content: "";
+        padding-right: 0.75rem;
+    }
+
     .prose :where(p) {
         @apply my-4 text-xl leading-7;
     }
 
     .prose :where(a) {
-        @apply text-gl-cyan underline decoration-gl-muted decoration-1 underline-offset-4 transition-colors;
+        @apply text-gl-cyan decoration-gl-muted cursor-pointer no-underline transition-colors;
     }
 
     .prose :where(a)::before {
@@ -109,7 +134,7 @@ body > footer {
     }
 
     .prose :where(a:hover) {
-        @apply bg-gl-cyan/10 text-gl-yellow decoration-gl-yellow;
+        @apply bg-gl-cyan/10 text-gl-yellow no-underline;
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {
@@ -145,8 +170,22 @@ body > footer {
 
     .prose :where(h3)::before,
     .prose :where(h4)::before {
-        content: ">> ";
+        content: "++ ";
         color: var(--color-gl-muted);
+    }
+
+    .prose :where(h3)::after,
+    .prose :where(h4)::after {
+        content: " ++";
+        color: var(--color-gl-muted);
+    }
+
+    .prose :where(h5)::before {
+        content: "---[ ";
+    }
+
+    .prose :where(h5)::after {
+        content: " ]---";
     }
 
     .prose :where(ul, ol) {
@@ -302,6 +341,10 @@ body > footer {
 
     .prose :where(tbody tr:nth-child(even)) {
         @apply bg-gl-blue/5;
+    }
+
+    .prose :where(kbd) {
+        @apply font-pixel text-2xl;
     }
 
     .prose :where(kbd, mark) {
