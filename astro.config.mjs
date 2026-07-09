@@ -10,7 +10,7 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://studiobirdcage.github.io",
   integrations: [mdx(), sitemap(), svelte()],
 
   markdown: {
