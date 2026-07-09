@@ -63,7 +63,7 @@ const tocHeadings = headings.filter(
     </Fragment>
 
     <div class="prose">
-        <div class="title border-b-4 border-double pb-4">
+        <div class="title border-b-4 border-gl-muted border-double pb-4">
             <nav class="site-breadcrumb" aria-label="Breadcrumb">
                 <a href="/">Index</a>
                 <span aria-hidden="true"> / </span>
@@ -140,7 +140,8 @@ const tocHeadings = headings.filter(
                                     </a>
                                 ) : (
                                     <span class="block text-xl leading-7 text-gl-muted">
-                                        <span aria-hidden="true">&lt;</span> start of series
+                                        <span aria-hidden="true">&lt;</span>{" "}
+                                        start of series
                                     </span>
                                 )}
                             </div>
@@ -148,8 +149,7 @@ const tocHeadings = headings.filter(
                             <div
                                 class="hidden border-l border-dashed border-gl-muted/60 md:block"
                                 aria-hidden="true"
-                            >
-                            </div>
+                            ></div>
 
                             <div class="border-r border-dashed border-gl-muted/70 py-3 pr-4 md:text-right">
                                 <p class="mb-2 text-lg uppercase tracking-wider text-gl-muted">
@@ -165,7 +165,8 @@ const tocHeadings = headings.filter(
                                     </a>
                                 ) : (
                                     <span class="block text-xl leading-7 text-gl-muted">
-                                        end of series <span aria-hidden="true">&gt;</span>
+                                        end of series{" "}
+                                        <span aria-hidden="true">&gt;</span>
                                     </span>
                                 )}
                             </div>

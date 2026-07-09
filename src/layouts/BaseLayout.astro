@@ -2,6 +2,14 @@
 import BaseHead from "../components/BaseHead.astro";
 import Menu from "../components/Menu.astro";
 import PixelBackground from "../components/PixelBackground.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { getAllSeries } from "../utils/series";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const newestSeries = getAllSeries(posts).slice(0, 5);
 
 interface props {
     title: string;
@@ -37,6 +45,49 @@ const { title, description } = Astro.props;
                             + pixel noise<br />
                             + always tinker
                         </p>
+                        <section class="pt-5" aria-labelledby="series-heading">
+                            <div
+                                class="mb-3 flex items-baseline justify-between gap-3"
+                            >
+                                <p id="series-heading" class="text-gl-cyan">
+                                    ---[ newest series ]---
+                                </p>
+                            </div>
+                            {
+                                newestSeries.length > 0 ? (
+                                    <ol class="space-y-3">
+                                        {newestSeries.map((series) => (
+                                            <li class="border-b border-dashed border-gl-muted/70 pb-3">
+                                                <a
+                                                    class="block text-xl leading-6 text-gl-yellow hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                                                    href={`/series/${series.slug}/`}
+                                                >
+                                                    <span class="text-gl-muted">
+                                                        &gt;
+                                                    </span>{" "}
+                                                    {series.title}
+                                                </a>
+                                                <p class="text-base leading-5 text-gl-muted">
+                                                    {series.posts.length} file
+                                                    {series.posts.length === 1
+                                                        ? ""
+                                                        : "s"}
+                                                    <br />
+                                                    latest{" "}
+                                                    <FormattedDate
+                                                        date={series.latestDate}
+                                                    />
+                                                </p>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                ) : (
+                                    <p class="text-gl-muted">
+                                        No linked transmissions yet.
+                                    </p>
+                                )
+                            }
+                        </section>
                     </slot>
                 </div>
             </aside>

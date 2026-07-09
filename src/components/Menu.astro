@@ -4,39 +4,29 @@ import GlitchLogo from "./GlitchLogo.astro";
 ---
 
 <header class="pt-10 pb-10">
-    <div class="border-y border-dashed border-gl-muted/70 py-4">
+    <div class="border-b border-dashed border-gl-muted/70 pb-4">
         <div class="flex flex-row items-stretch justify-between gap-4">
-            <a
-                href="/"
-                class="group min-w-0 text-gl-white"
-                aria-label="Studio Birdcage home"
-            >
-                <p
-                    class="mb-2 text-base leading-none tracking-[0.22em] text-gl-muted sm:text-xl"
+            <div>
+                <a
+                    href="/"
+                    class="group min-w-0 text-gl-white flex-1"
+                    aria-label="Studio Birdcage home"
                 >
-                    ++ life's short // build shit ++
-                </p>
-                <AsciiBanner
-                    lines={["Studio", "    Birdcage"]}
-                    color="var(--color-gl-pink)"
-                    glitchColor="var(--color-gl-cyan)"
-                    size="clamp(0.26rem, 1.45vw, 0.42rem)"
-                />
-            </a>
-
-            <div class="flex shrink-0 flex-col items-end justify-between gap-3">
-                <div class="flex flex-1 items-center pr-4">
-                    <a href="/" aria-label="Studio Birdcage home">
-                        <GlitchLogo
-                            size="clamp(2.8rem, 10vw, 4.2rem)"
-                            color="var(--color-gl-cyan)"
-                            glitchColor="var(--color-gl-pink)"
-                        />
-                    </a>
-                </div>
-
+                    <p
+                        class="mb-2 text-base leading-none tracking-[0.22em] text-gl-muted sm:text-xl"
+                    >
+                        ++ life's short // build shit ++
+                    </p>
+                    <AsciiBanner
+                        text={"Studio Birdcage"}
+                        color="var(--color-gl-pink)"
+                        glitchColor="var(--color-gl-cyan)"
+                        wrapAt="auto"
+                        size="0.7rem"
+                    />
+                </a>
                 <nav
-                    class="flex flex-nowrap justify-end gap-x-3 border-l border-r border-dashed border-gl-muted/70 pl-3 pr-3 text-lg uppercase tracking-wider whitespace-nowrap text-gl-muted sm:gap-x-4 sm:pl-4 sm:pr-4 sm:text-xl"
+                    class="flex flex-nowrap justify-start gap-x-3 border-dashed border-gl-muted/70 text-lg uppercase tracking-wider whitespace-nowrap text-gl-muted sm:gap-x-4 sm:text-xl"
                     aria-label="Primary navigation"
                 >
                     <a class="hover:bg-gl-cyan/10 hover:text-gl-cyan" href="/">
@@ -55,6 +45,18 @@ import GlitchLogo from "./GlitchLogo.astro";
                         [rss]
                     </a>
                 </nav>
+            </div>
+
+            <div class="flex shrink-0 flex-col items-end justify-between gap-3">
+                <div class="flex flex-1 items-center pr-4">
+                    <a href="/" aria-label="Studio Birdcage home">
+                        <GlitchLogo
+                            size="5.75rem"
+                            color="var(--color-gl-cyan)"
+                            glitchColor="var(--color-gl-pink)"
+                        />
+                    </a>
+                </div>
             </div>
         </div>
     </div>

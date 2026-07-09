@@ -6,6 +6,12 @@ import { getCollection } from "astro:content";
 import { getAllSeries } from "../../utils/series";
 import { SITE_TITLE } from "../../consts";
 
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const newestSeries = getAllSeries(posts).slice(0, 5);
+
 const series = getAllSeries(await getCollection("blog"));
 ---
 
@@ -13,6 +19,55 @@ const series = getAllSeries(await getCollection("blog"));
     title={`Series | ${SITE_TITLE}`}
     description="All Studio Birdcage post series."
 >
+    <Fragment slot="sidebar">
+        <section class="border-b border-dashed border-gl-muted/70 pb-5">
+            <p class="mb-3 text-gl-cyan">---[ about ]---</p>
+            <p>
+                Studio Birdcage is a retro terminal notebook for experiments,
+                writing, glitches, web scraps, and whatever falls out of the
+                machine.
+            </p>
+            <p class="mt-4 text-gl-muted">
+                + independent web<br />
+                + pixel noise<br />
+                + always tinker
+            </p>
+        </section>
+
+        <section class="pt-5" aria-labelledby="series-heading">
+            <div class="mb-3 flex items-baseline justify-between gap-3">
+                <p id="series-heading" class="text-gl-cyan">
+                    ---[ newest series ]---
+                </p>
+            </div>
+            {
+                newestSeries.length > 0 ? (
+                    <ol class="space-y-3">
+                        {newestSeries.map((series) => (
+                            <li class="border-b border-dashed border-gl-muted/70 pb-3">
+                                <a
+                                    class="block text-xl leading-6 text-gl-yellow hover:bg-gl-cyan/10 hover:text-gl-cyan"
+                                    href={`/series/${series.slug}/`}
+                                >
+                                    <span class="text-gl-muted">&gt;</span>{" "}
+                                    {series.title}
+                                </a>
+                                <p class="text-base leading-5 text-gl-muted">
+                                    {series.posts.length} file
+                                    {series.posts.length === 1 ? "" : "s"}
+                                    <br />
+                                    latest{" "}
+                                    <FormattedDate date={series.latestDate} />
+                                </p>
+                            </li>
+                        ))}
+                    </ol>
+                ) : (
+                    <p class="text-gl-muted">No linked transmissions yet.</p>
+                )
+            }
+        </section>
+    </Fragment>
     <section>
         <nav class="site-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Index</a>
@@ -42,8 +97,13 @@ const series = getAllSeries(await getCollection("blog"));
                                 class="block border-b border-dashed border-gl-muted py-2 text-3xl text-gl-yellow hover:bg-gl-cyan/10 hover:text-gl-cyan"
                                 href={`/series/${item.slug}/`}
                             >
-                                <span class="text-gl-muted">&gt;</span>{" "}
-                                {item.title}
+                                <AsciiBanner
+                                    text={item.title}
+                                    font="Classy"
+                                    wrapAt="auto"
+                                    color="var(--color-gl-pink)"
+                                    size="0.4rem"
+                                />
                             </a>
                             <p class="mt-2 text-xl text-gl-muted">
                                 {item.posts.length} post

@@ -34,14 +34,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
                 <p id="series-heading" class="text-gl-cyan">
                     ---[ newest series ]---
                 </p>
-                <a
-                    class="text-lg text-gl-muted hover:bg-gl-cyan/10 hover:text-gl-cyan"
-                    href="/series/"
-                >
-                    [all]
-                </a>
             </div>
-
             {
                 newestSeries.length > 0 ? (
                     <ol class="space-y-3">
@@ -76,11 +69,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             posts.map((post, index) => (
                 <li class="border-l-4 border-b-4 border-double border-gl-pink px-6 pb-4">
                     <a
-                        class="block border-b border-dashed border-gl-muted py-2 hover:bg-gl-cyan/10"
+                        class="block border-b border-dashed border-gl-muted pb-2 hover:bg-gl-cyan/10"
                         href={`/blog/${post.id}/`}
                     >
-                        <p class="text-lg uppercase tracking-wider text-gl-muted mb-2">
-                            file {String(index + 1).padStart(2, "0")}
+                        <p class="text-xl tracking-wider text-gl-muted mb-2">
+                            ++ Log // {String(index + 1).padStart(2, "0")} ++
                         </p>
 
                         <AsciiBanner
