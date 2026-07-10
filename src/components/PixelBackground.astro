@@ -168,8 +168,8 @@
                 nextGlyphGlitch = timestamp + randomBetween(850, 2100);
             }
 
-            if (timestamp - lastSpawn > 18) {
-                const spawnCount = width < 700 ? 3 : 7;
+            if (timestamp - lastSpawn > 28) {
+                const spawnCount = width < 700 ? 2 : 5;
                 for (let i = 0; i < spawnCount; i += 1) spawnParticle();
                 lastSpawn = timestamp;
             }
@@ -201,7 +201,7 @@
 
         for (
             let i = 0;
-            i < Math.floor((width * height) / (width < 700 ? 7000 : 4500));
+            i < Math.floor((width * height) / (width < 700 ? 10000 : 7000));
             i += 1
         ) {
             spawnParticle();
