@@ -6,6 +6,7 @@ import type { CollectionEntry } from "astro:content";
 import type { MarkdownHeading } from "astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import type { SeriesNav } from "../utils/series";
+import { SITE_TITLE } from "../consts";
 
 type Props = CollectionEntry<"blog">["data"] & {
     headings?: MarkdownHeading[];
@@ -28,7 +29,7 @@ const tocHeadings = headings.filter(
 );
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={`${title} | ${SITE_TITLE}`} description={description}>
     <Fragment slot="sidebar">
         <p class="mb-3 text-gl-cyan">---[ contents ]---</p>
         {
