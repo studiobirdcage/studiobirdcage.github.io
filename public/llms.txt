@@ -1,0 +1,18 @@
+# Studio Birdcage
+
+> Welcome to Studio Birdcage!
+
+Studio Birdcage is a personal/project blog with posts, series, and resource pages.
+
+## Core pages
+
+- [Home](https://studiobirdcage.com/): Latest posts and site index.
+- [Series](https://studiobirdcage.com/series/): Post series index.
+- [Resources](https://studiobirdcage.com/resources/): Resource index.
+- [RSS feed](https://studiobirdcage.com/rss.xml): Blog feed.
+- [Sitemap](https://studiobirdcage.com/sitemap-index.xml): Complete crawl map.
+
+## Policies
+
+- [Robots policy](https://studiobirdcage.com/robots.txt)
+- [AI access policy](https://studiobirdcage.com/ai.txt)
