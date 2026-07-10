@@ -2,6 +2,12 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+export enum ResourceCategory {
+  GAME_DEV = "Game Dev",
+  WEB_DEV = "Web Dev",
+  MISC = "Misc",
+}
+
 const seriesSchema = z.union([
   z.string().transform((title) => ({ title })),
   z.object({
@@ -37,6 +43,7 @@ const resources = defineCollection({
       pubDate: z.coerce.date(),
       description: z.string().optional(),
       url: z.string(),
+      category: z.enum(ResourceCategory),
       tags: z.array(z.string()),
     }),
 });
