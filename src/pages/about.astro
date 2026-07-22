@@ -3,108 +3,352 @@ import Layout from "../layouts/Layout.astro";
 import resumePdf from "../assets/Barrett Long Resume 2026.pdf";
 
 const experience = [
-  {
-    period: "2017 — 2026",
-    company: "Aivia Inc.",
-    role: "Software Engineering Manager · Lead Full Stack Developer",
-    description: "Managed a development team creating custom software solutions and led the development of the COM•MU•NI•KIT SaaS platform. Helped scale the platform from a single community to more than 260 communities across North America and hundreds of thousands of users.",
-  },
-  {
-    period: "2015 — Present",
-    company: "Freelance",
-    role: "Full Stack Web Developer · Designer",
-    description: "Coordinates with freelance clients to plan web, mobile, and software projects from initial concept through completion using a broad range of development tools, languages, and technologies.",
-  },
-  {
-    period: "2014 — 2016",
-    company: "Trickster Theatre",
-    role: "Content Creation Manager · Designer · Developer",
-    description: "Managed online digital content creation, videography and video editing; designed print and online promotional materials; and served as an in-house web developer and server administrator.",
-  },
-  {
-    period: "2012 — 2014",
-    company: "Alfred University",
-    role: "Teaching Assistant",
-    description: "Assisted undergraduate classes in print media, design, 3D sculpture, and digital media through demonstrations, lectures, critiques, and student support.",
-  },
+    {
+        period: "2015 — Present",
+        company: "Freelance",
+        role: "Full Stack Web Developer · Designer",
+        description:
+            "Coordinates with freelance clients to plan web, mobile, and software projects from initial concept through completion using a broad range of development tools, languages, and technologies.",
+    },
+    {
+        period: "2014 — 2016",
+        company: "Trickster Theatre",
+        role: "Content Creation Manager · Designer · Developer",
+        description:
+            "Managed online digital content creation, videography and video editing; designed print and online promotional materials; and served as an in-house web developer and server administrator.",
+    },
+    {
+        period: "2012 — 2014",
+        company: "Alfred University",
+        role: "Teaching Assistant",
+        description:
+            "Assisted undergraduate classes in print media, design, 3D sculpture, and digital media through demonstrations, lectures, critiques, and student support.",
+    },
 ];
 
 const expertise = [
-  { label: "TypeScript", logo: "/images/technology-logos/typescript.svg" },
-  { label: "JavaScript", logo: "/images/technology-logos/javascript.svg" },
-  { label: "PHP", logo: "/images/technology-logos/php.svg" },
-  { label: "Laravel", logo: "/images/technology-logos/laravel.svg" },
-  { label: "PostgreSQL", logo: "/images/technology-logos/postgresql.svg" },
-  { label: "MongoDB", logo: "/images/technology-logos/mongodb.svg" },
-  { label: "Redis", logo: "/images/technology-logos/redis.svg" },
-  { label: "Docker", logo: "/images/technology-logos/docker.svg" },
-  { label: "React", logo: "/images/technology-logos/react.svg" },
-  { label: "Vue", logo: "/images/technology-logos/vuedotjs.svg" },
-  { label: "Astro", logo: "/images/technology-logos/astro.svg" },
-  { label: "Next.js", logo: "/images/technology-logos/nextdotjs.svg" },
-  { label: "HTML5", logo: "/images/technology-logos/html5.svg" },
-  { label: "CSS3", logo: "/images/technology-logos/css.svg" },
-  { label: "SCSS", logo: "/images/technology-logos/sass.svg" },
-  { label: "WordPress", logo: "/images/technology-logos/wordpress.svg" },
-  { label: "Drupal", logo: "/images/technology-logos/drupal.svg" },
-  { label: "Kotlin", logo: "/images/technology-logos/kotlin.svg" },
-  { label: "Swift", logo: "/images/technology-logos/swift.svg" },
-  { label: "Tailwind CSS", logo: "/images/technology-logos/tailwindcss.svg" },
-  { label: "Go", logo: "/images/technology-logos/go.svg" },
-  { label: "Godot", logo: "/images/technology-logos/godotengine.svg" },
-  { label: "UI · UX", logo: "/images/technology-logos/figma.svg" },
-  { label: "Git", logo: "/images/technology-logos/git.svg" },
-  { label: "GitHub", logo: "/images/technology-logos/github.svg" },
-  { label: "AI · Agentic Workflows", icon: "\uf5dc", family: "solid" },
+    { label: "TypeScript", logo: "/images/technology-logos/typescript.svg" },
+    { label: "JavaScript", logo: "/images/technology-logos/javascript.svg" },
+    { label: "PHP", logo: "/images/technology-logos/php.svg" },
+    { label: "Laravel", logo: "/images/technology-logos/laravel.svg" },
+    { label: "PostgreSQL", logo: "/images/technology-logos/postgresql.svg" },
+    { label: "MongoDB", logo: "/images/technology-logos/mongodb.svg" },
+    { label: "Redis", logo: "/images/technology-logos/redis.svg" },
+    { label: "Docker", logo: "/images/technology-logos/docker.svg" },
+    { label: "React", logo: "/images/technology-logos/react.svg" },
+    { label: "Vue", logo: "/images/technology-logos/vuedotjs.svg" },
+    { label: "Astro", logo: "/images/technology-logos/astro.svg" },
+    { label: "Next.js", logo: "/images/technology-logos/nextdotjs.svg" },
+    { label: "HTML5", logo: "/images/technology-logos/html5.svg" },
+    { label: "CSS3", logo: "/images/technology-logos/css.svg" },
+    { label: "SCSS", logo: "/images/technology-logos/sass.svg" },
+    { label: "WordPress", logo: "/images/technology-logos/wordpress.svg" },
+    { label: "Drupal", logo: "/images/technology-logos/drupal.svg" },
+    { label: "Kotlin", logo: "/images/technology-logos/kotlin.svg" },
+    { label: "Swift", logo: "/images/technology-logos/swift.svg" },
+    { label: "Tailwind CSS", logo: "/images/technology-logos/tailwindcss.svg" },
+    { label: "Go", logo: "/images/technology-logos/go.svg" },
+    { label: "Godot", logo: "/images/technology-logos/godotengine.svg" },
+    { label: "UI · UX", logo: "/images/technology-logos/figma.svg" },
+    { label: "Git", logo: "/images/technology-logos/git.svg" },
+    { label: "GitHub", logo: "/images/technology-logos/github.svg" },
+    { label: "AI · Agentic Workflows", icon: "\uf5dc", family: "solid" },
 ];
 const scrollingExpertise = [...expertise, ...expertise];
 
 const education = [
-  { period: "2015 — 2016", school: "Northern Alberta Institute of Technology", place: "Edmonton, Alberta", credential: "Digital Media and IT — Computer Software Development", note: "Dean’s List" },
-  { period: "2012 — 2014", school: "Alfred University", place: "Alfred, New York", credential: "Master of Fine Arts — Electronic Integrated Art (Digital Media)" },
-  { period: "2007 — 2011", school: "Alberta College of Art + Design", place: "Calgary, Alberta", credential: "Bachelor of Fine Arts with Distinction — Print Media" },
+    {
+        period: "2015 — 2016",
+        school: "Northern Alberta Institute of Technology",
+        place: "Edmonton, Alberta",
+        credential: "Digital Media and IT — Computer Software Development",
+        note: "Dean’s List",
+    },
+    {
+        period: "2012 — 2014",
+        school: "Alfred University",
+        place: "Alfred, New York",
+        credential:
+            "Master of Fine Arts — Electronic Integrated Art (Digital Media)",
+    },
+    {
+        period: "2007 — 2011",
+        school: "Alberta College of Art + Design",
+        place: "Calgary, Alberta",
+        credential: "Bachelor of Fine Arts with Distinction — Print Media",
+    },
 ];
 ---
 
-<Layout title="Barrett Long — Software Engineering Manager & Full Stack Developer" description="Barrett Long is an Edmonton software engineering manager, full stack developer, UI/UX designer, and mobile app developer with experience leading teams and scaling SaaS products." image="/images/app/about_hero_image.jpg">
-  <section class="relative h-[calc(100vh-80px)] overflow-hidden bg-[#f4f4f4]">
-    <img class="absolute inset-0 h-full w-full object-cover object-[28%_top] min-[960px]:object-right-top" src="/images/app/about_hero_image.jpg" alt="Barrett Long" />
-    <div class="absolute inset-x-0 bottom-0 z-10 bg-[#121212] p-[26px] text-white min-[501px]:inset-x-5 min-[501px]:bottom-5 min-[501px]:p-10 min-[960px]:left-auto min-[960px]:right-20 min-[960px]:top-1/2 min-[960px]:flex min-[960px]:h-[calc(100%-40px)] min-[960px]:max-h-187.5 min-[960px]:w-150 min-[960px]:-translate-y-1/2 min-[960px]:flex-col min-[960px]:justify-center min-[960px]:p-20">
-      <img class="mx-auto mb-5 h-14 w-auto min-[501px]:h-16 min-[960px]:mb-8 min-[960px]:h-20" src="/images/app/studio_birdcage_icon.svg" alt="Studio Birdcage" />
-      <h1 class="mb-5 mt-0 font-black text-[44px] uppercase leading-none min-[501px]:mb-5 min-[501px]:text-[60px] min-[960px]:mb-5 min-[960px]:text-[84px]">Barrett <br class="min-[960px]:hidden" />Long</h1>
-      <p class="mb-5 font-sans-italic text-lg min-[960px]:mb-8 min-[960px]:text-[22px]">Software Engineering Manager · Lead Full Stack Developer</p>
-      <p class="font-book text-[11px] leading-[1.4] tracking-[1.25px] min-[501px]:text-sm min-[501px]:tracking-[1.5px] min-[960px]:text-base min-[960px]:leading-[1.65]">With more than 15 years of experience, I build UX-driven web, software, and mobile products. As Software Engineering Manager and Lead Full Stack Developer at Aivia Inc., I helped scale COM•MU•NI•KIT from one community to more than 260 across North America.</p>
+<Layout
+    title="Barrett Long — Software Engineering Manager & Full Stack Developer"
+    description="Barrett Long is an Edmonton software engineering manager, full stack developer, UI/UX designer, and mobile app developer with experience leading teams and scaling SaaS products."
+    image="/images/app/about_hero_image.jpg"
+>
+    <section class="relative h-[calc(100vh-80px)] overflow-hidden bg-[#f4f4f4]">
+        <img
+            class="absolute inset-0 h-full w-full object-cover object-[28%_top] min-[960px]:object-top-right"
+            src="/images/app/about_hero_image.jpg"
+            alt="Barrett Long"
+        />
+        <div
+            class="absolute inset-x-0 bottom-0 z-10 bg-[#121212] p-6.5 text-white min-[501px]:inset-x-5 min-[501px]:bottom-5 min-[501px]:p-10 min-[960px]:left-auto min-[960px]:right-20 min-[960px]:top-1/2 min-[960px]:flex min-[960px]:h-[calc(100%-40px)] min-[960px]:max-h-187.5 min-[960px]:w-150 min-[960px]:-translate-y-1/2 min-[960px]:flex-col min-[960px]:justify-center min-[960px]:p-20"
+        >
+            <img
+                class="mx-auto mb-5 h-14 w-auto min-[501px]:h-16 min-[960px]:mb-8 min-[960px]:h-20"
+                src="/images/app/studio_birdcage_icon.svg"
+                alt="Studio Birdcage"
+            />
+            <h1
+                class="mb-5 mt-0 font-black text-[44px] uppercase leading-none min-[501px]:mb-5 min-[501px]:text-[60px] min-[960px]:mb-5 min-[960px]:text-[84px]"
+            >
+                Barrett <br class="min-[960px]:hidden" />Long
+            </h1>
+            <p
+                class="mb-5 font-sans-italic text-lg min-[960px]:mb-8 min-[960px]:text-[22px]"
+            >
+                Software Engineering Manager · Lead Full Stack Developer
+            </p>
+            <p
+                class="font-book text-[11px] leading-[1.4] tracking-[1.25px] min-[501px]:text-sm min-[501px]:tracking-[1.5px] min-[960px]:text-base min-[960px]:leading-[1.65]"
+            >
+                With more than 15 years of experience, I build UX-driven web,
+                software, and mobile products. As Software Engineering Manager
+                and Lead Full Stack Developer at Aivia Inc., I helped scale
+                COM•MU•NI•KIT from one community to more than 260 across North
+                America.
+            </p>
+        </div>
+    </section>
+
+    <section
+        class="grid bg-white min-[960px]:min-h-191.25 min-[960px]:grid-cols-2"
+    >
+        <div
+            class="flex min-h-110 items-center p-10 min-[960px]:min-h-0 min-[960px]:p-[12%]"
+        >
+            <div>
+                <h3 class="with-line font-display-italic text-5xl">
+                    <span>Profile</span>
+                </h3><p
+                    class="mt-15 font-sans-italic text-xl leading-[1.6] tracking-[2px] text-[#808080] min-[960px]:text-2xl min-[960px]:leading-loose"
+                >
+                    I continually seek new challenges where I can develop my
+                    skill set and lead teams in creating thoughtful digital
+                    products that solve real problems and deliver meaningful
+                    user experiences.
+                </p><a class="button mt-10" href={resumePdf} download
+                    >Download Resume</a
+                >
+            </div>
+        </div>
+        <div
+            class="min-h-110 bg-cover bg-center min-[960px]:min-h-0"
+            style="background-image: url('/images/app/lightbuld_about_bg.jpg')"
+        >
+        </div>
+    </section>
+
+    <section
+        class="bg-[#f4f4f4] px-5 py-15 min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25"
+    >
+        <h3 class="with-line font-display-italic text-5xl">
+            <span>Experience</span>
+        </h3>
+        <div class="mt-20 grid mb-5">
+            <article class="bg-white p-8 min-[960px]:p-12.5">
+                <p
+                    class="font-sans-italic text-sm tracking-[2px] text-[#00b58e]"
+                >
+                    2017 - 2026
+                </p>
+                <h3
+                    class="mt-4 font-display-italic text-[32px] leading-none text-[#121212]"
+                >
+                    Aivia Inc.
+                </h3>
+                <p
+                    class="mt-4 font-sans-italic text-base tracking-[1px] text-[#808080]"
+                >
+                    Software Engineering Manager and Lead Full-Stack Developer
+                </p>
+                <p class="font-sans text-xxs tracking-[1px] text-[#808080]">
+                    Progressed from web developer and designer to product
+                    architect and engineering leader
+                </p>
+                <div class="my-6 h-1 w-20 bg-[#00fdc7]"></div>
+                <p class="font-book text-base leading-[1.8] text-[#808080]">
+                    I joined Aivia when it was still primarily a small digital
+                    agency. My initial work included design, HTML email, and web
+                    development, but I gradually took ownership of the company’s
+                    growing software initiatives.
+                </p>
+                <p class="font-book text-base leading-[1.8] text-[#808080]">
+                    That included building the administrative platform, backend,
+                    and native mobile applications for what became
+                    COM•MU•NI•KIT. As the product grew, I became responsible for
+                    its architecture, technical direction, development
+                    standards, hiring, mentoring, and delivery.
+                </p>
+                <p class="font-book text-base leading-[1.8] text-[#808080]">
+                    My most significant work was leading the ground-up redesign
+                    of Version 2. We moved away from one-off customer
+                    implementations and built a unified, configurable platform
+                    that could grow without fragmenting the product or codebase.
+                </p>
+                <h4
+                    class="font-display-italic text-xl leading-none text-[#121212] mt-8 mb-4"
+                >
+                    Selected impact
+                </h4>
+                <ul class="list-disc pl-6">
+                    <li
+                        class="font-sans text-base leading-[1.8] text-[#808080]"
+                    >
+                        Built the original platform across web administration,
+                        backend services, iOS, and Android.
+                    </li>
+                    <li
+                        class="font-sans text-base leading-[1.8] text-[#808080]"
+                    >
+                        Architected Version 2 around a unified content feed,
+                        extensible content types, targeted publishing,
+                        scheduling, push notifications, and analytics.
+                    </li>
+                    <li
+                        class="font-sans text-base leading-[1.8] text-[#808080]"
+                    >
+                        Helped scale the product from one community to more than
+                        260 deployments and over a hundred thousands users.
+                    </li>
+                    <li
+                        class="font-sans text-base leading-[1.8] text-[#808080]"
+                    >
+                        Built and mentored a multidisciplinary engineering and
+                        design team while remaining hands-on in development.
+                    </li>
+                    <li
+                        class="font-sans text-base leading-[1.8] text-[#808080]"
+                    >
+                        Helped shift the company from custom development toward
+                        a sustainable SaaS business.
+                    </li>
+                </ul>
+            </article>
+        </div>
+        <div class="grid gap-5 min-[960px]:grid-cols-2">
+            {
+                experience.map((item) => (
+                    <article class="bg-white p-8 min-[960px]:p-12.5">
+                        <>
+                            <p class="font-sans-italic text-sm tracking-[2px] text-[#00b58e]">
+                                {item.period}
+                            </p>
+                            <h3 class="mt-4 font-display-italic text-[32px] leading-none text-[#121212]">
+                                {item.company}
+                            </h3>
+                            <p class="mt-4 font-sans-italic text-base tracking-[1px] text-[#808080]">
+                                {item.role}
+                            </p>
+                            <div class="my-6 h-1 w-20 bg-[#00fdc7]" />
+                            <p class="font-book text-base leading-[1.8] text-[#808080]">
+                                {item.description}
+                            </p>
+                        </>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <section
+        class="bg-[#121212] px-5 py-15 text-white min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25"
+    >
+        <h3 class="with-line font-display-italic text-5xl">
+            <span>Expertise</span>
+        </h3>
+        <div class="expertise-marquee mt-20" aria-label="Technical expertise">
+            <ul class="expertise-marquee-track">
+                {
+                    scrollingExpertise.map((skill, index) => (
+                        <li
+                            class="expertise-marquee-card"
+                            aria-hidden={
+                                index >= expertise.length ? "true" : undefined
+                            }
+                        >
+                            {skill.logo ? (
+                                <img
+                                    class="technology-logo"
+                                    src={skill.logo}
+                                    alt=""
+                                />
+                            ) : (
+                                <span
+                                    class:list={[
+                                        "technology-icon",
+                                        skill.family === "solid" &&
+                                            "technology-icon-solid",
+                                    ]}
+                                    aria-hidden="true"
+                                >
+                                    {skill.icon}
+                                </span>
+                            )}
+                            <span class="font-sans-italic text-lg leading-tight tracking-[2px] min-[960px]:text-xl">
+                                {skill.label}
+                            </span>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+
+    <section
+        class="bg-white px-5 py-15 min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25"
+    >
+        <h3 class="with-line font-display-italic text-5xl">
+            <span>Education</span>
+        </h3>
+        <div class="mt-20 divide-y divide-[#dedde0]">
+            {
+                education.map((item) => (
+                    <article class="grid gap-5 py-8 first:pt-0 min-[960px]:grid-cols-[220px_1fr]">
+                        <>
+                            <p class="font-sans-italic text-base tracking-[2px] text-[#00b58e] min-[960px]:text-xl">
+                                {item.period}
+                            </p>
+                            <div>
+                                <>
+                                    <h3 class="font-display-italic text-[32px] leading-none text-[#121212]">
+                                        {item.school}
+                                    </h3>
+                                    <p class="mt-3 font-sans-italic text-base tracking-[1px] text-[#808080]">
+                                        {item.place}
+                                    </p>
+                                    <p class="mt-5 font-book text-base leading-[1.8] text-[#808080]">
+                                        {item.credential}
+                                        {item.note && ` (${item.note})`}
+                                    </p>
+                                </>
+                            </div>
+                        </>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <div
+        class="relative h-105 bg-cover bg-center"
+        style="background-image: url('/images/app/notebook_about_bg.jpg')"
+    >
     </div>
-  </section>
-
-  <section class="grid bg-white min-[960px]:min-h-[765px] min-[960px]:grid-cols-2">
-    <div class="flex min-h-110 items-center p-10 min-[960px]:min-h-0 min-[960px]:p-[12%]"><div><h3 class="with-line font-display-italic text-5xl"><span>Profile</span></h3><p class="mt-15 font-sans-italic text-xl leading-[1.6] tracking-[2px] text-[#808080] min-[960px]:text-2xl min-[960px]:leading-[2]">I continually seek new challenges where I can develop my skill set and lead teams in creating thoughtful digital products that solve real problems and deliver meaningful user experiences.</p><a class="button mt-10" href={resumePdf} download>Download Resume</a></div></div>
-    <div class="min-h-110 bg-cover bg-center min-[960px]:min-h-0" style="background-image: url('/images/app/lightbuld_about_bg.jpg')"></div>
-  </section>
-
-  <section class="bg-[#f4f4f4] px-5 py-15 min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25">
-    <h3 class="with-line font-display-italic text-5xl"><span>Experience</span></h3>
-    <div class="mt-20 grid gap-5 min-[960px]:grid-cols-2">
-      {experience.map((item) => <article class="bg-white p-8 min-[960px]:p-12.5"><p class="font-sans-italic text-sm tracking-[2px] text-[#00b58e]">{item.period}</p><h3 class="mt-4 font-display-italic text-[32px] leading-none text-[#121212]">{item.company}</h3><p class="mt-4 font-sans-italic text-base tracking-[1px] text-[#808080]">{item.role}</p><div class="my-6 h-1 w-20 bg-[#00fdc7]"></div><p class="font-book text-base leading-[1.8] text-[#808080]">{item.description}</p></article>)}
-    </div>
-  </section>
-
-  <section class="bg-[#121212] px-5 py-15 text-white min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25">
-    <h3 class="with-line font-display-italic text-5xl"><span>Expertise</span></h3>
-    <div class="expertise-marquee mt-20" aria-label="Technical expertise">
-      <ul class="expertise-marquee-track">
-        {scrollingExpertise.map((skill, index) => <li class="expertise-marquee-card" aria-hidden={index >= expertise.length ? "true" : undefined}>{skill.logo ? <img class="technology-logo" src={skill.logo} alt="" /> : <span class:list={["technology-icon", skill.family === "solid" && "technology-icon-solid"]} aria-hidden="true">{skill.icon}</span>}<span class="font-sans-italic text-lg leading-[1.25] tracking-[2px] min-[960px]:text-xl">{skill.label}</span></li>)}
-      </ul>
-    </div>
-  </section>
-
-  <section class="bg-white px-5 py-15 min-[501px]:px-12.5 min-[960px]:px-30 min-[960px]:py-25">
-    <h3 class="with-line font-display-italic text-5xl"><span>Education</span></h3>
-    <div class="mt-20 divide-y divide-[#dedde0]">
-      {education.map((item) => <article class="grid gap-5 py-8 first:pt-0 min-[960px]:grid-cols-[220px_1fr]"><p class="font-sans-italic text-base tracking-[2px] text-[#00b58e] min-[960px]:text-xl">{item.period}</p><div><h3 class="font-display-italic text-[32px] leading-none text-[#121212]">{item.school}</h3><p class="mt-3 font-sans-italic text-base tracking-[1px] text-[#808080]">{item.place}</p><p class="mt-5 font-book text-base leading-[1.8] text-[#808080]">{item.credential}{item.note && ` (${item.note})`}</p></div></article>)}
-    </div>
-  </section>
-
-  <div class="relative h-105 bg-cover bg-center" style="background-image: url('/images/app/notebook_about_bg.jpg')"></div>
-  <section class="bg-[#f4f4f4] px-5 py-10 text-center min-[960px]:p-20"><h2 class="legacy-h2">Let’s Work Together</h2><span class="subtitle about-cta-subtitle">I’m Always Open To New Challenges</span><a class="button" href="/contact">Get In Touch</a></section>
+    <section class="bg-[#f4f4f4] px-5 py-10 text-center min-[960px]:p-20">
+        <h2 class="legacy-h2">Let’s Work Together</h2><span
+            class="subtitle about-cta-subtitle"
+            >I’m Always Open To New Challenges</span
+        ><a class="button" href="/contact">Get In Touch</a>
+    </section>
 </Layout>
