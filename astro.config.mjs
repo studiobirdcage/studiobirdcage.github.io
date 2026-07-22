@@ -1,43 +1,20 @@
 // @ts-check
+import { defineConfig } from 'astro/config';
 
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import { defineConfig, fontProviders } from "astro/config";
-
-import tailwindcss from "@tailwindcss/vite";
-
-import svelte from "@astrojs/svelte";
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://studiobirdcage.com",
-  integrations: [mdx(), sitemap(), svelte()],
-
-  markdown: {
-    shikiConfig: {
-      theme: "tokyo-night",
-    },
+  site: 'https://studiobirdcage.com',
+  redirects: {
+    '/journal/development-story/the-making-of-studio-birdcagebrpart-2-so-many-false-starts/': '/journal/development-story/the-making-of-studio-birdcage-part-2-building-a-backend/',
   },
-
-  fonts: [
-    {
-      provider: fontProviders.local(),
-      name: "Geist Pixel Square",
-      cssVariable: "--font-geist-pixel-square",
-      fallbacks: ["monospace"],
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/GeistPixel-Square.woff2"],
-            weight: 500,
-            style: "normal",
-          },
-        ],
-      },
-    },
-  ],
+  integrations: [react(), mdx(), sitemap()],
 
   vite: {
-    plugins: [tailwindcss()],
-  },
+    plugins: [tailwindcss()]
+  }
 });

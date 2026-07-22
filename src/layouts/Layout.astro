@@ -1,0 +1,52 @@
+---
+import PageHeader from "../components/PageHeader.astro";
+import SideNavigation from "../components/SideNavigation.astro";
+import SocialMedia from "../components/SocialMedia.astro";
+import "../styles/global.css";
+
+interface Props { title?: string; description?: string; image?: string; schema?: Record<string, unknown>; showFooter?: boolean; worksIndexLayout?: boolean; }
+const { title = "Barrett Long — Web Developer, Software Developer & Designer", description = "Barrett Long is an Edmonton web developer, software developer, mobile app developer, and designer. Studio Birdcage is his professional portfolio.", image = "/images/app/about_hero_image.jpg", schema, showFooter = true, worksIndexLayout = false } = Astro.props;
+const site = Astro.site ?? new URL("https://studiobirdcage.com");
+const canonical = new URL(Astro.url.pathname, site);
+const socialImage = new URL(image, site);
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": `${site}#website`, url: site.href, name: "Studio Birdcage", description },
+    { "@type": "Person", "@id": `${site}#barrett-long`, name: "Barrett Long", url: site.href, jobTitle: "Web Developer, Software Developer & Designer", image: new URL("/images/app/about_hero_image.jpg", site).href, email: "info@studiobirdcage.com", sameAs: ["https://www.facebook.com/TheStudioBirdcage", "https://twitter.com/StudioBirdcage", "https://www.instagram.com/studiobirdcage/", "https://gitlab.com/studiobirdcage", "https://www.linkedin.com/in/barrett-long-315982119/", "https://dribbble.com/StudioBirdcage"] },
+    ...(schema ? [schema] : []),
+  ],
+};
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content="Studio Birdcage" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <title>{title}</title>
+  </head>
+  <body class="pt-20 min-[501px]:max-[959px]:pt-25">
+    <PageHeader />
+    <aside class="fixed inset-y-0 left-0 z-50 hidden w-20 bg-white min-[960px]:block"><SideNavigation /></aside>
+    <aside class="fixed inset-y-0 right-0 z-50 hidden w-20 bg-white min-[960px]:block"><slot name="right-rail"><p class="side-label side-label-right left-1/2 top-1/2">Barrett Long | Studio Birdcage</p></slot></aside>
+    <main class="relative z-10 min-[960px]:mx-20"><slot /></main>
+    {showFooter && <footer id="main-footer" class:list={["relative z-10 flex h-20 items-center justify-center bg-white min-[960px]:mx-20", worksIndexLayout && "min-[960px]:fixed min-[960px]:inset-x-0 min-[960px]:bottom-0 min-[960px]:z-20 min-[960px]:mx-0"]}><SocialMedia /></footer>}
+  </body>
+</html>

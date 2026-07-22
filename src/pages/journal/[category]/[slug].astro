@@ -1,0 +1,100 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import HomePosts from "../../../components/HomePosts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({ params: { category: post.data.categorySlug, slug: post.data.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const otherPosts = posts.filter(({ id }) => id !== post.id);
+const previous = otherPosts[0];
+const next = otherPosts[1] ?? otherPosts[0];
+const related = otherPosts.slice(0, 3);
+const relatedCards = related.map(({ data }) => ({ title: data.title, slug: data.slug, categorySlug: data.categorySlug, date: data.date.toLocaleDateString("en-CA", { day: "2-digit", month: "2-digit", year: "numeric" }), author: data.author, excerpt: data.excerpt, tags: data.tags, image: data.thumbnailImage }));
+const metaDescription = post.data.excerpt.length > 157 ? `${post.data.excerpt.slice(0, 154).replace(/\s+\S*$/, "")}…` : post.data.excerpt;
+const articleSchema = { "@type": "Article", headline: post.data.title, description: metaDescription, image: new URL(post.data.heroImage, Astro.site).href, datePublished: post.data.date.toISOString(), author: { "@type": "Person", name: post.data.author }, publisher: { "@type": "Person", name: "Barrett Long" }, mainEntityOfPage: Astro.url.href };
+
+const encodedUrl = encodeURIComponent(Astro.url.href);
+const encodedTitle = encodeURIComponent(post.data.title);
+---
+
+<Layout title={`${post.data.title} — Studio Birdcage`} description={metaDescription} image={post.data.heroImage} schema={articleSchema} showFooter={false}>
+  <div class="main-container">
+    <div class="post-hero-container">
+      <div class="post-hero-bg" style={`background-image: url('${post.data.heroImage}')`}></div>
+      <div class="post-hero-info">
+        <div class="group flex flex-wrap">
+          <p class="post-category-label flex items-center justify-center"><span class="flex items-center bg-white px-3.5 py-2 font-bold not-italic text-[18px] uppercase text-[#00fdc7] max-[849px]:text-[16px] max-[849px]:px-3 max-[849px]:py-1.5 max-[500px]:text-[14px] max-[500px]:px-2.5 max-[500px]:py-1"><span class="solid-icon mr-2 align-middle text-[#00fdc7] not-italic">&#xf07c;</span>{post.data.category}</span></p>
+          <p class="post-date-label ml-2 flex items-center justify-center"><span class="flex items-center bg-[#00fdc7] px-3.5 py-2 font-bold not-italic text-[18px] uppercase text-white max-[849px]:text-[16px] max-[849px]:px-3 max-[849px]:py-1.5 max-[500px]:text-[14px] max-[500px]:px-2.5 max-[500px]:py-1"><span class="regular-icon mr-2 align-middle text-white not-italic">&#xf073;</span>{post.data.date.toLocaleDateString("en-CA", { day: "2-digit", month: "2-digit", year: "numeric" })}</span></p>
+        </div>
+        <h1 class="post-title my-3 max-w-[1100px] leading-none"><span class="inline-block bg-white px-3.5 pb-[.3em] pt-[.1em] font-black text-[38px] uppercase leading-none tracking-[-1px] text-[#121212] max-[849px]:text-[32px]">{post.data.title}</span></h1>
+        <p class="post-subheader mb-3 max-w-[900px] font-black text-[22px] uppercase leading-none text-[#121212] max-[849px]:text-[20px]"><span class="inline-block bg-white px-3.5 pb-[.4em] pt-[.25em]">{post.data.tagline}</span></p>
+        <div class="mt-3 flex w-full flex-row justify-between">
+          <ul class="flex w-full list-none flex-nowrap flex-row p-0">
+            <li class="mr-2.5 min-w-0 bg-white px-3.5 pb-[.325em] pt-[.25em] font-sans-italic text-base italic text-[#121212] max-[849px]:pb-[.325em] max-[849px]:pt-[.2em] max-[849px]:text-sm max-[499px]:text-[10px]"><span class="solid-icon mr-2 text-[#00fdc7] not-italic">&#xf2bd;</span>{post.data.author}</li>
+            {post.data.tags.map((tag) => <li class="mr-2.5 min-w-0 bg-white px-3.5 pb-[.325em] pt-[.25em] font-sans-italic text-base italic text-[#121212] max-[849px]:pb-[.325em] max-[849px]:pt-[.2em] max-[849px]:text-sm max-[499px]:text-[10px]"><span class="solid-icon mr-2 text-[#00fdc7] not-italic">&#xf02b;</span>{tag}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {post.data.videoUrl && <section class="video-player relative z-[12] flex items-center justify-center bg-black"><div class="video-wrapper my-20 w-4/5 max-[849px]:my-0 max-[849px]:w-full"><iframe class="aspect-video w-full" src={post.data.videoUrl.replace("watch?v=", "embed/").replace("&t=", "?t=")} title={post.data.title} allowfullscreen></iframe></div></section>}
+    <article class="post-body-container relative z-[15] bg-[#f9f8f9]"><div class="prose-post mx-auto max-w-[1060px] px-10 py-20"><Content /></div></article>
+    {relatedCards.length > 0 && <section class="post-navigation relative z-10 flex flex-col items-center bg-[#f4f4f4] px-20 py-20 max-[960px]:px-10 max-[500px]:px-5"><h2 class="legacy-h2 text-center">More Related Articles</h2><span class="mx-auto mt-6 block h-[3px] w-48 bg-[#00fdc7]"></span><HomePosts posts={relatedCards} /></section>}
+    <section class="link-container relative z-20 bg-white px-20 pb-5 pt-5 text-center max-[500px]:px-5"><a class="font-sans text-2xl uppercase tracking-[8px] text-[#e6e6e6] transition-colors hover:text-[#00fdc7] min-[850px]:text-[40px]" href="/journal">Back to Journal</a></section>
+    <nav class="fixed bottom-0 z-[100] h-20 w-[calc(100%-160px)] bg-white max-[849px]:w-screen">
+      <div class="mx-auto flex h-full w-[90%] flex-row items-center justify-between">
+        <div class="relative flex justify-start">
+          {previous && <><a class="max-w-75 border-b-2 border-[#e6e6e6] pb-1.5 pl-5 font-sans text-base leading-none text-[#808080] transition-all hover:border-[#00fdc7] max-[849px]:text-xs max-[499px]:text-[10px]" href={`/journal/${previous.data.categorySlug}/${previous.data.slug}`}>{previous.data.title}</a><i class="solid-icon absolute left-0 top-1/2 -translate-y-1/2 not-italic text-sm text-[#e6e6e6] transition-all group-hover:text-[#00fdc7]">&#xf0d9;</i></>}
+        </div>
+        <div class="mx-10 flex justify-center text-[10px] max-[499px]:mx-5">
+          <ul class="flex list-none flex-row items-center p-0">
+            <li class="mr-10 font-sans text-[3em] uppercase text-[#00fdc7] max-[849px]:mr-[30px] max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]">Share</li>
+            <li class="mr-10 text-[3em] max-[849px]:mr-[30px] max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]"><a data-share-popup class="text-[#cdcccf] transition-all hover:text-[#00fdc7]" href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Facebook"><i class="font-['Font_Awesome_5_Brands'] leading-none not-italic">&#xf082;</i></a></li>
+            <li class="text-[3em] max-[849px]:text-[2em] max-[499px]:text-[1.4em]"><a data-share-popup class="text-[#cdcccf] transition-all hover:text-[#00fdc7]" href={`https://twitter.com/intent/tweet?text=${encodedTitle}&via=StudioBirdcage&hashtags=studiobirdcage,webdesign,webdevelopment&url=${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Twitter"><i class="font-['Font_Awesome_5_Brands'] leading-none not-italic">&#xf099;</i></a></li>
+          </ul>
+        </div>
+        <div class="relative flex justify-end">
+          {next && <><a class="max-w-75 border-b-2 border-[#e6e6e6] pb-1.5 pr-5 font-sans text-base leading-none text-[#808080] transition-all hover:border-[#00fdc7] max-[849px]:text-xs max-[499px]:text-[10px]" href={`/journal/${next.data.categorySlug}/${next.data.slug}`}>{next.data.title}</a><i class="solid-icon absolute right-0 top-1/2 -translate-y-1/2 not-italic text-sm text-[#e6e6e6] transition-all group-hover:text-[#00fdc7]">&#xf0da;</i></>}
+        </div>
+      </div>
+    </nav>
+  </div>
+</Layout>
+
+<script>
+  let lastScrollY = 0;
+  const nav = document.querySelector('.sticky-post-nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      const scrollBottom = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+      if (scrollBottom < 200) {
+        nav.classList.add('is-hidden');
+      } else {
+        nav.classList.remove('is-hidden');
+      }
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-share-popup]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.open(link.href, 'newwindow', 'width=600,height=350');
+    });
+  });
+</script>
+
+<style>
+  .sticky-post-nav.is-hidden {
+    transform: translate3d(0, calc(100% + 10px), 0);
+    transition: transform 0.5s ease;
+  }
+  .sticky-post-nav:not(.is-hidden) {
+    transition: transform 0.5s ease;
+  }
+</style>

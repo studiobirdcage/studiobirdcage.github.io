@@ -1,0 +1,364 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import SocialMedia from "../../components/SocialMedia.astro";
+import Button from "../../components/Button.astro";
+
+export async function getStaticPaths() {
+    const works = await getCollection("works");
+    return works.map((work) => ({
+        params: { slug: work.data.slug },
+        props: { work },
+    }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+const works = (await getCollection("works", ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.publishedAt.valueOf() - b.data.publishedAt.valueOf(),
+);
+const currentIndex = works.findIndex(({ id }) => id === work.id);
+const previous = currentIndex > 0 ? works[currentIndex - 1] : undefined;
+const next =
+    currentIndex < works.length - 1 ? works[currentIndex + 1] : undefined;
+const details = [
+    ["Who it was for", work.data.who],
+    ["What I did", work.data.what],
+    ["How I did it", work.data.how],
+].filter(([, value]) => value);
+const workDescription = `Portfolio case study: ${work.data.title}. Barrett Long's work: ${(work.data.what ?? work.data.tags.join(", ")).replace(/<[^>]*>/g, "")}.`;
+const workSchema = {
+    "@type": "CreativeWork",
+    name: work.data.title,
+    description: workDescription,
+    image: new URL(work.data.heroImage, Astro.site).href,
+    datePublished: work.data.publishedAt.toISOString(),
+    creator: { "@type": "Person", name: "Barrett Long" },
+    mainEntityOfPage: Astro.url.href,
+};
+---
+
+<Layout
+    title={`${work.data.title} Case Study — Studio Birdcage`}
+    description={workDescription}
+    image={work.data.heroImage}
+    schema={workSchema}
+    showFooter={false}
+>
+    <section
+        id="work-hero"
+        class="relative isolate flex h-[calc(100vh-80px)] items-center justify-center overflow-hidden bg-[#121212] px-6 py-20 text-center text-white"
+    >
+        <img
+            class="absolute inset-0 -z-10 h-full w-full object-cover opacity-75"
+            src={work.data.heroImage}
+            alt=""
+        />
+        <nav
+            class="absolute left-6 top-6 flex items-center gap-2 font-regular text-xs uppercase tracking-[2px] text-white/85 min-[960px]:left-20 min-[960px]:top-10"
+            aria-label="Breadcrumb"
+        >
+            <a class="hover:text-[#00fdc7]" href="/">Home</a><span
+                aria-hidden="true">/</span
+            ><a class="hover:text-[#00fdc7]" href="/works">Works</a><span
+                aria-hidden="true">/</span
+            ><span class="max-w-45 truncate text-[#00fdc7]" aria-current="page"
+                >{work.data.title}</span
+            >
+        </nav>
+        <div
+            class="flex h-full w-full max-w-230 flex-col items-center justify-center"
+        >
+            <h1
+                class="max-w-full break-words font-display text-[clamp(38px,11vw,60px)] leading-[0.95] tracking-[-1px] min-[960px]:text-[clamp(56px,8vw,100px)] min-[960px]:tracking-[-2px]"
+            >
+                {work.data.title}
+            </h1><ul
+                class="mt-11 flex flex-wrap justify-center font-book text-xl uppercase tracking-[6px]"
+            >
+                {
+                    work.data.tags.map((tag, index) => (
+                        <li>
+                            {tag}
+                            {index < work.data.tags.length - 1 && (
+                                <span class="px-4">•</span>
+                            )}
+                        </li>
+                    ))
+                }
+            </ul><img
+                class="absolute top-[94%] h-auto w-9"
+                src="/images/app/work_down_arrow.svg"
+                alt="Down Scroll Arrow"
+            />
+        </div>
+    </section>
+    <section class="grid min-[960px]:grid-cols-12">
+        <article
+            id="work-overview"
+            class="order-2 flex flex-col px-6 pb-0 pt-14 prose-work min-[960px]:order-1 min-[960px]:col-span-9 min-[960px]:justify-center min-[960px]:px-10 min-[960px]:pb-0 min-[960px]:pt-24 min-[1150px]:px-20"
+        >
+            <Content />
+        </article>
+        <aside
+            class="order-1 flex bg-[#f4f4f4] px-6 py-14 min-[960px]:relative min-[960px]:z-[41] min-[960px]:order-2 min-[960px]:col-span-3 min-[960px]:sticky min-[960px]:top-20 min-[960px]:min-h-[calc(100vh-80px)] min-[960px]:self-start min-[960px]:items-start min-[960px]:px-8 min-[960px]:pb-6 min-[960px]:!pt-0"
+        >
+            <div
+                class="flex w-full flex-col min-[960px]:min-h-[calc(100vh-104px)]"
+            >
+                <div>
+                    <div
+                        id="work-sidebar-project"
+                        class="work-sidebar-project pointer-events-none relative overflow-hidden text-center text-white min-[960px]:-mx-8"
+                    >
+                        <img
+                            class="absolute inset-0 -z-10 h-full w-full object-cover"
+                            src={work.data.heroImage}
+                            alt=""
+                        /><div
+                            class="flex h-full flex-col items-center justify-center px-4 py-6 text-shadow-[0_1px_6px_#121212]"
+                        >
+                            <h2
+                                class="max-w-full break-words font-display text-[clamp(18px,2.5vw,30px)] leading-[1.05] tracking-[-1px]"
+                            >
+                                {work.data.title}
+                            </h2><p
+                                class="mt-3 max-w-full break-words font-book text-[clamp(8px,1vw,11px)] uppercase tracking-[clamp(1px,0.25vw,3px)]"
+                            >
+                                {work.data.tags.join(" • ")}
+                            </p>
+                        </div>
+                    </div>
+                    <dl class="work-sidebar-details space-y-5">
+                        {
+                            details.map(([label, value]) => (
+                                <div>
+                                    <>
+                                        <dt class="break-words font-regular text-xs uppercase tracking-[2px] text-[#808080]">
+                                            {label}
+                                        </dt>
+                                        <dd
+                                            class="mt-2 break-words font-sans-italic text-[18px] leading-[1.25] text-[#808080]"
+                                            set:html={value}
+                                        />
+                                    </>
+                                </div>
+                            ))
+                        }
+                    </dl>
+                    <nav
+                        id="work-toc"
+                        class="mt-10 hidden border-t-2 border-[#00fdc7] pt-5 min-[960px]:block"
+                        aria-label="Work page contents"
+                    >
+                        <p
+                            class="font-regular text-xs uppercase tracking-[2px] text-[#808080]"
+                        >
+                            Contents
+                        </p>
+                        <ul
+                            id="work-toc-list"
+                            class="mt-3 space-y-2 break-words font-sans-italic text-[18px] leading-[1.25] text-[#808080] min-[1150px]:text-lg"
+                        >
+                        </ul>
+                    </nav>
+                    <nav
+                        class="mt-10 hidden border-t-2 border-[#00fdc7] pt-5 min-[960px]:block"
+                        aria-label="Work navigation"
+                    >
+                        <p
+                            class="font-regular text-xs uppercase tracking-[2px] text-[#808080]"
+                        >
+                            Navigate
+                        </p><div
+                            class:list={[
+                                "mt-3 grid gap-2",
+                                previous && next
+                                    ? "grid-cols-2"
+                                    : "grid-cols-1",
+                            ]}
+                        >
+                            {
+                                previous && (
+                                    <a
+                                        class="group relative flex h-24 items-end overflow-hidden p-2 font-sans-italic text-xs text-white"
+                                        href={`/works/${previous.data.slug}`}
+                                    >
+                                        <>
+                                            <img
+                                                class="absolute inset-0 -z-10 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                                                src={
+                                                    previous.data.thumbnailImage
+                                                }
+                                                alt=""
+                                            />
+                                            <span class="max-w-full break-words text-shadow-[0_1px_5px_#121212]">
+                                                ← {previous.data.title}
+                                            </span>
+                                        </>
+                                    </a>
+                                )
+                            }{
+                                next && (
+                                    <a
+                                        class="group relative flex h-24 items-end justify-end overflow-hidden p-2 text-right font-sans-italic text-xs text-white"
+                                        href={`/works/${next.data.slug}`}
+                                    >
+                                        <>
+                                            <img
+                                                class="absolute inset-0 -z-10 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                                                src={next.data.thumbnailImage}
+                                                alt=""
+                                            />
+                                            <span class="max-w-full break-words text-shadow-[0_1px_5px_#121212]">
+                                                {next.data.title} →
+                                            </span>
+                                        </>
+                                    </a>
+                                )
+                            }
+                        </div><Button
+                            href="/works"
+                            class="mt-2 w-full !px-3 !py-2 !text-xs"
+                            >All works</Button
+                        >
+                    </nav>
+                </div>
+                <div class="mt-auto hidden min-[960px]:block">
+                    <SocialMedia sidebar />
+                </div>
+            </div>
+        </aside>
+    </section>
+    <nav id="work-navigation" class="flex h-20 bg-[#f9f8f9] min-[960px]:hidden">
+        {
+            previous ? (
+                <a
+                    class="group relative flex flex-1 items-center overflow-hidden px-10 font-sans-italic text-2xl text-[#121212]"
+                    href={`/works/${previous.data.slug}`}
+                >
+                    <img
+                        class="absolute inset-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity group-hover:opacity-40"
+                        src={previous.data.thumbnailImage}
+                        alt=""
+                    />
+                    ← {previous.data.title}
+                </a>
+            ) : (
+                <div class="flex-1" />
+            )
+        }
+        {
+            next ? (
+                <a
+                    class="group relative flex flex-1 items-center justify-end overflow-hidden px-10 text-right font-sans-italic text-2xl text-[#121212]"
+                    href={`/works/${next.data.slug}`}
+                >
+                    <img
+                        class="absolute inset-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity group-hover:opacity-40"
+                        src={next.data.thumbnailImage}
+                        alt=""
+                    />
+                    {next.data.title} →
+                </a>
+            ) : (
+                <div class="flex-1" />
+            )
+        }
+    </nav>
+    <div class="bg-white py-12 text-center min-[960px]:hidden">
+        <a
+            class="font-sans text-2xl text-[#cdcccf] hover:text-[#00fdc7]"
+            href="/works">Back to Works</a
+        >
+    </div>
+</Layout>
+
+<script>
+    const article = document.querySelector<HTMLElement>("#work-overview");
+    const tocList = document.querySelector<HTMLUListElement>("#work-toc-list");
+    const hero = document.querySelector<HTMLElement>("#work-hero");
+    const sidebarProject = document.querySelector<HTMLElement>(
+        "#work-sidebar-project",
+    );
+
+    if (
+        hero &&
+        sidebarProject &&
+        window.matchMedia("(min-width: 960px)").matches
+    ) {
+        new IntersectionObserver(
+            ([entry]) =>
+                sidebarProject.classList.toggle(
+                    "work-sidebar-project-active",
+                    !entry.isIntersecting,
+                ),
+            { threshold: 0.05 },
+        ).observe(hero);
+    }
+
+    if (article && tocList) {
+        const blocks = [
+            article,
+            ...Array.from(article.children).filter((element) =>
+                element.matches("section, div"),
+            ),
+        ];
+        const fallbackLabels = [
+            "Project overview",
+            "Project gallery",
+            "Project details",
+            "Project gallery",
+        ];
+        const links = blocks.map((block, index) => {
+            const id = index === 0 ? "work-overview" : `work-section-${index}`;
+            block.id = id;
+            const heading =
+                index === 0
+                    ? "Project overview"
+                    : block.querySelector("h2, h3, h4")?.textContent?.trim();
+            const label =
+                heading ||
+                fallbackLabels[index] ||
+                `Project section ${index + 1}`;
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = `#${id}`;
+            link.textContent = label;
+            link.className = "work-toc-link block hover:text-[#00fdc7]";
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                window.scrollTo({
+                    top: Math.max(
+                        0,
+                        block.getBoundingClientRect().top +
+                            window.scrollY -
+                            100,
+                    ),
+                    behavior: "smooth",
+                });
+                history.replaceState(null, "", `#${id}`);
+            });
+            item.append(link);
+            tocList.append(item);
+            return { block, link };
+        });
+
+        const updateActiveLink = () => {
+            const active = links.reduce(
+                (current, entry) =>
+                    entry.block.getBoundingClientRect().top <= 120
+                        ? entry
+                        : current,
+                links[0],
+            );
+            links.forEach(({ link }) =>
+                link.classList.toggle("work-toc-active", link === active?.link),
+            );
+        };
+
+        window.addEventListener("scroll", updateActiveLink, { passive: true });
+        window.addEventListener("resize", updateActiveLink);
+        updateActiveLink();
+    }
+</script>

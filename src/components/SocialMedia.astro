@@ -1,0 +1,16 @@
+---
+interface Props { sidebar?: boolean; }
+const { sidebar = false } = Astro.props;
+const links = [
+  ["https://www.facebook.com/TheStudioBirdcage", "Facebook", "\uf082"],
+  ["https://twitter.com/StudioBirdcage", "Twitter", "\uf099"],
+  ["https://www.instagram.com/studiobirdcage/", "Instagram", "\uf16d"],
+  ["https://gitlab.com/studiobirdcage", "GitLab", "\uf296"],
+  ["https://www.linkedin.com/in/barrett-long-315982119/", "LinkedIn", "\uf08c"],
+  ["https://dribbble.com/StudioBirdcage", "Dribbble", "\uf17d"],
+];
+---
+
+<ul class:list={["flex list-none flex-row p-0", sidebar && "sidebar-social"]}>
+  {links.map(([href, label, glyph]) => <li><a class:list={["social-icon block px-3 py-3 text-[#cdcccf] hover:text-[#808080]", sidebar && "sidebar-social-icon"]} href={href} target="_blank" rel="noreferrer" aria-label={label}>{glyph}</a></li>)}
+</ul>

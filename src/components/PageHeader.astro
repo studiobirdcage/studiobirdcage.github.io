@@ -1,0 +1,29 @@
+---
+const pathname = Astro.url.pathname;
+const navItems = [{ href: "/", label: "Home" }, { href: "/works", label: "Works" }, { href: "/journal", label: "Journal" }, { href: "/about", label: "About" }, { href: "/contact", label: "Contact" }];
+import SocialMedia from "./SocialMedia.astro";
+---
+
+<header class="fixed inset-x-0 top-0 z-50 h-20 bg-white min-[501px]:max-[959px]:h-25">
+  <div class="relative flex h-full items-center justify-between px-2.5 min-[501px]:max-[959px]:px-5 min-[960px]:px-20">
+    <a href="/" class="h-15 w-15" aria-label="Studio Birdcage home"><img class="h-full w-full" src="/images/app/studio_birdcage_logo.svg" alt="Studio Birdcage" /></a>
+    <a href="/" class="absolute left-1/2 hidden h-15 -translate-x-1/2 min-[501px]:block"><img class="h-full" src="/images/app/studio_birdcage_text_logo.svg" alt="Studio Birdcage" /></a>
+    <button id="menu-open" class="h-5 w-[30px] cursor-pointer" aria-label="Open navigation"><img class="h-full w-full" src="/images/app/menu_icon.svg" alt="" /></button>
+  </div>
+</header>
+<div id="site-menu" class="pointer-events-none fixed left-0 top-20 z-40 grid h-[calc(100vh-80px)] w-screen overflow-hidden opacity-0 transition-opacity duration-500 min-[501px]:max-[959px]:top-25 min-[501px]:max-[959px]:h-[calc(100vh-100px)] min-[960px]:left-20 min-[960px]:w-[calc(100vw-160px)] min-[960px]:grid-cols-[3fr_2fr]">
+  <section class="hidden h-full -translate-x-full items-center justify-center bg-[#121212] p-20 transition-transform duration-[600ms] min-[960px]:flex"><img class="w-full max-w-[650px]" src="/images/app/studio_birdcage_light_logo.svg" alt="Studio Birdcage" /></section>
+  <nav class="relative flex h-full min-h-0 translate-x-full flex-col justify-between overflow-y-auto bg-[#f9f8f9] p-[clamp(30px,8vh,80px)] transition-transform duration-[600ms]">
+    <button id="menu-close" class="absolute right-7 top-7 h-8 w-8 cursor-pointer p-1" aria-label="Close navigation"><img class="h-full w-full" src="/images/app/menu_close_icon.svg" alt="" /></button>
+    <ul class="mt-10 shrink-0">{navItems.map(({ href, label }) => <li class="py-2"><a class:list={["menu-link", (pathname === href || (href !== "/" && pathname.startsWith(href))) && "menu-link-active"]} href={href}>{label}</a></li>)}</ul>
+    <div class="mt-10 shrink-0 text-[clamp(12px,1.25vw,16px)] leading-[1.4] text-[#808080]" style="font-family: 'Neue Plak Thin', Arial, sans-serif">#32 7289 South Terwillegar Drive<br />Alberta, Canada T6R 0N5<br />780.235.0132<a class="mt-4 block text-[#121212]" style="font-family: 'Neue Plak ExtraBlack', Arial, sans-serif" href="mailto:info@studiobirdcage.com">info@studiobirdcage.com</a><div class="mt-4 h-0.5 w-3/4 bg-[#00fdc7]"></div><div class="menu-social mt-2"><SocialMedia /></div><p class="mt-2" style="font-family: 'Neue Plak Regular', Arial, sans-serif">© {new Date().getFullYear()} Studio Birdcage</p></div>
+  </nav>
+</div>
+<script>
+  const menu = document.querySelector("#site-menu");
+  const open = document.querySelector("#menu-open");
+  const close = document.querySelector("#menu-close");
+  const toggle = (visible: boolean) => { menu?.classList.toggle("pointer-events-none", !visible); menu?.classList.toggle("opacity-0", !visible); menu?.querySelector("section")?.classList.toggle("-translate-x-full", !visible); menu?.querySelector("nav")?.classList.toggle("translate-x-full", !visible); document.body.classList.toggle("overflow-hidden", visible); };
+  open?.addEventListener("click", () => toggle(true));
+  close?.addEventListener("click", () => toggle(false));
+</script>

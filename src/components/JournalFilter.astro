@@ -1,0 +1,24 @@
+---
+interface Props { categories: { label: string; slug: string }[]; }
+const { categories } = Astro.props;
+---
+
+<div data-journal-filter class="absolute left-1/2 top-1/2 h-20 w-screen -translate-x-1/2 -translate-y-1/2 rotate-90 text-center">
+  <div class="group relative inline-block">
+    <button data-journal-filter-toggle class="font-regular text-sm tracking-wide text-[#e6e6e6]" aria-expanded="false">Filter: <span data-journal-filter-current class="font-bold text-[#00fdc7]">All</span> <span aria-hidden="true">▾</span></button>
+    <ul data-journal-filter-options class="absolute left-1/2 top-full z-40 hidden w-max min-w-52 -translate-x-1/2 bg-[#f4f4f4] px-5 pb-1 text-left group-hover:block"><li><a data-journal-filter-link data-category="" class="block px-4 py-5 font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]" href="/journal">All</a></li>{categories.map(({ label, slug }) => <li><a data-journal-filter-link data-category={slug} class="block px-4 py-5 font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]" href={`/journal?category=${slug}`}>{label}</a></li>)}</ul>
+  </div>
+</div>
+
+<script>
+  const selectedCategory = new URLSearchParams(window.location.search).get("category") ?? "";
+  document.querySelectorAll<HTMLElement>("[data-post-category]").forEach((post) => { post.hidden = Boolean(selectedCategory) && post.dataset.postCategory !== selectedCategory; });
+  document.querySelectorAll<HTMLElement>("[data-journal-filter]").forEach((filter) => {
+    const current = filter.querySelector<HTMLElement>("[data-journal-filter-current]");
+    const selected = filter.querySelector<HTMLElement>(`[data-journal-filter-link][data-category="${selectedCategory}"]`);
+    if (current && selected) current.textContent = selected.textContent?.trim() ?? "All";
+    const toggle = filter.querySelector<HTMLButtonElement>("[data-journal-filter-toggle]");
+    const options = filter.querySelector<HTMLElement>("[data-journal-filter-options]");
+    toggle?.addEventListener("click", () => { const open = !options?.classList.contains("hidden"); options?.classList.toggle("hidden", open); toggle.setAttribute("aria-expanded", String(!open)); });
+  });
+</script>

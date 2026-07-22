@@ -1,0 +1,52 @@
+---
+import { tagSlug } from "../lib/tags";
+
+interface Props {
+  tags: string[];
+  rail?: boolean;
+}
+
+const { tags, rail = false } = Astro.props;
+const options = tags.map((tag) => ({ label: tag, slug: tagSlug(tag) }));
+---
+
+<div data-work-tag-filter class:list={[rail ? "absolute left-1/2 top-1/2 h-20 w-[calc(100vh-160px)] -translate-x-1/2 -translate-y-1/2 rotate-90 text-center" : "hidden"]}>
+  <div class="group relative inline-flex h-20 items-center justify-center">
+    <button data-work-tag-toggle class="font-regular text-sm tracking-wide text-[#e6e6e6]" aria-expanded="false">Filter: <span data-work-tag-current class="font-bold text-[#00fdc7]">All</span> <span aria-hidden="true">▾</span></button>
+    <ul data-work-tag-options class="absolute left-1/2 top-full z-50 hidden w-[calc(100vh-160px)] max-w-[calc(100vh-160px)] -translate-x-1/2 flex-wrap justify-center bg-[#f4f4f4] px-5 pb-1 text-left group-hover:flex">
+      <li class="inline-block px-5 py-5"><a data-work-tag-link data-tag="" class="font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]" href="/works">All</a></li>
+      {options.map(({ label, slug }) => <li class="inline-block px-5 py-5"><a data-work-tag-link data-tag={slug} class="font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]" href={`/works?tag=${slug}`}>{label}</a></li>)}
+    </ul>
+  </div>
+</div>
+
+<script>
+  const filters = document.querySelectorAll<HTMLElement>("[data-work-tag-filter]");
+  const selectedTag = new URLSearchParams(window.location.search).get("tag") ?? "";
+
+  const tiles = [...document.querySelectorAll<HTMLElement>("[data-work-tags]")];
+  const visibleTiles: HTMLElement[] = [];
+  tiles.forEach((tile) => {
+    const tags = (tile.dataset.workTags ?? "").split(",").filter(Boolean);
+    tile.hidden = Boolean(selectedTag) && !tags.includes(selectedTag);
+    if (!tile.hidden) visibleTiles.push(tile);
+  });
+  visibleTiles.forEach((tile, index) => { tile.dataset.mosaicPosition = String(index + 1); });
+  tiles.filter((tile) => tile.hidden).forEach((tile) => { delete tile.dataset.mosaicPosition; });
+  tiles[0]?.parentElement?.setAttribute("data-mosaic-count", String(visibleTiles.length));
+
+  filters.forEach((filter) => {
+    const current = filter.querySelector<HTMLElement>("[data-work-tag-current]");
+    const selected = filter.querySelector<HTMLElement>(`[data-work-tag-link][data-tag="${selectedTag}"]`);
+    if (current && selected) current.textContent = selected.textContent?.trim() ?? "All";
+
+    const toggle = filter.querySelector<HTMLButtonElement>("[data-work-tag-toggle]");
+    const options = filter.querySelector<HTMLElement>("[data-work-tag-options]");
+    toggle?.addEventListener("click", () => {
+      const isOpen = !options?.classList.contains("hidden");
+      options?.classList.toggle("hidden", isOpen);
+      options?.classList.toggle("flex", !isOpen);
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+</script>

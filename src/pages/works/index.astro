@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import WorksGrid from "../../components/WorksGrid";
+import WorkTagFilter from "../../components/WorkTagFilter.astro";
+
+const works = (await getCollection("works", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+const tags = [...new Set(works.flatMap(({ data }) => data.tags))].sort();
+---
+
+<Layout
+    title="Barrett Long Portfolio — Web, Software & App Development"
+    description="Explore Barrett Long's portfolio case studies in web design, web development, software development, mobile app development, and graphic design."
+    worksIndexLayout
+>
+    <h1 class="sr-only">
+        Barrett Long web design, software development, and app development
+        portfolio
+    </h1>
+    <WorkTagFilter slot="right-rail" tags={tags} rail />
+    <WorksGrid
+        works={works.map(({ data }) => ({
+            title: data.title,
+            slug: data.slug,
+            tags: data.tags,
+            image: data.thumbnailImage,
+        }))}
+    />
+</Layout>

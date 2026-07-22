@@ -1,52 +1,65 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AsciiBanner from "../components/AsciiBanner.astro";
 import { getCollection } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
-import { getAllSeries } from "../utils/series";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import FeaturedSlider from "../components/FeaturedSlider";
+import HomePosts from "../components/HomePosts";
 
-const posts = await getCollection("blog", ({ data }) => {
-    // return import.meta.env.PROD ? data.draft !== true : true;
-    return data.draft !== true;
-}).then((output) =>
-    output.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
-);
-
-const newestSeries = getAllSeries(posts).slice(0, 5);
-
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+const works = (
+    await getCollection("works", ({ data }) => data.featured && !data.draft)
+).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 3);
+const postCards = posts.map(({ data }) => ({
+    title: data.title,
+    slug: data.slug,
+    categorySlug: data.categorySlug,
+    date: data.date.toLocaleDateString("en-CA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    }),
+    author: data.author,
+    excerpt: data.excerpt,
+    tags: data.tags,
+    image: data.thumbnailImage,
+}));
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-    <ul id="posts" class="flex flex-col gap-12">
-        {
-            posts.map((post, index) => (
-                <li class="border-l-4 border-b-4 border-double border-gl-pink pl-6 pb-4">
-                    <a
-                        class="block border-b border-dashed border-gl-muted pb-2 hover:bg-gl-cyan/10"
-                        href={`/blog/${post.id}/`}
-                    >
-                        <p class="text-xl tracking-wider text-gl-muted mb-2">
-                            ++ Log // {String(index + 1).padStart(2, "0")} ++
-                        </p>
-
-                        <AsciiBanner
-                            text={post.data.title}
-                            font="Pagga"
-                            size="1rem"
-                            glitchAmount="25%"
-                            color="#e0af68"
-                            wrapAt="auto"
-                        />
-                    </a>
-                    <p class="mt-2 text-xl text-gl-white">
-                        {post.data.description}
-                    </p>
-                    <p class="mt-2 text-lg text-gl-muted">
-                        published <FormattedDate date={post.data.pubDate} />
-                    </p>
-                </li>
-            ))
-        }
-    </ul>
-</BaseLayout>
+<Layout title="Barrett Long — Web, Software & Mobile App Developer Portfolio" description="Barrett Long's Edmonton developer portfolio showcasing web design, web development, software development, mobile app development, and digital product work.">
+  <h1 class="sr-only">Barrett Long web, software, and mobile app developer portfolio</h1>
+    <FeaturedSlider
+        works={works.map(({ data }) => ({
+            title: data.title,
+            slug: data.slug,
+            tags: data.tags,
+            image: data.thumbnailImage,
+        }))}
+    />
+    <section class="action-call">
+        <h3 class="with-line"><span>Thanks for stopping by...</span></h3><p>
+            I’m Barrett Long, a full-stack developer and engineering manager
+            based in Edmonton, Alberta, with more than 15 years of experience
+            building thoughtful, user-focused software. My work combines strong
+            technical expertise with a deep appreciation for UI and UX, allowing
+            me to create digital products that are both scalable and intuitive
+            to use. Most recently, I spent nearly a decade at Aivia Inc., where
+            I served as Software Engineering Manager and Lead Full-Stack
+            Developer for Communikit. During that time, I helped grow the
+            platform from serving a single community to supporting more than 260
+            communities across Canada and the United States.
+        </p><div class="mt-20">
+            <Button href="/contact">let's build something awesome</Button>
+        </div>
+    </section>
+    <section class="bg-[#f9f8f9] px-5 py-20 min-[850px]:px-[130px]">
+        <header class="text-center">
+            <h2 class="legacy-h2">Recent Journal Entries</h2><span
+                class="subtitle">Because the internet needs more bloggers</span
+            >
+        </header><HomePosts posts={postCards} /><div class="mt-20 text-center">
+            <Button href="/journal">more journal articles</Button>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,27 @@
+---
+title: "Alexis Nakota Sioux Nation"
+slug: "alexis-nakota-sioux-nation"
+date: "2018-10-04"
+publishedAt: "2018-10-04T10:36:03"
+featured: false
+draft: false
+tags: ["Web Design", "Web Development"]
+heroImage: "/images/uploads/works/1538670962-jobs_bg.jpg"
+thumbnailImage: "/images/uploads/works/greyscale-1538670962-jobs_bg.jpg"
+when: "March 2018"
+who: "Division 1 Media Corp."
+where: "<a href=\"http://www.alexisnakotasioux.com/\" target=\"_blank\">www.alexisnakotasioux.com</a>"
+what: "Web Design/Development"
+how: "HTML5, CSS3, JavaScript, Node JS, SASS, Gulp, Browser Sync"
+---
+
+import ImageTriptych from "../../components/content/ImageTriptych";
+import TextImageBlock from "../../components/content/TextImageBlock";
+import TriptychPanels from "../../components/content/TriptychPanels";
+
+With the Alexis Nakota Sioux Nation project the goal was to move their existing site away from an overly complex and outdated CMS to a simple and blazing fast marketing site. They also required an extremely fast turn around on the project so I deemed it best to create a simple static website using HTML/CSS and a little JavaScript for interactivity. To hit the tight deadline, I used node and gulp to setup a local environment that would automate all the nitty-gritty aspects. 
+
+My gulp script allowed me to write in SASS and have the CSS outputted post processed and minified for production. It optimized the size of all images and re-encoded them only for production (as to not update the original image files). However, the most useful and time saving function my gulp setup offered for this project was browser sync. Setting up browser sync to work with the gulp watch function gave me the ability to compile all changes to styles, js and markup and have the browser auto reload simply by saving any file. I swear this fairly simple setup saved my 2-3 hours on this project easy.
+
+<TriptychPanels panels={["<img src=\"/images/uploads/works/1538711425-Screenshot_2018-09-30 Alexis Nakota Sioux Nation - History.jpg\" alt=\"An Image\"><img src=\"/images/uploads/works/1538711439-Screenshot_2018-09-30 Alexis Nakota Sioux Nation - Jobs Volunteer Opportunities.jpg\" alt=\"An Image\">", "<img src=\"/images/uploads/works/1538711407-Screenshot_2018-10-04 Alexis Nakota Sioux Nation - Home.jpg\" alt=\"An Image\"><img src=\"/images/uploads/works/1538711415-Screenshot_2018-09-30 Alexis Nakota Sioux Nation - Land Use.jpg\" alt=\"An Image\">", "<img src=\"/images/uploads/works/1538711488-Screenshot_2018-09-30 Alexis Nakota Sioux Nation - Contact.jpg\" alt=\"An Image\"><img src=\"/images/uploads/works/1538711493-Screenshot_2018-09-30 Alexis Nakota Sioux Nation - chief Council.jpg\" alt=\"An Image\">"]} />
+

@@ -1,0 +1,6 @@
+---
+const { url, title } = Astro.props;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+---
+<ul class="flex list-none items-center gap-8 p-0"><li class="font-sans text-xl uppercase text-[#00fdc7]">Share</li><li><a class="social-icon block text-[#cdcccf] hover:text-[#00fdc7]" href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Facebook">&#xf082;</a></li><li><a class="social-icon block text-[#cdcccf] hover:text-[#00fdc7]" href={`https://twitter.com/intent/tweet?text=${encodedTitle}&via=StudioBirdcage&hashtags=studiobirdcage,webdesign,webdevelopment&url=${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Twitter">&#xf099;</a></li></ul>
