@@ -27,8 +27,13 @@ const postCards = posts.map(({ data }) => ({
 }));
 ---
 
-<Layout title="Barrett Long — Web, Software & Mobile App Developer Portfolio" description="Barrett Long's Edmonton developer portfolio showcasing web design, web development, software development, mobile app development, and digital product work.">
-  <h1 class="sr-only">Barrett Long web, software, and mobile app developer portfolio</h1>
+<Layout
+    title="Barrett Long — Web, Software & Mobile App Developer Portfolio"
+    description="Barrett Long's Edmonton developer portfolio showcasing web design, web development, software development, mobile app development, and digital product work."
+>
+    <h1 class="sr-only">
+        Barrett Long web, software, and mobile app developer portfolio
+    </h1>
     <FeaturedSlider
         works={works.map(({ data }) => ({
             title: data.title,
@@ -38,18 +43,38 @@ const postCards = posts.map(({ data }) => ({
         }))}
     />
     <section class="action-call">
-        <h3 class="with-line"><span>Thanks for stopping by...</span></h3><p>
-            I’m Barrett Long, a full-stack developer and engineering manager
-            based in Edmonton, Alberta, with more than 15 years of experience
-            building thoughtful, user-focused software. My work combines strong
-            technical expertise with a deep appreciation for UI and UX, allowing
-            me to create digital products that are both scalable and intuitive
-            to use. Most recently, I spent nearly a decade at Aivia Inc., where
-            I served as Software Engineering Manager and Lead Full-Stack
-            Developer for Communikit. During that time, I helped grow the
-            platform from serving a single community to supporting more than 260
-            communities across Canada and the United States.
-        </p><div class="mt-20">
+        <h3 class="with-line"><span>Thanks for stopping by...</span></h3>
+        <p>
+            I’m Barrett Long, a product-focused software engineer and architect
+            based in Edmonton.
+        </p>
+        <p>
+            My background is somewhat unusual. I studied fine art and digital
+            media, began professionally in design and web development, and
+            gradually moved into full-stack engineering, mobile development,
+            platform architecture, and engineering management.
+        </p>
+        <p>
+            That path taught me to look at software from several directions at
+            once. I care about how a product feels to use, how its parts fit
+            together, how it performs as it grows, and whether another developer
+            can understand it six months later.
+        </p>
+        <p>
+            For nearly a decade, my primary work was COM•MU•NI•KIT, a community
+            communications platform that grew from a single deployment into a
+            SaaS product serving more than 260 communities across Canada and the
+            United States. I built significant portions of the original product,
+            led its complete redesign, helped grow its engineering team, and
+            remained involved in both product and technical decisions throughout
+            its evolution.
+        </p>
+        <p>
+            I’m now looking for opportunities where I can contribute at that
+            same intersection of product, architecture, engineering, and user
+            experience.
+        </p>
+        <div class="mt-20">
             <Button href="/contact">let's build something awesome</Button>
         </div>
     </section>
