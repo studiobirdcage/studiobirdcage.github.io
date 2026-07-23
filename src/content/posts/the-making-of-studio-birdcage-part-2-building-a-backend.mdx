@@ -1,0 +1,25 @@
+---
+title: "The Making of Studio Birdcage Part 2: Building a Backend"
+slug: "the-making-of-studio-birdcage-part-2-building-a-backend"
+date: "2018-10-06"
+draft: false
+category: "Development Story"
+categorySlug: "development-story"
+tags: ["Laravel 5.5", "Development", "Studio Birdcage"]
+author: "Barrett Long"
+tagline: "Why not build a custom CMS? All the cool kids are doing it."
+excerpt: "Content Management Systems are the bee's knees. That being said, I have never found one that I felt I truly enjoyed using. So when I started planning the build for Studio Birdcage, the solution was obvious. Why not build your own? I mean, how hard can it be!"
+heroImage: "/images/uploads/blog/post-hero-1538847192-making_of_part_2_bg.jpg"
+thumbnailImage: "/images/uploads/blog/post-feat-1538847192-making_of_part_2_bg.jpg"
+videoUrl: null
+---
+
+Once I had decided that I needed a CMS, the next question was how far down the rabbit hole I was willing to go. There are plenty of good options out there, but I had already talked myself out of WordPress and any other platform that might have saved me a whole lot of time. So naturally, I decided the reasonable thing to do was build my own.
+
+Laravel 5.5 felt like a good place to start. It gave me a solid foundation for routing, database work, authentication, and all the other boring but important pieces that make an application feel like an application. More importantly, it let me build the CMS around the way I wanted to manage my own work instead of trying to bend an existing dashboard into shape.
+
+The initial plan for the CMS was pretty simple. I needed a way to add portfolio projects, journal entries, images, categories, and tags without opening a code editor every time I wanted to update the site. That sounds straightforward until you start thinking about all the little details. Content needs fields, fields need validation, images need somewhere to go, and suddenly the simple admin page in your head has become a whole separate project.
+
+That was the part I underestimated. Every time I added a feature to make the front end better, I also had to decide how it would be managed in the CMS. If I wanted a new type of content block or a different layout for a project page, the work did not stop at the template. It meant another form, another bit of database structure, and another thing I would have to remember how to maintain later.
+
+Still, there was something really satisfying about it once the pieces started to come together. I could create a project in the CMS, add some images and text, and see it turn into an actual page on the site. It was not the fastest route to a portfolio, but it was mine. And having something so over engenerred for something so small and personal was oddly satisfying.

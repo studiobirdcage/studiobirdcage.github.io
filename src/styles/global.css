@@ -387,6 +387,9 @@
 .prose-work > :last-child {
   margin-bottom: 0 !important;
 }
+.prose-post > :last-child {
+  margin-bottom: 0 !important;
+}
 
 .triptych-panels {
   --triptych-panel-count: 1;
