@@ -1,33 +1,98 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SocialMedia from "../components/SocialMedia.astro";
+import { Image } from "astro:assets";
 ---
 
-<Layout title="Contact Barrett Long — Edmonton Developer Portfolio" description="Contact Barrett Long in Edmonton, Alberta about web development, software development, mobile app development, design, and professional opportunities." image="/images/app/studio_map_hero.jpg">
-  <h1 class="sr-only">Contact Barrett Long</h1>
-  <section class="flex flex-col-reverse bg-[#f9f8f9] min-[960px]:h-[calc(100vh-160px)] min-[960px]:flex-row">
-    <div class="flex flex-col-reverse min-[960px]:w-[45%] min-[960px]:flex-col">
-      <div class="flex min-h-50 items-center justify-center bg-[#121212] px-10 py-10 min-[960px]:min-h-0 min-[960px]:flex-[.6] min-[960px]:px-11.25 min-[960px]:py-0">
-        <img class="h-auto w-full" src="/images/app/studio_birdcage_full_logo.svg" alt="Studio Birdcage" />
-      </div>
-      <div class="flex flex-col items-center bg-white px-10 py-10 text-center min-[960px]:min-h-0 min-[960px]:flex-[2] min-[960px]:items-start min-[960px]:justify-between min-[960px]:px-20 min-[960px]:text-left">
-        <div class="mb-3 w-full min-[960px]:mb-0"><h4 class="with-line font-display-italic text-[30px]"><span>Address</span></h4><p class="ml-2 mt-3 font-sans-italic text-lg leading-[1.2] text-[#cdcccf] min-[501px]:text-2xl min-[960px]:text-[28px]">#32 7289 South Terwillegar Drive<br />Edmonton, Alberta Canada<br />T6R 0N5</p></div>
-        <div class="mb-3 w-full min-[960px]:mb-0"><h4 class="with-line font-display-italic text-[30px]"><span>Tel</span></h4><a class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]" href="tel:+17802350132">780.235.0132</a></div>
-        <div class="mb-3 w-full min-[960px]:mb-0"><h4 class="with-line font-display-italic text-[30px]"><span>Mail</span></h4><a class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]" href="mailto:info@studiobirdcage.com">info@studiobirdcage.com</a></div>
-        <div class="w-full"><h4 class="with-line font-display-italic text-[30px]"><span>Social</span></h4><div class="contact-social ml-2 mt-5"><SocialMedia /></div></div>
-      </div>
-    </div>
-    <div class="h-93.75 bg-cover bg-center min-[960px]:h-auto min-[960px]:w-[55%]" style="background-image: url('/images/app/studio_map_hero.jpg')"></div>
-  </section>
+<Layout
+    title="Contact Barrett Long — Edmonton Developer Portfolio"
+    description="Contact Barrett Long in Edmonton, Alberta about web development, software development, mobile app development, design, and professional opportunities."
+    image="/images/app/studio_map_hero.jpg"
+>
+    <h1 class="sr-only">Contact Barrett Long</h1>
+    <section
+        class="flex flex-col-reverse bg-[#f9f8f9] min-[960px]:h-[calc(100vh-160px)] min-[960px]:flex-row"
+    >
+        <div
+            class="flex flex-col-reverse min-[960px]:w-[45%] min-[960px]:flex-col"
+        >
+            <div
+                class="flex min-h-50 items-center justify-center bg-[#121212] px-10 py-10"
+            >
+                <Image
+                    class="w-full h-auto p-8"
+                    src="/images/app/studio_birdcage_full_logo.svg"
+                    width={561}
+                    height={180}
+                    alt="Studio Birdcage"
+                />
+            </div>
+            <div
+                class="flex flex-col items-center bg-white px-10 py-10 text-center min-[960px]:min-h-0 min-[960px]:flex-2 min-[960px]:items-start min-[960px]:justify-between min-[960px]:px-20 min-[960px]:text-left"
+            >
+                <div class="mb-3 w-full min-[960px]:mb-0">
+                    <h4 class="with-line font-display-italic text-[30px]">
+                        <span>Address</span>
+                    </h4><p
+                        class="ml-2 mt-3 font-sans-italic text-lg leading-[1.2] text-[#cdcccf] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                    >
+                        11716 37B Ave NW<br />Edmonton, Alberta Canada<br />T6J
+                        0K4
+                    </p>
+                </div>
+                <div class="mb-3 w-full min-[960px]:mb-0">
+                    <h4 class="with-line font-display-italic text-[30px]">
+                        <span>Phone</span>
+                    </h4><a
+                        class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                        href="tel:+17802350132">780.235.0132</a
+                    >
+                </div>
+                <div class="mb-3 w-full min-[960px]:mb-0">
+                    <h4 class="with-line font-display-italic text-[30px]">
+                        <span>Mail</span>
+                    </h4><a
+                        class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                        href="mailto:info@studiobirdcage.com"
+                        >barrett@studiobirdcage.com</a
+                    >
+                </div>
+                <div class="w-full">
+                    <h4 class="with-line font-display-italic text-[30px]">
+                        <span>Social</span>
+                    </h4><div class="contact-social ml-2 mt-5">
+                        <SocialMedia />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="h-93.75 bg-cover bg-center min-[960px]:h-auto min-[960px]:w-[55%]"
+            style="background-image: url('/images/app/studio_map_hero.jpg')"
+        >
+        </div>
+    </section>
 </Layout>
 
 <style>
-  .contact-social :global(ul) { justify-content: center; }
-  .contact-social :global(a) { padding: 0; }
-  .contact-social :global(li) { margin-right: 18px; }
-  .contact-social :global(li:last-child) { margin-right: 0; }
-  @media (min-width: 960px) {
-    .contact-social :global(ul) { justify-content: flex-start; }
-    .contact-social :global(li) { margin-right: 30px; }
-  }
+    .contact-social :global(ul) {
+        justify-content: center;
+    }
+    .contact-social :global(a) {
+        padding: 0;
+    }
+    .contact-social :global(li) {
+        margin-right: 18px;
+    }
+    .contact-social :global(li:last-child) {
+        margin-right: 0;
+    }
+    @media (min-width: 960px) {
+        .contact-social :global(ul) {
+            justify-content: flex-start;
+        }
+        .contact-social :global(li) {
+            margin-right: 30px;
+        }
+    }
 </style>

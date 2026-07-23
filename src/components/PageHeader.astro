@@ -8,6 +8,7 @@ const navItems = [
     { href: "/contact", label: "Contact" },
 ];
 import SocialMedia from "./SocialMedia.astro";
+import { Image } from "astro:assets";
 ---
 
 <header
@@ -17,29 +18,38 @@ import SocialMedia from "./SocialMedia.astro";
         class="relative flex h-full items-center justify-between px-2.5 min-[501px]:max-[959px]:px-5 min-[960px]:px-20"
     >
         <a href="/" class="h-15 w-15" aria-label="Studio Birdcage home"
-            ><img
+            ><Image
                 class="h-full w-full"
                 src="/images/app/studio_birdcage_logo.svg"
+                width={61}
+                height={61}
                 alt="Studio Birdcage"
+                loading="eager"
             /></a
         >
         <a
             href="/"
             class="absolute left-1/2 hidden h-15 -translate-x-1/2 min-[501px]:block"
-            ><img
+            ><Image
                 class="h-full"
                 src="/images/app/studio_birdcage_text_logo.svg"
+                width={135}
+                height={61}
                 alt="Studio Birdcage"
+                loading="eager"
             /></a
         >
         <button
             id="menu-open"
             class="h-5 w-7.5 cursor-pointer"
             aria-label="Open navigation"
-            ><img
+            ><Image
                 class="h-full w-full"
                 src="/images/app/menu_icon.svg"
-                alt=""
+                width={36}
+                height={26}
+                alt="stacked menu icon"
+                loading="eager"
             /></button
         >
     </div>
@@ -51,9 +61,11 @@ import SocialMedia from "./SocialMedia.astro";
     <section
         class="hidden h-full -translate-x-full items-center justify-center bg-[#121212] p-20 transition-transform duration-600 min-[960px]:flex"
     >
-        <img
+        <Image
             class="w-full max-w-162.5"
             src="/images/app/studio_birdcage_light_logo.svg"
+            width={702}
+            height={708}
             alt="Studio Birdcage"
         />
     </section>
@@ -64,9 +76,11 @@ import SocialMedia from "./SocialMedia.astro";
             id="menu-close"
             class="absolute right-7 top-7 h-8 w-8 cursor-pointer p-1"
             aria-label="Close navigation"
-            ><img
+            ><Image
                 class="h-full w-full"
                 src="/images/app/menu_close_icon.svg"
+                width={21}
+                height={21}
                 alt=""
             /></button
         >
@@ -94,11 +108,12 @@ import SocialMedia from "./SocialMedia.astro";
             class="mt-10 shrink-0 text-[clamp(12px,1.25vw,16px)] leading-[1.4] text-[#808080]"
             style="font-family: 'Neue Plak Thin', Arial, sans-serif"
         >
-            #32 7289 South Terwillegar Drive<br />Alberta, Canada T6R 0N5<br
+            11716 37B Ave NW<br />Edmonton, Alberta<br />T6J 0K4<br />Canada<br
             />780.235.0132<a
                 class="mt-4 block text-[#121212]"
                 style="font-family: 'Neue Plak ExtraBlack', Arial, sans-serif"
-                href="mailto:info@studiobirdcage.com">info@studiobirdcage.com</a
+                href="mailto:info@studiobirdcage.com"
+                >barrett@studiobirdcage.com</a
             ><div class="mt-4 h-0.5 w-3/4 bg-[#00fdc7]"></div><div
                 class="menu-social mt-2"
             >

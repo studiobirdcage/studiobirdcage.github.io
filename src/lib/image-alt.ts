@@ -1,4 +1,4 @@
-export function imageAltFromPath(src: string, fallback = "Project image") {
+export function imageAltFromPath(src: string, fallback = "Project screenshot") {
   const filename = decodeURIComponent(src.split("/").pop() ?? "")
     .replace(/\.[^.]+$/, "")
     .replace(/^\d+-/, "")
@@ -6,5 +6,5 @@ export function imageAltFromPath(src: string, fallback = "Project image") {
     .replace(/\s+/g, " ")
     .trim();
 
-  return filename ? `${filename} — ${fallback}` : fallback;
+  return filename || fallback;
 }

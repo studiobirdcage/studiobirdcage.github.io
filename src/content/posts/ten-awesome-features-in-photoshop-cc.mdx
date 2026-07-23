@@ -14,6 +14,10 @@ thumbnailImage: "/images/uploads/blog/post-feat-1540661440-ten_photoshop_hero.jp
 videoUrl: "https://www.youtube.com/watch?v=HM4aJWkJUl8&t=180s"
 ---
 
+import { Image } from "astro:assets";
+import adobeLibraries from "../../assets/posts/adobe_libraries.jpg";
+import adobeLiquify from "../../assets/posts/adobe_liquify_face.jpg";
+
 If you use Photoshop (that is not a cracked version of CS6 because you don't want to pay monthly for CC) then I am sure you have your own list of favorite features. Well so do I. And since this is my website, I have gone and put them in a list of 10 (for SEO and profit). So without any further ado, here is number 1.
 
 ### 1. Template Files - Start Projects Faster
@@ -24,7 +28,7 @@ Photoshop CC has made it that much easier to start out new projects by giving us
 
 An incredibly convenient aspect of CC is the addition of cloud libraries. Libraries let you manage a project's graphics, layer styles, looks, character and paragraph styles, colors, etc. As their name would suggest, these libraries are attached to your CC account. As such you have the ability to invite collaborators and set permissions to allow levels of use.
 
-<div class="post--image"><img src="/images/uploads/blog/posts/1540661774-div1_artical_adobe_libraries.jpg" alt="Adobe Creative Cloud Libraries interface" /></div>
+<div class="post--image"><Image src={adobeLibraries} alt="Adobe Creative Cloud Libraries interface" /></div>
 
 ### 3. Photoshop Search Function
 
@@ -42,7 +46,7 @@ Select and Mask was a key feature addition in Photoshop CC and it keeps getting 
 
 Now I am sure every designer at one time has had a request about fixing "issues" in group photos. And while Photoshop CC has not quite mastered the ability to remove a person from a group photo with a click of the mouse, they have built an amazing tool to deal with faces. The new face aware features of the Liquify tool are near magical. The filter will auto detect faces in a photo and then give you the free reign to tweak sliders that let you adjust everything from individual eye distance to lower and upper lip widths.
 
-<div class="post--image"><img src="/images/uploads/blog/posts/1540661791-div1_artical_adobe_liquify_face.jpg" alt="Adobe Photoshop face-aware Liquify tools interface" /></div>
+<div class="post--image"><Image src={adobeLiquify} alt="Adobe Photoshop face-aware Liquify tools interface" /></div>
 
 ### 7. Adjustment Layers
 

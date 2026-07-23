@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import resumePdf from "../assets/Barrett Long Resume 2026.pdf";
+import resumePdf from "../assets/Barrett_Long-Main_Resume_2026.pdf";
+import { Image } from "astro:assets";
+import { imageSize } from "../lib/image-size";
 
 const experience = [
     {
@@ -56,6 +58,14 @@ const expertise = [
 ];
 const scrollingExpertise = [...expertise, ...expertise];
 
+const techSizes = Object.fromEntries(
+    await Promise.all(
+        expertise
+            .filter((s) => s.logo)
+            .map(async (s) => [s.logo!, await imageSize(s.logo!)] as const),
+    ),
+);
+
 const education = [
     {
         period: "2015 — 2016",
@@ -86,17 +96,22 @@ const education = [
     image="/images/app/about_hero_image.jpg"
 >
     <section class="relative h-[calc(100vh-80px)] overflow-hidden bg-[#f4f4f4]">
-        <img
+        <Image
             class="absolute inset-0 h-full w-full object-cover object-[28%_top] min-[960px]:object-top-right"
             src="/images/app/about_hero_image.jpg"
+            width={1760}
+            height={1100}
+            loading="eager"
             alt="Barrett Long"
         />
         <div
             class="absolute inset-x-0 bottom-0 z-10 bg-[#121212] p-6.5 text-white min-[501px]:inset-x-5 min-[501px]:bottom-5 min-[501px]:p-10 min-[960px]:left-auto min-[960px]:right-20 min-[960px]:top-1/2 min-[960px]:flex min-[960px]:h-[calc(100%-40px)] min-[960px]:max-h-187.5 min-[960px]:w-150 min-[960px]:-translate-y-1/2 min-[960px]:flex-col min-[960px]:justify-center min-[960px]:p-20"
         >
-            <img
+            <Image
                 class="mx-auto mb-5 h-14 w-auto min-[501px]:h-16 min-[960px]:mb-8 min-[960px]:h-20"
                 src="/images/app/studio_birdcage_icon.svg"
+                width={20}
+                height={27}
                 alt="Studio Birdcage"
             />
             <h1
@@ -193,18 +208,13 @@ const education = [
                     I joined Aivia when it was still primarily a small digital
                     agency. My initial work included design, HTML email, and web
                     development, but I gradually took ownership of the company’s
-                    growing software initiatives.
-                </p>
-                <p class="font-book text-base leading-[1.8] text-[#808080]">
-                    That included building the administrative platform, backend,
-                    and native mobile applications for what became
-                    COM•MU•NI•KIT. As the product grew, I became responsible for
-                    its architecture, technical direction, development
-                    standards, hiring, mentoring, and delivery.
-                </p>
-                <p class="font-book text-base leading-[1.8] text-[#808080]">
-                    My most significant work was leading the ground-up redesign
-                    of Version 2. We moved away from one-off customer
+                    growing software initiatives. That included building the
+                    administrative platform, backend, and native mobile
+                    applications for what became COM•MU•NI•KIT. As the product
+                    grew, I became responsible for its architecture, technical
+                    direction, development standards, hiring, mentoring, and
+                    delivery. My most significant work was leading the ground-up
+                    redesign of Version 2. We moved away from one-off customer
                     implementations and built a unified, configurable platform
                     that could grow without fragmenting the product or codebase.
                 </p>
@@ -231,7 +241,7 @@ const education = [
                         class="font-sans text-base leading-[1.8] text-[#808080]"
                     >
                         Helped scale the product from one community to more than
-                        260 deployments and over a hundred thousands users.
+                        260 deployments and over a hundred thousand users.
                     </li>
                     <li
                         class="font-sans text-base leading-[1.8] text-[#808080]"
@@ -290,9 +300,11 @@ const education = [
                             }
                         >
                             {skill.logo ? (
-                                <img
+                                <Image
                                     class="technology-logo"
                                     src={skill.logo}
+                                    width={techSizes[skill.logo].width}
+                                    height={techSizes[skill.logo].height}
                                     alt=""
                                 />
                             ) : (
