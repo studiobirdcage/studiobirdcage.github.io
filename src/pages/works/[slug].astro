@@ -21,8 +21,7 @@ const works = (await getCollection("works", ({ data }) => !data.draft)).sort(
 );
 const currentIndex = works.findIndex(({ id }) => id === work.id);
 const previous = currentIndex > 0 ? works[currentIndex - 1] : undefined;
-const next =
-    currentIndex < works.length - 1 ? works[currentIndex + 1] : undefined;
+const next = currentIndex < works.length - 1 ? works[currentIndex + 1] : undefined;
 const details = [
     ["Who it was for", work.data.who],
     ["What I did", work.data.what],
@@ -39,11 +38,10 @@ const workSchema = {
     mainEntityOfPage: Astro.url.href,
 };
 const heroSize = await imageSize(work.data.heroImage);
-const prevSize = previous
-    ? await imageSize(previous.data.thumbnailImage)
-    : null;
+const prevSize = previous ? await imageSize(previous.data.thumbnailImage) : null;
 const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
 ---
+
 ---
 
 <Layout
@@ -66,34 +64,30 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
             alt=""
         />
         <nav
-            class="absolute left-6 top-6 flex items-center gap-2 font-regular text-xs uppercase tracking-[2px] text-white/85 min-[960px]:left-20 min-[960px]:top-10"
+            class="font-regular absolute top-6 left-6 flex items-center gap-2 text-xs tracking-[2px] text-white/85 uppercase min-[960px]:top-10 min-[960px]:left-20"
             aria-label="Breadcrumb"
         >
-            <a class="hover:text-[#00fdc7]" href="/">Home</a><span
-                aria-hidden="true">/</span
-            ><a class="hover:text-[#00fdc7]" href="/works">Works</a><span
-                aria-hidden="true">/</span
-            ><span class="max-w-45 truncate text-[#00fdc7]" aria-current="page"
-                >{work.data.title}</span
+            <a class="hover:text-[#00fdc7]" href="/">Home</a><span aria-hidden="true">/</span><a
+                class="hover:text-[#00fdc7]"
+                href="/works">Works</a
+            ><span aria-hidden="true">/</span><span
+                class="max-w-45 truncate text-[#00fdc7]"
+                aria-current="page">{work.data.title}</span
             >
         </nav>
-        <div
-            class="flex h-full w-full max-w-230 flex-col items-center justify-center"
-        >
+        <div class="flex h-full w-full max-w-230 flex-col items-center justify-center">
             <h1
-                class="max-w-full break-words font-display text-[clamp(38px,11vw,60px)] leading-[0.95] tracking-[-1px] min-[960px]:text-[clamp(56px,8vw,100px)] min-[960px]:tracking-[-2px]"
+                class="font-display max-w-full text-[clamp(38px,11vw,60px)] leading-[0.95] tracking-[-1px] break-words min-[960px]:text-[clamp(56px,8vw,100px)] min-[960px]:tracking-[-2px]"
             >
                 {work.data.title}
             </h1><ul
-                class="mt-11 flex flex-wrap justify-center font-book text-xl uppercase tracking-[6px]"
+                class="font-book mt-11 flex flex-wrap justify-center text-xl tracking-[6px] uppercase"
             >
                 {
                     work.data.tags.map((tag, index) => (
                         <li>
                             {tag}
-                            {index < work.data.tags.length - 1 && (
-                                <span class="px-4">•</span>
-                            )}
+                            {index < work.data.tags.length - 1 && <span class="px-4">•</span>}
                         </li>
                     ))
                 }
@@ -109,16 +103,14 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
     <section class="grid min-[960px]:grid-cols-12">
         <article
             id="work-overview"
-            class="order-2 flex flex-col px-6 pb-0 pt-14 prose-work min-[960px]:order-1 min-[960px]:col-span-9 min-[960px]:justify-center min-[960px]:px-10 min-[960px]:pb-0 min-[960px]:pt-24 min-[1150px]:px-20"
+            class="prose-work order-2 flex flex-col px-6 pt-14 pb-0 min-[960px]:order-1 min-[960px]:col-span-9 min-[960px]:justify-center min-[960px]:px-10 min-[960px]:pt-24 min-[960px]:pb-0 min-[1150px]:px-20"
         >
             <Content />
         </article>
         <aside
-            class="order-1 flex bg-[#f4f4f4] px-6 py-14 min-[960px]:relative min-[960px]:z-[41] min-[960px]:order-2 min-[960px]:col-span-3 min-[960px]:sticky min-[960px]:top-20 min-[960px]:min-h-[calc(100vh-80px)] min-[960px]:self-start min-[960px]:items-start min-[960px]:px-8 min-[960px]:pb-6 min-[960px]:!pt-0"
+            class="order-1 flex bg-[#f4f4f4] px-6 py-14 min-[960px]:relative min-[960px]:sticky min-[960px]:top-20 min-[960px]:z-[41] min-[960px]:order-2 min-[960px]:col-span-3 min-[960px]:min-h-[calc(100vh-80px)] min-[960px]:items-start min-[960px]:self-start min-[960px]:px-8 min-[960px]:!pt-0 min-[960px]:pb-6"
         >
-            <div
-                class="flex w-full flex-col min-[960px]:min-h-[calc(100vh-104px)]"
-            >
+            <div class="flex w-full flex-col min-[960px]:min-h-[calc(100vh-104px)]">
                 <div>
                     <div
                         id="work-sidebar-project"
@@ -134,11 +126,11 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                             class="flex h-full flex-col items-center justify-center px-4 py-6 text-shadow-[0_1px_6px_#121212]"
                         >
                             <h2
-                                class="max-w-full break-words font-display text-[clamp(18px,2.5vw,30px)] leading-[1.05] tracking-[-1px]"
+                                class="font-display max-w-full text-[clamp(18px,2.5vw,30px)] leading-[1.05] tracking-[-1px] break-words"
                             >
                                 {work.data.title}
                             </h2><p
-                                class="mt-3 max-w-full break-words font-book text-[clamp(8px,1vw,11px)] uppercase tracking-[clamp(1px,0.25vw,3px)]"
+                                class="font-book mt-3 max-w-full text-[clamp(8px,1vw,11px)] tracking-[clamp(1px,0.25vw,3px)] break-words uppercase"
                             >
                                 {work.data.tags.join(" • ")}
                             </p>
@@ -149,11 +141,11 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                             details.map(([label, value]) => (
                                 <div>
                                     <>
-                                        <dt class="break-words font-regular text-xs uppercase tracking-[2px] text-[#808080]">
+                                        <dt class="font-regular text-xs tracking-[2px] break-words text-[#808080] uppercase">
                                             {label}
                                         </dt>
                                         <dd
-                                            class="mt-2 break-words font-sans-italic text-[18px] leading-[1.25] text-[#808080]"
+                                            class="font-sans-italic mt-2 text-[18px] leading-[1.25] break-words text-[#808080]"
                                             set:html={value}
                                         />
                                     </>
@@ -166,14 +158,12 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         class="mt-10 hidden border-t-2 border-[#00fdc7] pt-5 min-[960px]:block"
                         aria-label="Work page contents"
                     >
-                        <p
-                            class="font-regular text-xs uppercase tracking-[2px] text-[#808080]"
-                        >
+                        <p class="font-regular text-xs tracking-[2px] text-[#808080] uppercase">
                             Contents
                         </p>
                         <ul
                             id="work-toc-list"
-                            class="mt-3 space-y-2 break-words font-sans-italic text-[18px] leading-[1.25] text-[#808080] min-[1150px]:text-lg"
+                            class="font-sans-italic mt-3 space-y-2 text-[18px] leading-[1.25] break-words text-[#808080] min-[1150px]:text-lg"
                         >
                         </ul>
                     </nav>
@@ -181,30 +171,24 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         class="mt-10 hidden border-t-2 border-[#00fdc7] pt-5 min-[960px]:block"
                         aria-label="Work navigation"
                     >
-                        <p
-                            class="font-regular text-xs uppercase tracking-[2px] text-[#808080]"
-                        >
+                        <p class="font-regular text-xs tracking-[2px] text-[#808080] uppercase">
                             Navigate
                         </p><div
                             class:list={[
                                 "mt-3 grid gap-2",
-                                previous && next
-                                    ? "grid-cols-2"
-                                    : "grid-cols-1",
+                                previous && next ? "grid-cols-2" : "grid-cols-1",
                             ]}
                         >
                             {
                                 previous && (
                                     <a
-                                        class="group relative flex h-24 items-end overflow-hidden p-2 font-sans-italic text-xs text-white"
+                                        class="group font-sans-italic relative flex h-24 items-end overflow-hidden p-2 text-xs text-white"
                                         href={`/works/${previous.data.slug}`}
                                     >
                                         <>
                                             <Image
                                                 class="absolute inset-0 -z-10 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
-                                                src={
-                                                    previous.data.thumbnailImage
-                                                }
+                                                src={previous.data.thumbnailImage}
                                                 width={prevSize!.width}
                                                 height={prevSize!.height}
                                                 alt=""
@@ -218,7 +202,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                             }{
                                 next && (
                                     <a
-                                        class="group relative flex h-24 items-end justify-end overflow-hidden p-2 text-right font-sans-italic text-xs text-white"
+                                        class="group font-sans-italic relative flex h-24 items-end justify-end overflow-hidden p-2 text-right text-xs text-white"
                                         href={`/works/${next.data.slug}`}
                                     >
                                         <>
@@ -236,9 +220,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                                     </a>
                                 )
                             }
-                        </div><Button
-                            href="/works"
-                            class="mt-2 w-full !px-3 !py-2 !text-xs"
+                        </div><Button href="/works" class="mt-2 w-full !px-3 !py-2 !text-xs"
                             >All works</Button
                         >
                     </nav>
@@ -253,7 +235,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
         {
             previous ? (
                 <a
-                    class="group relative flex flex-1 items-center overflow-hidden px-10 font-sans-italic text-2xl text-[#121212]"
+                    class="group font-sans-italic relative flex flex-1 items-center overflow-hidden px-10 text-2xl text-[#121212]"
                     href={`/works/${previous.data.slug}`}
                 >
                     <Image
@@ -272,7 +254,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
         {
             next ? (
                 <a
-                    class="group relative flex flex-1 items-center justify-end overflow-hidden px-10 text-right font-sans-italic text-2xl text-[#121212]"
+                    class="group font-sans-italic relative flex flex-1 items-center justify-end overflow-hidden px-10 text-right text-2xl text-[#121212]"
                     href={`/works/${next.data.slug}`}
                 >
                     <Image
@@ -290,9 +272,8 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
         }
     </nav>
     <div class="bg-white py-12 text-center min-[960px]:hidden">
-        <a
-            class="font-sans text-2xl text-[#cdcccf] hover:text-[#00fdc7]"
-            href="/works">Back to Works</a
+        <a class="font-sans text-2xl text-[#cdcccf] hover:text-[#00fdc7]" href="/works"
+            >Back to Works</a
         >
     </div>
 </Layout>
@@ -301,15 +282,9 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
     const article = document.querySelector<HTMLElement>("#work-overview");
     const tocList = document.querySelector<HTMLUListElement>("#work-toc-list");
     const hero = document.querySelector<HTMLElement>("#work-hero");
-    const sidebarProject = document.querySelector<HTMLElement>(
-        "#work-sidebar-project",
-    );
+    const sidebarProject = document.querySelector<HTMLElement>("#work-sidebar-project");
 
-    if (
-        hero &&
-        sidebarProject &&
-        window.matchMedia("(min-width: 960px)").matches
-    ) {
+    if (hero && sidebarProject && window.matchMedia("(min-width: 960px)").matches) {
         new IntersectionObserver(
             ([entry]) =>
                 sidebarProject.classList.toggle(
@@ -323,9 +298,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
     if (article && tocList) {
         const blocks = [
             article,
-            ...Array.from(article.children).filter((element) =>
-                element.matches("section, div"),
-            ),
+            ...Array.from(article.children).filter((element) => element.matches("section, div")),
         ];
         const fallbackLabels = [
             "Project overview",
@@ -340,10 +313,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                 index === 0
                     ? "Project overview"
                     : block.querySelector("h2, h3, h4")?.textContent?.trim();
-            const label =
-                heading ||
-                fallbackLabels[index] ||
-                `Project section ${index + 1}`;
+            const label = heading || fallbackLabels[index] || `Project section ${index + 1}`;
             const item = document.createElement("li");
             const link = document.createElement("a");
             link.href = `#${id}`;
@@ -352,12 +322,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
             link.addEventListener("click", (event) => {
                 event.preventDefault();
                 window.scrollTo({
-                    top: Math.max(
-                        0,
-                        block.getBoundingClientRect().top +
-                            window.scrollY -
-                            100,
-                    ),
+                    top: Math.max(0, block.getBoundingClientRect().top + window.scrollY - 100),
                     behavior: "smooth",
                 });
                 history.replaceState(null, "", `#${id}`);
@@ -370,9 +335,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
         const updateActiveLink = () => {
             const active = links.reduce(
                 (current, entry) =>
-                    entry.block.getBoundingClientRect().top <= 120
-                        ? entry
-                        : current,
+                    entry.block.getBoundingClientRect().top <= 120 ? entry : current,
                 links[0],
             );
             links.forEach(({ link }) =>

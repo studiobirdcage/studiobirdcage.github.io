@@ -7,37 +7,34 @@ const { categories } = Astro.props;
 
 <div
     data-journal-filter
-    class="absolute left-1/2 top-1/2 h-20 w-[calc(100vh-160px)] -translate-x-1/2 -translate-y-1/2 rotate-90 text-center"
+    class="absolute top-1/2 left-1/2 h-20 w-[calc(100vh-160px)] -translate-x-1/2 -translate-y-1/2 rotate-90 text-center"
 >
     <div class="group relative inline-flex h-20 items-center justify-center">
         <button
             data-journal-filter-toggle
             class="font-regular text-sm tracking-wide text-[#e6e6e6]"
             aria-expanded="false"
-            >Filter: <span
-                data-journal-filter-current
-                class="font-bold text-[#00fdc7]">All</span
-            >
+            >Filter: <span data-journal-filter-current class="font-bold text-[#00fdc7]">All</span>
             <span aria-hidden="true">▾</span></button
         >
         <ul
             data-journal-filter-options
-            class="absolute left-1/2 top-full z-50 hidden w-[calc(100vh-160px)] max-w-[calc(100vh-160px)] -translate-x-1/2 flex-wrap justify-center bg-[#f4f4f4] px-5 pb-1 text-left group-hover:flex"
+            class="absolute top-full left-1/2 z-50 hidden w-max max-w-[calc(100vh-160px)] -translate-x-1/2 flex-wrap justify-center bg-[#f4f4f4] px-5 pb-1 text-left group-hover:flex"
         >
-            <li class="inline-block px-5 py-5"
-                ><a
+            <li class="inline-block px-5 py-5">
+                <a
                     data-journal-filter-link
                     data-category=""
-                    class="font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]"
+                    class="text-xs font-black tracking-[3px] text-[#808080] uppercase hover:text-[#00fdc7]"
                     href="/journal">All</a
-                ></li
-            >{
+                >
+            </li>{
                 categories.map(({ label, slug }) => (
                     <li class="inline-block px-5 py-5">
                         <a
                             data-journal-filter-link
                             data-category={slug}
-                            class="font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]"
+                            class="text-xs font-black tracking-[3px] text-[#808080] uppercase hover:text-[#00fdc7]"
                             href={`/journal?category=${slug}`}
                         >
                             {label}
@@ -50,37 +47,23 @@ const { categories } = Astro.props;
 </div>
 
 <script>
-    const selectedCategory =
-        new URLSearchParams(window.location.search).get("category") ?? "";
+    const selectedCategory = new URLSearchParams(window.location.search).get("category") ?? "";
 
-    document
-        .querySelectorAll<HTMLElement>("[data-post-category]")
-        .forEach((post) => {
-            post.hidden =
-                Boolean(selectedCategory) &&
-                post.dataset.postCategory !== selectedCategory;
-        });
+    document.querySelectorAll<HTMLElement>("[data-post-category]").forEach((post) => {
+        post.hidden = Boolean(selectedCategory) && post.dataset.postCategory !== selectedCategory;
+    });
 
-    const filters = document.querySelectorAll<HTMLElement>(
-        "[data-journal-filter]",
-    );
+    const filters = document.querySelectorAll<HTMLElement>("[data-journal-filter]");
 
     filters.forEach((filter) => {
-        const current = filter.querySelector<HTMLElement>(
-            "[data-journal-filter-current]",
-        );
+        const current = filter.querySelector<HTMLElement>("[data-journal-filter-current]");
         const selected = filter.querySelector<HTMLElement>(
             `[data-journal-filter-link][data-category="${selectedCategory}"]`,
         );
-        if (current && selected)
-            current.textContent = selected.textContent?.trim() ?? "All";
+        if (current && selected) current.textContent = selected.textContent?.trim() ?? "All";
 
-        const toggle = filter.querySelector<HTMLButtonElement>(
-            "[data-journal-filter-toggle]",
-        );
-        const options = filter.querySelector<HTMLElement>(
-            "[data-journal-filter-options]",
-        );
+        const toggle = filter.querySelector<HTMLButtonElement>("[data-journal-filter-toggle]");
+        const options = filter.querySelector<HTMLElement>("[data-journal-filter-options]");
         toggle?.addEventListener("click", () => {
             const isOpen = !options?.classList.contains("hidden");
             options?.classList.toggle("hidden", isOpen);

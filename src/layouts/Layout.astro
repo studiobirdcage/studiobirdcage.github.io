@@ -79,26 +79,20 @@ const organizationSchema = {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={socialImage} />
-        <script
-            type="application/ld+json"
-            set:html={JSON.stringify(organizationSchema)}
-        />
+        <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
         <title>{title}</title>
     </head>
     <body class="pt-20 min-[501px]:max-[959px]:pt-25">
         <PageHeader />
-        <aside
-            class="fixed inset-y-0 left-0 z-50 hidden w-20 bg-white min-[960px]:block"
-        >
+        <aside class="fixed inset-y-0 left-0 z-50 hidden w-20 bg-white min-[960px]:block">
             <SideNavigation />
         </aside>
-        <aside
-            class="fixed inset-y-0 right-0 z-50 hidden w-20 bg-white min-[960px]:block"
-        >
+        <aside class="fixed inset-y-0 right-0 z-50 hidden w-20 bg-white min-[960px]:block">
             <slot name="right-rail"
-                ><p class="side-label side-label-right left-1/2 top-1/2">
+                ><p class="side-label side-label-right top-1/2 left-1/2">
                     Barrett Long | Studio Birdcage
-                </p></slot>
+                </p></slot
+            >
         </aside>
         <main class="relative z-10 min-[960px]:mx-20"><slot /></main>
         {

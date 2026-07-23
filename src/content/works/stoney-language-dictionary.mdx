@@ -10,7 +10,7 @@ heroImage: "/images/uploads/works/1538674349-blaze-bonfire-burning-1002714.jpg"
 thumbnailImage: "/images/uploads/works/greyscale-1538674349-blaze-bonfire-burning-1002714.jpg"
 when: "October 2018"
 who: "Division 1 Media Corp."
-where: "<a href=\"https://stony.devlive.net\" target=\"_blank\">dictionary.ansn.ca</a>"
+where: '<a href="https://stony.devlive.net" target="_blank">dictionary.ansn.ca</a>'
 what: "Software Development, iOS + Android App Development, Web Design"
 how: "Swift 4, Kotlin, Android Studio, Xcode, Laravel 5.5, BootStrap 4, JavaScript, PHP, MariaDB"
 ---
@@ -24,9 +24,25 @@ There were two parts to the Stoney Language Dictionary project. The first part w
 
 The second part of the project were the mobile applications. Both apps were developed using native libraries, so the iOS app was developed in xcode using Swift while the Android version was built in Android Studio using Kotlin. Both apps hit the API on first load to populate a local database with the current dictionary version for offline use. Every subsequent load of the app runs a check to see if there have been any updates to the dictionary. Any updates found are then synced to the local database. To save storage space and speed up/simplify the the initial download/updates, all image and audio files are streamed form the web server. All words in the dictionary are fully searchable by their stoney translation, english translation or categories.
 
-<ImageTriptych images={["/images/uploads/works/1539485172-trip1-stony_trip_top_edit_img.jpg", "/images/uploads/works/1539484420-trip2-stony_trip_btm_left_img.jpg", "/images/uploads/works/1539484420-trip3-stony_trip_btm_right_img.jpg"]} />
+<ImageTriptych
+  images={[
+    "/images/uploads/works/1539485172-trip1-stony_trip_top_edit_img.jpg",
+    "/images/uploads/works/1539484420-trip2-stony_trip_btm_left_img.jpg",
+    "/images/uploads/works/1539484420-trip3-stony_trip_btm_right_img.jpg",
+  ]}
+/>
 
-<ProjectParagraph title="Passing the Stoney Language to a New Generation..." text={"The elders of the Alexis Nakota Sioux Nation wanted the Language Dictionary to help modernize the teaching process. To achieve authenticity, all audio clips used in the application were recorded by the elders themselves."} />
+<ProjectParagraph
+  title="Passing the Stoney Language to a New Generation..."
+  text={
+    "The elders of the Alexis Nakota Sioux Nation wanted the Language Dictionary to help modernize the teaching process. To achieve authenticity, all audio clips used in the application were recorded by the elders themselves."
+  }
+/>
 
-<TriptychPanels panels={["<img src=\"/images/uploads/works/1538790851-Screenshot_2018-10-05 Stoney Langauge Dictionary(1).png\" alt=\"An Image\"><img src=\"/images/uploads/works/1538790866-Screenshot_2018-10-05 Stoney Language Dictionary.png\" alt=\"An Image\"><img src=\"/images/uploads/works/1538792097-Screenshot_2018-09-30 Stoney Language Dictionary(1).png\" alt=\"An Image\"><img src=\"/images/uploads/works/1538792167-Screenshot_2018-09-30 Stoney Language Dictionary(2).png\" alt=\"An Image\">", "<img src=\"/images/uploads/works/1538843585-stony_login_screen.png\" class=\"no--shadow\" alt=\"An Image\"><img src=\"/images/uploads/works/1538843592-stoney_main_dashboard.png\" class=\"no--shadow\" alt=\"An Image\"><img src=\"/images/uploads/works/1538843602-stoney_word_search_screen.png\" class=\"no--shadow\"  alt=\"An Image\">", "<img src=\"/images/uploads/works/1538790890-Screenshot_2018-09-30 Stoney Language Dictionary.png\" alt=\"An Image\"><img src=\"/images/uploads/works/1538792187-Screenshot_2018-09-30 Stoney Language Dictionary(4).png\" alt=\"An Image\"><img src=\"/images/uploads/works/1538792120-Screenshot_2018-09-30 Stoney Language Dictionary(5).png\" alt=\"An Image\">"]} />
-
+<TriptychPanels
+  panels={[
+    '<img src="/images/uploads/works/1538790851-Screenshot_2018-10-05 Stoney Langauge Dictionary(1).png" alt="An Image"><img src="/images/uploads/works/1538790866-Screenshot_2018-10-05 Stoney Language Dictionary.png" alt="An Image"><img src="/images/uploads/works/1538792097-Screenshot_2018-09-30 Stoney Language Dictionary(1).png" alt="An Image"><img src="/images/uploads/works/1538792167-Screenshot_2018-09-30 Stoney Language Dictionary(2).png" alt="An Image">',
+    '<img src="/images/uploads/works/1538843585-stony_login_screen.png" class="no--shadow" alt="An Image"><img src="/images/uploads/works/1538843592-stoney_main_dashboard.png" class="no--shadow" alt="An Image"><img src="/images/uploads/works/1538843602-stoney_word_search_screen.png" class="no--shadow"  alt="An Image">',
+    '<img src="/images/uploads/works/1538790890-Screenshot_2018-09-30 Stoney Language Dictionary.png" alt="An Image"><img src="/images/uploads/works/1538792187-Screenshot_2018-09-30 Stoney Language Dictionary(4).png" alt="An Image"><img src="/images/uploads/works/1538792120-Screenshot_2018-09-30 Stoney Language Dictionary(5).png" alt="An Image">',
+  ]}
+/>

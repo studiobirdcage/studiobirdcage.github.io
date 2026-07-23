@@ -6,6 +6,6 @@ import sharp from "sharp";
  * images that live in the `public/` directory (which Astro cannot infer).
  */
 export async function imageSize(publicPath: string) {
-    const meta = await sharp(`public${publicPath}`).metadata();
-    return { width: meta.width ?? 0, height: meta.height ?? 0 };
+  const meta = await sharp(`public${publicPath}`).metadata();
+  return { width: meta.width ?? 0, height: meta.height ?? 0 };
 }

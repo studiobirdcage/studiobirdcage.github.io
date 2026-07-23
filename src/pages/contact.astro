@@ -13,14 +13,10 @@ import { Image } from "astro:assets";
     <section
         class="flex flex-col-reverse bg-[#f9f8f9] min-[960px]:h-[calc(100vh-160px)] min-[960px]:flex-row"
     >
-        <div
-            class="flex flex-col-reverse min-[960px]:w-[45%] min-[960px]:flex-col"
-        >
-            <div
-                class="flex min-h-50 items-center justify-center bg-[#121212] px-10 py-10"
-            >
+        <div class="flex flex-col-reverse min-[960px]:w-[45%] min-[960px]:flex-col">
+            <div class="flex min-h-50 items-center justify-center bg-[#121212] px-10 py-10">
                 <Image
-                    class="w-full h-auto p-8"
+                    class="h-auto w-full p-8"
                     src="/images/app/studio_birdcage_full_logo.svg"
                     width={561}
                     height={180}
@@ -34,17 +30,16 @@ import { Image } from "astro:assets";
                     <h4 class="with-line font-display-italic text-[30px]">
                         <span>Address</span>
                     </h4><p
-                        class="ml-2 mt-3 font-sans-italic text-lg leading-[1.2] text-[#cdcccf] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                        class="font-sans-italic mt-3 ml-2 text-lg leading-[1.2] text-[#cdcccf] min-[501px]:text-2xl min-[960px]:text-[28px]"
                     >
-                        11716 37B Ave NW<br />Edmonton, Alberta Canada<br />T6J
-                        0K4
+                        11716 37B Ave NW<br />Edmonton, Alberta Canada<br />T6J 0K4
                     </p>
                 </div>
                 <div class="mb-3 w-full min-[960px]:mb-0">
                     <h4 class="with-line font-display-italic text-[30px]">
                         <span>Phone</span>
                     </h4><a
-                        class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                        class="font-sans-italic mt-3 ml-2 block text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
                         href="tel:+17802350132">780.235.0132</a
                     >
                 </div>
@@ -52,15 +47,14 @@ import { Image } from "astro:assets";
                     <h4 class="with-line font-display-italic text-[30px]">
                         <span>Mail</span>
                     </h4><a
-                        class="ml-2 mt-3 block font-sans-italic text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
-                        href="mailto:info@studiobirdcage.com"
-                        >barrett@studiobirdcage.com</a
+                        class="font-sans-italic mt-3 ml-2 block text-lg leading-[1.2] text-[#cdcccf] hover:text-[#00fdc7] min-[501px]:text-2xl min-[960px]:text-[28px]"
+                        href="mailto:info@studiobirdcage.com">barrett@studiobirdcage.com</a
                     >
                 </div>
                 <div class="w-full">
                     <h4 class="with-line font-display-italic text-[30px]">
                         <span>Social</span>
-                    </h4><div class="contact-social ml-2 mt-5">
+                    </h4><div class="contact-social mt-5 ml-2">
                         <SocialMedia />
                     </div>
                 </div>

@@ -16,8 +16,7 @@ const tags = [...new Set(works.flatMap(({ data }) => data.tags))].sort();
     pinnedFooter
 >
     <h1 class="sr-only">
-        Barrett Long web design, software development, and app development
-        portfolio
+        Barrett Long web design, software development, and app development portfolio
     </h1>
     <WorkTagFilter slot="right-rail" tags={tags} rail />
     <WorksGrid

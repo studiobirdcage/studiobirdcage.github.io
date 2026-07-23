@@ -4,15 +4,36 @@ import Layout from "../../layouts/Layout.astro";
 import PostsGrid from "../../components/PostsGrid";
 import JournalFilter from "../../components/JournalFilter.astro";
 
-const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const categories = [...new Map(posts.map(({ data }) => [data.categorySlug, data.category])).entries()].map(([slug, label]) => ({ slug, label }));
-const postCards = posts.map(({ data }) => ({ title: data.title, slug: data.slug, category: data.category, categorySlug: data.categorySlug, date: data.date.toLocaleDateString("en-CA", { day: "2-digit", month: "2-digit", year: "numeric" }), excerpt: data.excerpt, tags: data.tags, image: data.thumbnailImage }));
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const categories = [
+    ...new Map(posts.map(({ data }) => [data.categorySlug, data.category])).entries(),
+].map(([slug, label]) => ({ slug, label }));
+const postCards = posts.map(({ data }) => ({
+    title: data.title,
+    slug: data.slug,
+    category: data.category,
+    categorySlug: data.categorySlug,
+    date: data.date.toLocaleDateString("en-CA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    }),
+    excerpt: data.excerpt,
+    tags: data.tags,
+    image: data.thumbnailImage,
+}));
 ---
 
-<Layout title="Barrett Long's Web Design & Development Journal" description="Articles by Barrett Long about web design, web development, software, digital media, and professional creative work." pinnedFooter>
-  <h1 class="sr-only">Barrett Long web design and development journal</h1>
-  <JournalFilter slot="right-rail" categories={categories} />
-  <section class="bg-white pb-32">
-    <PostsGrid posts={postCards} />
-  </section>
+<Layout
+    title="Barrett Long's Web Design & Development Journal"
+    description="Articles by Barrett Long about web design, web development, software, digital media, and professional creative work."
+    pinnedFooter
+>
+    <h1 class="sr-only">Barrett Long web design and development journal</h1>
+    <JournalFilter slot="right-rail" categories={categories} />
+    <section class="bg-white pb-32">
+        <PostsGrid posts={postCards} />
+    </section>
 </Layout>

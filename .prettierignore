@@ -1,0 +1,13 @@
+# Build output & generated files
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Static assets (fonts, images, icons) — not source code
+public/
+
+# Lockfiles
+package-lock.json
+pnpm-lock.yaml

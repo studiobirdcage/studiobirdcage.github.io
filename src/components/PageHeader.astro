@@ -11,9 +11,7 @@ import SocialMedia from "./SocialMedia.astro";
 import { Image } from "astro:assets";
 ---
 
-<header
-    class="fixed inset-x-0 top-0 z-50 h-20 bg-white min-[501px]:max-[959px]:h-25"
->
+<header class="fixed inset-x-0 top-0 z-50 h-20 bg-white min-[501px]:max-[959px]:h-25">
     <div
         class="relative flex h-full items-center justify-between px-2.5 min-[501px]:max-[959px]:px-5 min-[960px]:px-20"
     >
@@ -27,9 +25,7 @@ import { Image } from "astro:assets";
                 loading="eager"
             /></a
         >
-        <a
-            href="/"
-            class="absolute left-1/2 hidden h-15 -translate-x-1/2 min-[501px]:block"
+        <a href="/" class="absolute left-1/2 hidden h-15 -translate-x-1/2 min-[501px]:block"
             ><Image
                 class="h-full"
                 src="/images/app/studio_birdcage_text_logo.svg"
@@ -39,10 +35,7 @@ import { Image } from "astro:assets";
                 loading="eager"
             /></a
         >
-        <button
-            id="menu-open"
-            class="h-5 w-7.5 cursor-pointer"
-            aria-label="Open navigation"
+        <button id="menu-open" class="h-5 w-7.5 cursor-pointer" aria-label="Open navigation"
             ><Image
                 class="h-full w-full"
                 src="/images/app/menu_icon.svg"
@@ -56,7 +49,7 @@ import { Image } from "astro:assets";
 </header>
 <div
     id="site-menu"
-    class="pointer-events-none fixed left-0 top-20 z-40 grid h-[calc(100vh-80px)] w-screen overflow-hidden opacity-0 transition-opacity duration-500 min-[501px]:max-[959px]:top-25 min-[501px]:max-[959px]:h-[calc(100vh-100px)] min-[960px]:left-20 min-[960px]:w-[calc(100vw-160px)] min-[960px]:grid-cols-[3fr_2fr]"
+    class="pointer-events-none fixed top-20 left-0 z-40 grid h-[calc(100vh-80px)] w-screen overflow-hidden opacity-0 transition-opacity duration-500 min-[501px]:max-[959px]:top-25 min-[501px]:max-[959px]:h-[calc(100vh-100px)] min-[960px]:left-20 min-[960px]:w-[calc(100vw-160px)] min-[960px]:grid-cols-[3fr_2fr]"
 >
     <section
         class="hidden h-full -translate-x-full items-center justify-center bg-[#121212] p-20 transition-transform duration-600 min-[960px]:flex"
@@ -74,7 +67,7 @@ import { Image } from "astro:assets";
     >
         <button
             id="menu-close"
-            class="absolute right-7 top-7 h-8 w-8 cursor-pointer p-1"
+            class="absolute top-7 right-7 h-8 w-8 cursor-pointer p-1"
             aria-label="Close navigation"
             ><Image
                 class="h-full w-full"
@@ -92,8 +85,7 @@ import { Image } from "astro:assets";
                             class:list={[
                                 "menu-link",
                                 (pathname === href ||
-                                    (href !== "/" &&
-                                        pathname.startsWith(href))) &&
+                                    (href !== "/" && pathname.startsWith(href))) &&
                                     "menu-link-active",
                             ]}
                             href={href}
@@ -108,20 +100,13 @@ import { Image } from "astro:assets";
             class="mt-10 shrink-0 text-[clamp(12px,1.25vw,16px)] leading-[1.4] text-[#808080]"
             style="font-family: 'Neue Plak Thin', Arial, sans-serif"
         >
-            11716 37B Ave NW<br />Edmonton, Alberta<br />T6J 0K4<br />Canada<br
-            />780.235.0132<a
+            11716 37B Ave NW<br />Edmonton, Alberta<br />T6J 0K4<br />Canada<br />780.235.0132<a
                 class="mt-4 block text-[#121212]"
                 style="font-family: 'Neue Plak ExtraBlack', Arial, sans-serif"
-                href="mailto:info@studiobirdcage.com"
-                >barrett@studiobirdcage.com</a
-            ><div class="mt-4 h-0.5 w-3/4 bg-[#00fdc7]"></div><div
-                class="menu-social mt-2"
-            >
+                href="mailto:info@studiobirdcage.com">barrett@studiobirdcage.com</a
+            ><div class="mt-4 h-0.5 w-3/4 bg-[#00fdc7]"></div><div class="menu-social mt-2">
                 <SocialMedia />
-            </div><p
-                class="mt-2"
-                style="font-family: 'Neue Plak Regular', Arial, sans-serif"
-            >
+            </div><p class="mt-2" style="font-family: 'Neue Plak Regular', Arial, sans-serif">
                 © {new Date().getFullYear()} Studio Birdcage
             </p>
         </div>
@@ -134,14 +119,8 @@ import { Image } from "astro:assets";
     const toggle = (visible: boolean) => {
         menu?.classList.toggle("pointer-events-none", !visible);
         menu?.classList.toggle("opacity-0", !visible);
-        menu?.querySelector("section")?.classList.toggle(
-            "-translate-x-full",
-            !visible,
-        );
-        menu?.querySelector("nav")?.classList.toggle(
-            "translate-x-full",
-            !visible,
-        );
+        menu?.querySelector("section")?.classList.toggle("-translate-x-full", !visible);
+        menu?.querySelector("nav")?.classList.toggle("translate-x-full", !visible);
         document.body.classList.toggle("overflow-hidden", visible);
     };
     open?.addEventListener("click", () => toggle(true));

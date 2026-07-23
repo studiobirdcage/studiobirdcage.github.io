@@ -8,36 +8,32 @@ const links = [
     ["/contact", "Contact"],
 ];
 const current =
-    links.find(
-        ([href]) =>
-            pathname === href || (href !== "/" && pathname.startsWith(href)),
-    )?.[1] ?? "Portfolio";
+    links.find(([href]) => pathname === href || (href !== "/" && pathname.startsWith(href)))?.[1] ??
+    "Portfolio";
 ---
 
 <div
     data-side-navigation
-    class="absolute left-1/2 top-1/2 h-20 w-screen -translate-x-1/2 -translate-y-1/2 -rotate-90 text-center"
+    class="absolute top-1/2 left-1/2 h-20 w-screen -translate-x-1/2 -translate-y-1/2 -rotate-90 text-center"
 >
     <div class="group relative inline-flex h-20 items-center justify-center">
         <button
             data-side-navigation-toggle
             class="font-regular text-sm tracking-wide text-[#e6e6e6]"
             aria-expanded="false"
-            >Studio Birdcage: <span class="font-bold text-[#00fdc7]"
-                >{current}</span
-            >
+            >Studio Birdcage: <span class="font-bold text-[#00fdc7]">{current}</span>
             <span aria-hidden="true">▾</span></button
         >
         <ul
             data-side-navigation-options
-            class="absolute left-1/2 top-full z-50 hidden w-max -translate-x-1/2 bg-[#f4f4f4] px-5 pb-1 text-left group-hover:block"
+            class="absolute top-full left-1/2 z-50 hidden w-max -translate-x-1/2 bg-[#f4f4f4] px-5 pb-1 text-left group-hover:block"
         >
             {
                 links.map(([href, label]) => (
                     <li class="inline-block px-5 py-5">
                         <a
                             class:list={[
-                                "font-black text-xs uppercase tracking-[3px] text-[#808080] hover:text-[#00fdc7]",
+                                "text-xs font-black tracking-[3px] text-[#808080] uppercase hover:text-[#00fdc7]",
                                 label === current && "text-[#00fdc7]",
                             ]}
                             href={href}
@@ -52,13 +48,10 @@ const current =
 </div>
 
 <script>
-    const sideNavigation = document.querySelector<HTMLElement>(
-        "[data-side-navigation]",
+    const sideNavigation = document.querySelector<HTMLElement>("[data-side-navigation]");
+    const sideNavigationToggle = sideNavigation?.querySelector<HTMLButtonElement>(
+        "[data-side-navigation-toggle]",
     );
-    const sideNavigationToggle =
-        sideNavigation?.querySelector<HTMLButtonElement>(
-            "[data-side-navigation-toggle]",
-        );
     const sideNavigationOptions = sideNavigation?.querySelector<HTMLElement>(
         "[data-side-navigation-options]",
     );
