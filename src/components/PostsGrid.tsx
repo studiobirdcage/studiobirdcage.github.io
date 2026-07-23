@@ -12,7 +12,7 @@ type Post = {
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   const href = `/journal/${post.categorySlug}/${post.slug}`;
   return (
-    <article data-post-category={post.categorySlug} className="relative bg-white">
+    <article data-post-category={post.categorySlug} className={`relative bg-white ${featured ? "w-full" : "min-[1150px]:flex-1 min-[1150px]:basis-0"}`}>
       <a className={`group relative block overflow-hidden bg-[#121212] ${featured ? "h-125" : "h-100"}`} href={href}>
         <img className="h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-50" src={post.image} alt="" loading="lazy" />
         <img className="absolute left-1/2 top-full w-40 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-200 group-hover:top-[42%] group-hover:opacity-100" src="/images/app/single_cage_icon.svg" alt="" />

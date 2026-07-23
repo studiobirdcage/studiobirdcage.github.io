@@ -10,7 +10,7 @@ interface Props {
     image?: string;
     schema?: Record<string, unknown>;
     showFooter?: boolean;
-    worksIndexLayout?: boolean;
+    pinnedFooter?: boolean;
 }
 const {
     title = "Barrett Long — Web Developer, Software Developer & Designer",
@@ -18,7 +18,7 @@ const {
     image = "/images/app/about_hero_image.jpg",
     schema,
     showFooter = true,
-    worksIndexLayout = false,
+    pinnedFooter = false,
 } = Astro.props;
 const site = Astro.site ?? new URL("https://studiobirdcage.com");
 const canonical = new URL(Astro.url.pathname, site);
@@ -107,7 +107,7 @@ const organizationSchema = {
                     id="main-footer"
                     class:list={[
                         "relative z-10 flex h-20 items-center justify-center bg-white min-[960px]:mx-20",
-                        worksIndexLayout &&
+                        pinnedFooter &&
                             "min-[960px]:fixed min-[960px]:inset-x-0 min-[960px]:bottom-0 min-[960px]:z-20 min-[960px]:mx-0",
                     ]}
                 >
