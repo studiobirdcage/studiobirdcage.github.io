@@ -39,10 +39,10 @@
   .legacy-h2 { @apply font-display-italic text-5xl leading-tight tracking-wide text-[#121212] md:text-6xl; }
   .subtitle { @apply block font-regular text-xl uppercase italic leading-none text-[#00fdc7]; margin-top: -10px; margin-bottom: 80px; }
   .about-cta-subtitle { margin-top: 20px; margin-bottom: 40px; }
-  .action-call { @apply bg-white px-10 py-10 text-center min-[850px]:px-40 min-[850px]:py-[100px]; padding-bottom: 120px; }
+  .action-call { @apply bg-white px-10 py-10 text-center min-[850px]:px-40 min-[850px]:py-25; padding-bottom: 120px; }
   .action-call h3 { font-family: "ITC Century Ultra Italic", Georgia, serif; font-size: 5vw; letter-spacing: -1px; margin-bottom: 80px; }
   .action-call h3 span { @apply relative right-3 top-5; }
-  .action-call p { @apply mx-auto mt-20 max-w-7xl font-sans-italic text-[22px] leading-[1.8] tracking-[2px] text-[#808080] min-[850px]:text-[26px] min-[850px]:leading-[2]; }
+  .action-call p { @apply mx-auto text-justify mt-12 max-w-4xl font-sans-italic text-[20px] leading-[1.8] tracking-[2px] text-[#808080] min-[850px]:text-[26px] min-[850px]:leading-loose; }
   .expertise-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%); }
   .expertise-marquee-track { display: flex; width: max-content; animation: expertise-marquee-scroll 34s linear infinite; }
   .expertise-marquee:hover .expertise-marquee-track { animation-play-state: paused; }
