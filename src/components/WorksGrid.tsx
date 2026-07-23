@@ -4,9 +4,13 @@ type Work = { title: string; slug: string; tags: string[]; image: string };
 
 export default function WorksGrid({ works }: { works: Work[] }) {
   return (
-    <div className="works-mosaic mb-0 grid auto-rows-[260px] grid-cols-1 gap-0 bg-[#f4f4f4] min-[960px]:mb-20 md:grid-cols-2">
-      {works.map((work) => (
+    <div
+      className="works-mosaic mb-0 grid auto-rows-65 grid-cols-1 gap-0 bg-[#f4f4f4] min-[960px]:mb-20 md:grid-cols-2"
+      data-mosaic-count={works.length}
+    >
+      {works.map((work, index) => (
         <a
+          data-mosaic-position={(index % 10) + 1}
           data-work-tags={work.tags.map(tagSlug).join(",")}
           className="group relative isolate overflow-hidden bg-[#f4f4f4]"
           href={`/works/${work.slug}`}
@@ -22,13 +26,13 @@ export default function WorksGrid({ works }: { works: Work[] }) {
             <img
               className="mosaic-logo mb-3 w-auto"
               src="/images/app/single_cage_icon.svg"
-              alt=""
+              alt="mosaic studio birdcage logo"
             />
-            <h2 className="mosaic-title font-display max-w-full leading-[1.2] tracking-[-1px] break-words text-white">
+            <h2 className="mosaic-title font-display wrap-break-words max-w-full leading-[1.2] tracking-[-1px] text-white">
               {work.title}
             </h2>
             <span className="my-3 h-0.5 w-[45%] bg-white" />
-            <p className="mosaic-tags font-book max-w-full break-words text-white uppercase">
+            <p className="mosaic-tags font-book wrap-break-words max-w-full text-white uppercase">
               {work.tags.map((tag, tagIndex) => (
                 <span key={tag}>
                   {tag}

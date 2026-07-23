@@ -68,7 +68,8 @@ const options = tags.map((tag) => ({ label: tag, slug: tagSlug(tag) }));
         if (!tile.hidden) visibleTiles.push(tile);
     });
     visibleTiles.forEach((tile, index) => {
-        tile.dataset.mosaicPosition = String(index + 1);
+        // Repeat the 10-tile desktop pattern for any number of visible works.
+        tile.dataset.mosaicPosition = String((index % 10) + 1);
     });
     tiles
         .filter((tile) => tile.hidden)

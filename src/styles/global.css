@@ -410,48 +410,34 @@
 @media (min-width: 960px) {
   .works-mosaic {
     grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    grid-auto-flow: row;
     grid-auto-rows: calc((100vw - 160px) / 4) !important;
     min-height: calc(100vh - 160px);
   }
+  /*
+   * A 10-tile pattern that repeats through CSS grid auto-placement. The first
+   * tile starts a two-row feature block; the remaining spans complete that
+   * block, followed by full-width and mixed-width rows. New work items reuse
+   * the same slots rather than requiring more explicit grid coordinates.
+   */
   .works-mosaic [data-mosaic-position="1"] {
-    grid-column: 1 / span 6;
-    grid-row: 1 / span 2;
+    grid-column: span 6;
+    grid-row: span 2;
   }
-  .works-mosaic [data-mosaic-position="2"] {
-    grid-column: 7 / span 3;
-    grid-row: 1;
-  }
-  .works-mosaic [data-mosaic-position="3"] {
-    grid-column: 10 / span 3;
-    grid-row: 1;
-  }
-  .works-mosaic [data-mosaic-position="4"] {
-    grid-column: 7 / span 3;
-    grid-row: 2;
-  }
-  .works-mosaic [data-mosaic-position="5"] {
-    grid-column: 10 / span 3;
-    grid-row: 2;
-  }
-  .works-mosaic [data-mosaic-position="6"] {
-    grid-column: 1 / span 12;
-    grid-row: 3;
-  }
-  .works-mosaic [data-mosaic-position="7"] {
-    grid-column: 1 / span 3;
-    grid-row: 4;
-  }
+  .works-mosaic [data-mosaic-position="2"],
+  .works-mosaic [data-mosaic-position="3"],
+  .works-mosaic [data-mosaic-position="4"],
+  .works-mosaic [data-mosaic-position="5"],
+  .works-mosaic [data-mosaic-position="7"],
   .works-mosaic [data-mosaic-position="8"] {
-    grid-column: 4 / span 3;
-    grid-row: 4;
+    grid-column: span 3;
+  }
+  .works-mosaic [data-mosaic-position="6"],
+  .works-mosaic [data-mosaic-position="10"] {
+    grid-column: span 12;
   }
   .works-mosaic [data-mosaic-position="9"] {
-    grid-column: 7 / span 6;
-    grid-row: 4;
-  }
-  .works-mosaic [data-mosaic-position="10"] {
-    grid-column: 1 / span 12;
-    grid-row: 5;
+    grid-column: span 6;
   }
   .mosaic-title {
     font-size: 24px;
