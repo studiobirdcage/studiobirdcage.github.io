@@ -388,6 +388,15 @@
   margin-bottom: 0 !important;
 }
 
+.triptych-panels {
+  --triptych-panel-count: 1;
+}
+@media (min-width: 960px) {
+  .triptych-panels {
+    grid-template-columns: repeat(var(--triptych-panel-count), minmax(0, 1fr));
+  }
+}
+
 .work-sidebar-project {
   display: none;
 }
