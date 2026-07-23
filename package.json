@@ -11,7 +11,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "content:new": "node scripts/new-content.mjs",
+    "content:new:journal": "node scripts/new-content.mjs journal",
+    "content:new:work": "node scripts/new-content.mjs work"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

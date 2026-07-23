@@ -1,0 +1,30 @@
+---
+title: "Rebuilding the Site: Astro.js Is Kinda Awesome!"
+slug: "rebuilding-the-site-astro-js-is-kinda-awesome"
+date: "2026-07-23"
+draft: false
+category: "Development Story"
+categorySlug: "development-story"
+tags: ["Astro.js", "Tailwind CSS", "React", "GitHub Pages"]
+author: "Barrett Long"
+tagline: "When a custom-built eight-year-old CMS is too much hassle, why not rebuild with the new hotness?"
+excerpt: "I needed to get a portfolio site back online, and I had one that I really liked and had spent a lot of time on. However, a lot of that time went into creating a custom CMS (because why not?). I could have got it up and running, but it was not fun to work with and required a server and all sorts of things. Luckily, since I built it in 2018, things have changed dramatically in the development space. I had been wanting to use Astro for something for a while, so this was the perfect time to recreate the portfolio while getting to use fun tools like MDX."
+heroImage: "/images/uploads/blog/greg-rakozy-oMpAz-DN-9I-unsplash.jpg"
+thumbnailImage: "/images/uploads/blog/greg-rakozy-oMpAz-DN-9I-unsplash.jpg"
+videoUrl: null
+---
+
+import { Image } from "astro:assets";
+import asWin from "../../assets/posts/i_see_this_as_a_win.jpg";
+
+The previous version of this site was built with Laravel back in 2018. It was a fully custom application that handled both the CMS and the front end, because apparently building a portfolio was not enough of a project on its own. The front end actually looked remarkably close to this version, but behind it was a database, authentication, a custom admin area, and all the other moving parts that come with running a real application.
+
+That setup made sense at the time. I wanted complete control over how work and journal entries were managed, so I built it. The problem was that a portfolio site does not really need to behave like a small SaaS product forever. Getting the old version running again meant dealing with a server, the Laravel app, the database, user authentication, and a bunch of dependencies that had not been touched in years. It was all still there, but it was not exactly inviting.
+
+Moving to Astro meant separating the content from all of that machinery. Work and journal entries now live in MDX files with frontmatter instead of database records, and the images are just public assets. There are no migrations to run, no admin users to manage, and no custom CMS to keep alive just so I can add a paragraph or swap a screenshot. The old site used SCSS and a pile of custom styles; this rebuild uses Tailwind, which has made it much easier to work quickly without rebuilding the same utility classes over and over.
+
+<div class="post--image mb-12">
+  <Image src={asWin} alt="Hulk absolute win meme" />
+</div>
+
+Astro has been a really nice fit for this. Most of the site is static, which is exactly what a portfolio should be, but I can still use React where it makes sense for interactive components. The result is simpler to deploy, easier to maintain, and much less likely to require an archaeological dig the next time I want to update my own website. GitHub Pages takes care of hosting, MDX takes care of content, and I get to spend my time making the site better instead of babysitting its old CMS. And at the end of the day, isn't that what we all want?

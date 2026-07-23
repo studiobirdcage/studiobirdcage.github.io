@@ -65,7 +65,7 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
             className={`mt-5 flex list-none flex-wrap justify-center gap-1 p-0 ${featured ? "text-sm" : "text-xs"}`}
           >
             {post.tags.map((tag) => (
-              <li className="bg-[#cdcccf] px-2 py-1 font-bold text-white italic">
+              <li className="bg-[#cdcccf] px-2 py-1 font-bold text-white italic" key={tag}>
                 <span className="solid-icon mr-1.5">&#xf02b;</span>
                 {tag}
               </li>
