@@ -12,7 +12,7 @@ when: "October 2018"
 who: "Division 1 Media Corp."
 where: '<a href="https://stony.devlive.net" target="_blank">dictionary.ansn.ca</a>'
 what: "Software Development, iOS + Android App Development, Web Design"
-how: "Swift 4, Kotlin, Android Studio, Xcode, Laravel 5.5, BootStrap 4, JavaScript, PHP, MariaDB"
+how: "Swift 4, Kotlin, Android Studio, Xcode, Laravel 5.5, Bootstrap 4, JavaScript, PHP, MariaDB"
 ---
 
 import ImageTriptych from "../../components/content/ImageTriptych";
@@ -20,9 +20,9 @@ import TextImageBlock from "../../components/content/TextImageBlock";
 import TriptychPanels from "../../components/content/TriptychPanels";
 import ProjectParagraph from "../../components/content/ProjectParagraph";
 
-There were two parts to the Stoney Language Dictionary project. The first part was a custom admin panel and API (that I developed using Laravel 5.6). The project required a back-end that allows for easy user management, as well as the addition of new words, images, audio files and categories to the dictionary. The admin panel is also responsible for sending push notifications for a word of the day feature and keeping track of authentication tokens.
+There were two parts to the Stoney Language Dictionary project. The first part was a custom admin panel and API that I developed using Laravel 5.6. The project required a back end that allowed for easy user management, as well as the addition of new words, images, audio files, and categories to the dictionary. The admin panel is also responsible for sending push notifications for a word-of-the-day feature and keeping track of authentication tokens.
 
-The second part of the project were the mobile applications. Both apps were developed using native libraries, so the iOS app was developed in xcode using Swift while the Android version was built in Android Studio using Kotlin. Both apps hit the API on first load to populate a local database with the current dictionary version for offline use. Every subsequent load of the app runs a check to see if there have been any updates to the dictionary. Any updates found are then synced to the local database. To save storage space and speed up/simplify the the initial download/updates, all image and audio files are streamed form the web server. All words in the dictionary are fully searchable by their stoney translation, english translation or categories.
+The second part of the project was the mobile applications. Both apps were developed using native libraries, so the iOS app was developed in Xcode using Swift, while the Android version was built in Android Studio using Kotlin. Both apps hit the API on first load to populate a local database with the current dictionary version for offline use. Every subsequent load of the app runs a check to see if there have been any updates to the dictionary. Any updates found are then synced to the local database. To save storage space and speed up and simplify the initial downloads and updates, all image and audio files are streamed from the web server. All words in the dictionary are fully searchable by their Stoney translation, English translation, or categories.
 
 <ImageTriptych
   images={[

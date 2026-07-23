@@ -12,16 +12,16 @@ when: "March 2018"
 who: "Division 1 Media Corp."
 where: '<a href="http://www.alexisnakotasioux.com/" target="_blank">www.alexisnakotasioux.com</a>'
 what: "Web Design/Development"
-how: "HTML5, CSS3, JavaScript, Node JS, SASS, Gulp, Browser Sync"
+how: "HTML5, CSS3, JavaScript, Node.js, Sass, Gulp, BrowserSync"
 ---
 
 import ImageTriptych from "../../components/content/ImageTriptych";
 import TextImageBlock from "../../components/content/TextImageBlock";
 import TriptychPanels from "../../components/content/TriptychPanels";
 
-With the Alexis Nakota Sioux Nation project the goal was to move their existing site away from an overly complex and outdated CMS to a simple and blazing fast marketing site. They also required an extremely fast turn around on the project so I deemed it best to create a simple static website using HTML/CSS and a little JavaScript for interactivity. To hit the tight deadline, I used node and gulp to setup a local environment that would automate all the nitty-gritty aspects.
+With the Alexis Nakota Sioux Nation project, the goal was to move their existing site away from an overly complex and outdated CMS to a simple and blazing-fast marketing site. They also required an extremely fast turnaround on the project, so I deemed it best to create a simple static website using HTML/CSS and a little JavaScript for interactivity. To hit the tight deadline, I used Node and Gulp to set up a local environment that would automate all the nitty-gritty aspects.
 
-My gulp script allowed me to write in SASS and have the CSS outputted post processed and minified for production. It optimized the size of all images and re-encoded them only for production (as to not update the original image files). However, the most useful and time saving function my gulp setup offered for this project was browser sync. Setting up browser sync to work with the gulp watch function gave me the ability to compile all changes to styles, js and markup and have the browser auto reload simply by saving any file. I swear this fairly simple setup saved my 2-3 hours on this project easy.
+My Gulp script allowed me to write in Sass and have the CSS output post-processed and minified for production. It optimized the size of all images and re-encoded them only for production to avoid updating the original image files. However, the most useful and time-saving function my Gulp setup offered for this project was BrowserSync. Setting up BrowserSync to work with the Gulp watch function gave me the ability to compile all changes to styles, JavaScript, and markup and have the browser auto-reload simply by saving any file. I swear this fairly simple setup saved me 2–3 hours on this project easily.
 
 <TriptychPanels
   panels={[
