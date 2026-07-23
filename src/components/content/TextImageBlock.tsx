@@ -15,9 +15,9 @@ export default function TextImageBlock({ title, text, image }: TextImageBlockPro
             {title}
           </h4>
         )}
-        <div className="mt-5 mb-5 h-1 w-40 bg-[#00fdc7] min-[850px]:mt-[26px] min-[850px]:mb-4 min-[850px]:w-50" />
+        <div className="mt-5 mb-5 h-1 w-40 bg-[#00fdc7] min-[850px]:mt-6.5 min-[850px]:mb-4 min-[850px]:w-50" />
         {text && (
-          <p className="max-w-150 font-sans text-[18px] leading-[1.8] text-[#808080] min-[850px]:text-lg min-[850px]:leading-[2]">
+          <p className="max-w-150 font-sans text-[18px] leading-[1.8] text-[#808080] min-[850px]:text-lg min-[850px]:leading-2">
             {text}
           </p>
         )}
