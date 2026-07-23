@@ -11,7 +11,7 @@ export default function TriptychPanels({ panels }: TriptychPanelsProps) {
   }));
 
     const arrayLength = accessiblePanels.length;
-    console.log("arrayLength", arrayLength)
+
 
   return (
     <section className={`grid grid-cols-1 gap-5 bg-[#f9f8f9] px-6 py-12 min-[960px]:grid-cols-${arrayLength} min-[960px]:gap-0 min-[960px]:px-10 min-[960px]:py-30`}>
