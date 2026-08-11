@@ -84,7 +84,7 @@
 
 @layer components {
   .side-label {
-    @apply absolute w-screen -translate-x-1/2 -translate-y-1/2 -rotate-90 text-center text-sm tracking-wide text-[#e6e6e6];
+    @apply absolute w-screen -translate-x-1/2 -translate-y-1/2 -rotate-90 text-center text-sm tracking-wide text-[#a8a8a8];
   }
   .side-label span {
     @apply font-black text-[#00fdc7];
@@ -92,6 +92,7 @@
   .side-label-right {
     @apply rotate-90;
   }
+
   .social-icon {
     font-family: "Font Awesome 5 Brands";
     font-size: 2.2em;
@@ -102,63 +103,79 @@
     font-family: "Font Awesome 5 Solid";
     line-height: 1;
   }
+
   .regular-icon {
     font-family: "Font Awesome 5 Regular";
     line-height: 1;
   }
+
   .menu-link {
     @apply relative z-0 text-4xl tracking-[5px] text-[#121212] uppercase before:absolute before:inset-x-3 before:top-[68%] before:-z-10 before:h-5 before:bg-transparent before:transition-colors hover:before:bg-[#00fdc7];
     font-family: "Neue Plak Regular", Arial, sans-serif;
   }
+
   .menu-link-active {
     @apply before:bg-[#00fdc7];
   }
+
   .button {
     @apply relative z-0 inline-block border-2 border-[#00fdc7] bg-transparent px-20 py-3.5 tracking-[1px] text-[#00fdc7] uppercase before:absolute before:-right-1.5 before:-bottom-1.5 before:-z-10 before:h-full before:w-full before:bg-transparent before:transition-colors hover:text-white hover:before:bg-[#00fdc7];
     font-family: "Neue Plak Bold", Arial, sans-serif;
     font-size: 20px;
     font-weight: 700;
   }
+
   .with-line {
     @apply relative inline border-b-[12px] border-[#00fdc7] leading-[1.2];
   }
+
   h3.with-line {
     border-bottom-width: 20px;
   }
+
   h3.with-line > span {
     @apply relative top-5 right-3;
   }
+
   h4.with-line > span {
     @apply relative top-2.5 right-3;
   }
+
   .legacy-h2 {
     @apply font-display-italic text-5xl leading-tight tracking-wide text-[#121212] md:text-6xl;
   }
+
   .subtitle {
     @apply font-regular block text-xl leading-none text-[#00fdc7] uppercase italic;
     margin-top: -10px;
     margin-bottom: 80px;
   }
+
   .about-cta-subtitle {
     margin-top: 20px;
     margin-bottom: 40px;
   }
+
   .action-call {
     @apply bg-white px-10 py-10 text-center min-[850px]:px-40 min-[850px]:py-25;
     padding-bottom: 120px;
   }
+
   .action-call h3 {
     font-family: "ITC Century Ultra Italic", Georgia, serif;
     font-size: 5vw;
     letter-spacing: -1px;
     margin-bottom: 80px;
   }
+
   .action-call h3 span {
     @apply relative top-5 right-3;
   }
+
   .action-call p {
     @apply font-sans-italic mx-auto mt-12 max-w-4xl text-justify text-[20px] leading-[1.8] tracking-[2px] text-[#808080] min-[850px]:text-[26px] min-[850px]:leading-loose;
   }
+
   .expertise-marquee {
     overflow: hidden;
     -webkit-mask-image: linear-gradient(
@@ -589,7 +606,7 @@
     margin-top: 32px;
   }
   .sidebar-social-icon {
-    font-size: 1.2em;
+    font-size: 1.6em;
     padding: 3px 4px;
   }
 }

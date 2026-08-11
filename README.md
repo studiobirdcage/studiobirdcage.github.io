@@ -1,4 +1,4 @@
-# Ba.rrett.dev - Personal Portfolio
+# Barrett.dev - Personal Portfolio
 
 The personal portfolio and journal site for **Barrett Long**. It showcases web, software, mobile, and design work alongside journal entries about development and creative work.
 

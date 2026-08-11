@@ -14,7 +14,7 @@ interface Props {
 }
 const {
     title = "Barrett Long — Web Developer, Software Developer & Designer",
-    description = "Barrett Long is an Edmonton web developer, software developer, mobile app developer, and designer. Ba.rrett.dev is his professional portfolio.",
+    description = "Barrett Long is an Edmonton web developer, software developer, mobile app developer, and designer. Barrett.dev is his professional portfolio.",
     image = "/images/app/about_hero_image.jpg",
     schema,
     showFooter = true,
@@ -42,12 +42,10 @@ const organizationSchema = {
             image: new URL("/images/app/about_hero_image.jpg", site).href,
             email: "b@rrett.dev",
             sameAs: [
-                "https://www.facebook.com/TheStudioBirdcage",
-                "https://twitter.com/StudioBirdcage",
-                "https://www.instagram.com/studiobirdcage/",
-                "https://gitlab.com/studiobirdcage",
+                "https://www.facebook.com/barrettalong",
+                "https://www.instagram.com/barrett_a_long/",
+                "https://github.com/barrett-dev",
                 "https://www.linkedin.com/in/barrett-long-315982119/",
-                "https://dribbble.com/StudioBirdcage",
             ],
         },
         ...(schema ? [schema] : []),
@@ -69,7 +67,7 @@ const organizationSchema = {
         <meta name="description" content={description} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonical} />
-        <meta property="og:site_name" content="Ba.rrett.dev" />
+        <meta property="og:site_name" content="Barrett.dev" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -90,7 +88,7 @@ const organizationSchema = {
         <aside class="fixed inset-y-0 right-0 z-50 hidden w-20 bg-white min-[960px]:block">
             <slot name="right-rail"
                 ><p class="side-label side-label-right top-1/2 left-1/2">
-                    Barrett Long | Ba.rrett.dev
+                    Barrett Long | Barrett.dev
                 </p></slot
             >
         </aside>

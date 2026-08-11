@@ -4,21 +4,22 @@ interface Props {
 }
 const { sidebar = false } = Astro.props;
 const links = [
-    ["https://www.facebook.com/TheStudioBirdcage", "Facebook", "\uf082"],
-    ["https://www.instagram.com/barrett_a_long/", "Instagram", "\uf16d"],
-    ["https://gitlab.com/studiobirdcage", "GitLab", "\uf296"],
-    ["https://github.com/barrett-dev", "GitHub", "\uf09b"],
-    ["https://www.linkedin.com/in/barrett-long-315982119/", "LinkedIn", "\uf08c"],
+    ["https://www.facebook.com/barrettalong/", "Facebook", "\uf082", null],
+    ["https://www.instagram.com/barrett_a_long/", "Instagram", "\uf16d", null],
+    ["https://github.com/barrett-dev", "GitHub", "\uf09b", null],
+    ["https://www.linkedin.com/in/barrett-long-315982119/", "LinkedIn", "\uf08c", null],
+    ["mailto:b@rrett.dev", "Email", "\uf0e0", "solid-icon"],
 ];
 ---
 
 <ul class:list={["flex list-none flex-row p-0", sidebar && "sidebar-social"]}>
     {
-        links.map(([href, label, glyph]) => (
+        links.map(([href, label, glyph, fontClass]) => (
             <li>
                 <a
                     class:list={[
                         "social-icon block px-3 py-3 text-[#cdcccf] hover:text-[#808080]",
+                        fontClass,
                         sidebar && "sidebar-social-icon",
                     ]}
                     href={href}

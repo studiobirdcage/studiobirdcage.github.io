@@ -1,4 +1,4 @@
-# Ba.rrett.dev - Barrett Long Portfolio Site
+# Barrett.dev - Barrett Long Portfolio Site
 
 > Barrett Long is a professional software engineering manager and full stack developer of living in Edmonton, Alberta. He specializes in frontend, backend, software engineering, native mobile app development, design and leading technical teams and projects.
 
