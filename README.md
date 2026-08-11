@@ -1,8 +1,8 @@
 # Studio Birdcage
 
-The personal portfolio and journal site for **Barrett Long / Studio Birdcage**. It showcases web, software, mobile, and design work alongside journal entries about development and creative work.
+The personal portfolio and journal site for **Barrett Long**. It showcases web, software, mobile, and design work alongside journal entries about development and creative work.
 
-**Live site:** [studiobirdcage.com](https://studiobirdcage.com)
+**Live site:** [ba.rrett.dev](https://ba.rrett.dev)
 
 ## Stack
 
