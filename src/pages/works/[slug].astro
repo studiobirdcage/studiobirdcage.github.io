@@ -75,7 +75,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
         </nav>
         <div class="flex h-full w-full max-w-230 flex-col items-center justify-center">
             <h1
-                class="font-display max-w-full text-[clamp(38px,11vw,60px)] leading-[0.95] tracking-[-1px] break-words min-[960px]:text-[clamp(56px,8vw,100px)] min-[960px]:tracking-[-2px]"
+                class="font-display wrap-break-words max-w-full text-[clamp(38px,11vw,60px)] leading-[0.95] tracking-[-1px] min-[960px]:text-[clamp(56px,8vw,100px)] min-[960px]:tracking-[-2px]"
             >
                 {work.data.title}
             </h1><ul
@@ -106,7 +106,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
             <Content />
         </article>
         <aside
-            class="order-1 flex bg-[#f4f4f4] px-6 py-14 min-[960px]:relative min-[960px]:sticky min-[960px]:top-20 min-[960px]:z-[41] min-[960px]:order-2 min-[960px]:col-span-3 min-[960px]:min-h-[calc(100vh-80px)] min-[960px]:items-start min-[960px]:self-start min-[960px]:px-8 min-[960px]:!pt-0 min-[960px]:pb-6"
+            class="order-1 flex bg-[#f4f4f4] px-6 py-14 min-[960px]:relative min-[960px]:sticky min-[960px]:top-20 min-[960px]:z-41 min-[960px]:order-2 min-[960px]:col-span-3 min-[960px]:min-h-[calc(100vh-80px)] min-[960px]:items-start min-[960px]:self-start min-[960px]:px-8 min-[960px]:!pt-0 min-[960px]:pb-6"
         >
             <div class="flex w-full flex-col min-[960px]:min-h-[calc(100vh-104px)]">
                 <div>
@@ -124,11 +124,11 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                             class="flex h-full flex-col items-center justify-center px-4 py-6 text-shadow-[0_1px_6px_#121212]"
                         >
                             <h2
-                                class="font-display max-w-full text-[clamp(18px,2.5vw,30px)] leading-[1.05] tracking-[-1px] break-words"
+                                class="font-display wrap-break-words max-w-full text-[clamp(18px,2.5vw,30px)] leading-[1.05] tracking-[-1px]"
                             >
                                 {work.data.title}
                             </h2><p
-                                class="font-book mt-3 max-w-full text-[clamp(8px,1vw,11px)] tracking-[clamp(1px,0.25vw,3px)] break-words uppercase"
+                                class="font-book wrap-break-words mt-3 max-w-full text-[clamp(8px,1vw,11px)] tracking-[clamp(1px,0.25vw,3px)] uppercase"
                             >
                                 {work.data.tags.join(" • ")}
                             </p>
@@ -139,11 +139,11 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                             details.map(([label, value]) => (
                                 <div>
                                     <>
-                                        <dt class="font-regular text-xs tracking-[2px] break-words text-[#808080] uppercase">
+                                        <dt class="font-regular wrap-break-words text-xs tracking-[2px] text-[#808080] uppercase">
                                             {label}
                                         </dt>
                                         <dd
-                                            class="font-sans-italic mt-2 text-[18px] leading-[1.25] break-words text-[#808080]"
+                                            class="font-sans-italic wrap-break-words mt-2 text-[18px] leading-tight text-[#808080]"
                                             set:html={value}
                                         />
                                     </>
@@ -161,7 +161,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         </p>
                         <ul
                             id="work-toc-list"
-                            class="font-sans-italic mt-3 space-y-2 text-[18px] leading-[1.25] break-words text-[#808080] min-[1150px]:text-lg"
+                            class="font-sans-italic wrap-break-words mt-3 space-y-2 text-[18px] leading-1.25 text-[#808080] min-[1150px]:text-lg"
                         >
                         </ul>
                     </nav>
@@ -191,7 +191,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                                                 height={prevSize!.height}
                                                 alt=""
                                             />
-                                            <span class="max-w-full break-words text-shadow-[0_1px_5px_#121212]">
+                                            <span class="wrap-break-words max-w-full text-shadow-[0_1px_5px_#121212]">
                                                 ← {previous.data.title}
                                             </span>
                                         </>
@@ -211,14 +211,14 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                                                 height={nextSize!.height}
                                                 alt=""
                                             />
-                                            <span class="max-w-full break-words text-shadow-[0_1px_5px_#121212]">
+                                            <span class="wrap-break-words max-w-full text-shadow-[0_1px_5px_#121212]">
                                                 {next.data.title} →
                                             </span>
                                         </>
                                     </a>
                                 )
                             }
-                        </div><Button href="/works" class="mt-2 w-full !px-3 !py-2 !text-xs"
+                        </div><Button href="/works" class="mt-2 w-full px-3! py-2! text-xs!"
                             >All works</Button
                         >
                     </nav>

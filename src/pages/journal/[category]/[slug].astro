@@ -89,14 +89,14 @@ const encodedTitle = encodeURIComponent(post.data.title);
                         >
                     </p>
                 </div>
-                <h1 class="post-title my-3 max-w-[1100px] leading-none">
+                <h1 class="post-title my-3 max-w-275 leading-none">
                     <span
                         class="inline-block bg-white px-3.5 pt-[.1em] pb-[.3em] text-[38px] leading-none font-black tracking-[-1px] text-[#121212] uppercase max-[849px]:text-[32px]"
                         >{post.data.title}</span
                     >
                 </h1>
                 <p
-                    class="post-subheader mb-3 max-w-[900px] text-[22px] leading-none font-black text-[#121212] uppercase max-[849px]:text-[20px]"
+                    class="post-subheader mb-3 max-w-225 text-[22px] leading-none font-black text-[#121212] uppercase max-[849px]:text-[20px]"
                 >
                     <span class="inline-block bg-white px-3.5 pt-[.25em] pb-[.4em]"
                         >{post.data.tagline}</span
@@ -127,7 +127,7 @@ const encodedTitle = encodeURIComponent(post.data.title);
         </div>
         {
             post.data.videoUrl && (
-                <section class="video-player relative z-[12] flex items-center justify-center bg-black">
+                <section class="video-player relative z-12 flex items-center justify-center bg-black">
                     <div class="video-wrapper my-20 w-4/5 max-[849px]:my-0 max-[849px]:w-full">
                         <iframe
                             class="aspect-video w-full"
@@ -141,15 +141,15 @@ const encodedTitle = encodeURIComponent(post.data.title);
                 </section>
             )
         }
-        <article class="post-body-container relative z-[15] bg-[#f9f8f9]">
-            <div class="prose-post mx-auto max-w-[1060px] px-10 py-20"><Content /></div>
+        <article class="post-body-container relative z-15 bg-[#f9f8f9]">
+            <div class="prose-post mx-auto max-w-265 px-10 py-20"><Content /></div>
         </article>
         {
             relatedCards.length > 0 && (
                 <section class="post-navigation relative z-10 flex flex-col items-center bg-[#f4f4f4] px-20 py-20 max-[960px]:px-10 max-[500px]:px-5">
                     <>
                         <h2 class="legacy-h2 text-center">More Related Articles</h2>
-                        <span class="mx-auto mt-6 block h-[3px] w-48 bg-[#00fdc7]" />
+                        <span class="mx-auto mt-6 block h-0.75 w-48 bg-[#00fdc7]" />
                         <HomePosts posts={relatedCards} />
                     </>
                 </section>
@@ -163,7 +163,7 @@ const encodedTitle = encodeURIComponent(post.data.title);
                 href="/journal">Back to Journal</a
             >
         </section>
-        <nav class="fixed bottom-0 z-[100] h-20 w-[calc(100%-160px)] bg-white max-[849px]:w-screen">
+        <nav class="fixed bottom-0 z-100 h-20 w-[calc(100%-160px)] bg-white max-[849px]:w-screen">
             <div class="mx-auto flex h-full w-[90%] flex-row items-center justify-between">
                 <div class="relative flex justify-start">
                     {
@@ -187,12 +187,12 @@ const encodedTitle = encodeURIComponent(post.data.title);
                 <div class="mx-10 flex justify-center text-[10px] max-[499px]:mx-5">
                     <ul class="flex list-none flex-row items-center p-0">
                         <li
-                            class="mr-10 font-sans text-[3em] text-[#00fdc7] uppercase max-[849px]:mr-[30px] max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]"
+                            class="mr-10 font-sans text-[3em] text-[#00fdc7] uppercase max-[849px]:mr-7.5 max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]"
                         >
                             Share
                         </li>
                         <li
-                            class="mr-10 text-[3em] max-[849px]:mr-[30px] max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]"
+                            class="mr-10 text-[3em] max-[849px]:mr-7.5 max-[849px]:text-[2em] max-[499px]:mr-5 max-[499px]:text-[1.4em]"
                         >
                             <a
                                 data-share-popup
