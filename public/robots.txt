@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studiobirdcage.com/sitemap-index.xml
+Sitemap: https://ba.rrett.dev/sitemap-index.xml

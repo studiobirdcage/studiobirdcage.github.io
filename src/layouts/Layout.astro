@@ -14,13 +14,13 @@ interface Props {
 }
 const {
     title = "Barrett Long — Web Developer, Software Developer & Designer",
-    description = "Barrett Long is an Edmonton web developer, software developer, mobile app developer, and designer. Studio Birdcage is his professional portfolio.",
+    description = "Barrett Long is an Edmonton web developer, software developer, mobile app developer, and designer. Ba.rrett.dev is his professional portfolio.",
     image = "/images/app/about_hero_image.jpg",
     schema,
     showFooter = true,
     pinnedFooter = false,
 } = Astro.props;
-const site = Astro.site ?? new URL("https://studiobirdcage.com");
+const site = Astro.site ?? new URL("https://ba.rrett.dev");
 const canonical = new URL(Astro.url.pathname, site);
 const socialImage = new URL(image, site);
 const organizationSchema = {
@@ -30,7 +30,7 @@ const organizationSchema = {
             "@type": "WebSite",
             "@id": `${site}#website`,
             url: site.href,
-            name: "Studio Birdcage",
+            name: "Ba.rrett.dev",
             description,
         },
         {
@@ -40,7 +40,7 @@ const organizationSchema = {
             url: site.href,
             jobTitle: "Web Developer, Software Developer & Designer",
             image: new URL("/images/app/about_hero_image.jpg", site).href,
-            email: "info@studiobirdcage.com",
+            email: "b@rrett.dev",
             sameAs: [
                 "https://www.facebook.com/TheStudioBirdcage",
                 "https://twitter.com/StudioBirdcage",
@@ -69,7 +69,7 @@ const organizationSchema = {
         <meta name="description" content={description} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonical} />
-        <meta property="og:site_name" content="Studio Birdcage" />
+        <meta property="og:site_name" content="Ba.rrett.dev" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -90,7 +90,7 @@ const organizationSchema = {
         <aside class="fixed inset-y-0 right-0 z-50 hidden w-20 bg-white min-[960px]:block">
             <slot name="right-rail"
                 ><p class="side-label side-label-right top-1/2 left-1/2">
-                    Barrett Long | Studio Birdcage
+                    Barrett Long | Ba.rrett.dev
                 </p></slot
             >
         </aside>

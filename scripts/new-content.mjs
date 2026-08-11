@@ -90,7 +90,7 @@ async function exists(path) {
 
 function usage() {
   console.log(`
-Create a Studio Birdcage content draft.
+Create a Barrett Dev content draft.
 
 Usage:
   npm run content:new

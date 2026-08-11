@@ -26,7 +26,7 @@ export default function WorksGrid({ works }: { works: Work[] }) {
             <img
               className="mosaic-logo mb-3 w-auto"
               src="/images/app/single_cage_icon.svg"
-              alt="Studio Birdcage mosaic logo"
+              alt="Barrett Dev mosaic logo"
             />
             <h2 className="mosaic-title font-display wrap-break-words max-w-full leading-[1.2] tracking-[-1px] text-white">
               {work.title}

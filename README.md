@@ -1,4 +1,4 @@
-# Barrett Long - Development Profile
+# Barrett-Dev - Development Profile
 
 The personal portfolio and journal site for **Barrett Long**. It showcases web, software, mobile, and design work alongside journal entries about development and creative work.
 
@@ -181,4 +181,4 @@ A push to `main` runs:
 2. `npm run build`
 3. GitHub Pages artifact upload and deployment
 
-The canonical production URL is configured in `astro.config.mjs` as `https://studiobirdcage.com`.
+The canonical production URL is configured in `astro.config.mjs` as `https://ba.rrett.dev`.

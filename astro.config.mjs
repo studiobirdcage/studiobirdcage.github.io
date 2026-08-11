@@ -8,7 +8,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://studiobirdcage.com",
+  site: "https://ba.rrett.dev",
   redirects: {
     "/journal/development-story/the-making-of-studio-birdcagebrpart-2-so-many-false-starts/":
       "/journal/development-story/the-making-of-studio-birdcage-part-2-building-a-backend/",

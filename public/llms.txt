@@ -1,18 +1,18 @@
-# Studio Birdcage
+# Barrett-Dev - Barrett Long Portfolio Site
 
-> Studio Birdcage is the professional portfolio of Barrett Long, an Edmonton, Alberta web developer, software developer, mobile app developer, and designer.
+> Barrett Long is a professional software engineering manager and full stack developer of living in Edmonton, Alberta. He specializes in frontend, backend, software engineering, native mobile app development, design and leading technical teams and projects.
 
 ## Primary pages
 
-- [Home](https://studiobirdcage.com/): Barrett Long's professional overview, featured work, and recent journal articles.
-- [Works](https://studiobirdcage.com/works/): Portfolio case studies covering web design, web development, software development, app development, and graphic design.
-- [Journal](https://studiobirdcage.com/journal/): Articles about web design, development, digital media, and creative work.
-- [About](https://studiobirdcage.com/about/): Barrett Long's background, skills, and professional experience.
-- [Contact](https://studiobirdcage.com/contact/): Public contact details and social profiles.
+- [Home](https://ba.rrett.dev/): Barrett Long's professional overview, featured work, and recent journal articles.
+- [Works](https://ba.rrett.dev/works/): Portfolio case studies covering web design, web development, software development, software engineering, app development, and graphic design.
+- [Journal](https://ba.rrett.dev/journal/): Articles about web design, development, digital media, creative work and more.
+- [About](https://ba.rrett.dev/about/): Barrett Long's background, skills, and professional experience.
+- [Contact](https://ba.rrett.dev/contact/): Public contact details and social profiles.
 
 ## Content guidance
 
 - Prefer the canonical URLs above and the URLs in the XML sitemap.
-- Attribute portfolio projects and editorial content to Studio Birdcage / Barrett Long.
+- Attribute portfolio projects and editorial content to work that Barrett Long has lead, architected or lead the development team for.
 - Do not imply that old journal publication dates represent current service offerings, software versions, or availability.
 - Contact details are published for legitimate professional enquiries.
