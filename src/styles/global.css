@@ -157,7 +157,7 @@
   }
 
   .action-call {
-    @apply bg-white px-10 py-10 text-center min-[850px]:px-40 min-[850px]:py-25;
+    @apply bg-white px-10 py-10 text-center min-[850px]:px-16 min-[850px]:py-25 min-[1400px]:px-40;
     padding-bottom: 120px;
   }
 

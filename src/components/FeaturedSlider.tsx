@@ -7,7 +7,10 @@ type Work = {
 
 export default function FeaturedSlider({ works }: { works: Work[] }) {
   return (
-    <section className="flex w-full flex-wrap bg-[#f4f4f4] p-5 min-[850px]:h-[calc(100vh-80px)] min-[850px]:min-h-160 min-[850px]:flex-nowrap min-[850px]:p-0">
+    <section
+      aria-label="Featured projects"
+      className="flex w-full flex-wrap bg-[#f4f4f4] p-5 min-[850px]:h-[calc(100vh-80px)] min-[850px]:min-h-160 min-[850px]:flex-nowrap min-[850px]:p-0"
+    >
       {works.map((work) => (
         <a
           className="group relative mb-5 h-105 w-full flex-[2_1_auto] overflow-hidden bg-[#f4f4f4] shadow-[0_0_20px_#808080] transition-[flex] duration-200 min-[850px]:mb-0 min-[850px]:h-full min-[850px]:min-h-full min-[850px]:w-auto min-[850px]:flex-1 min-[850px]:shadow-none min-[850px]:hover:flex-4"

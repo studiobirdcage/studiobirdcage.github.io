@@ -5,7 +5,7 @@ const links = [
     ["/about", "About"],
     ["/works", "Works"],
     ["/journal", "Journal"],
-    ["/contact", "Contact"],
+    ["/#contact", "Contact"],
 ];
 const current =
     links.find(([href]) => pathname === href || (href !== "/" && pathname.startsWith(href)))?.[1] ??

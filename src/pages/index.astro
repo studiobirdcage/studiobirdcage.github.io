@@ -4,6 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import FeaturedSlider from "../components/FeaturedSlider";
 import HomePosts from "../components/HomePosts";
+import ContactSection from "../components/ContactSection.astro";
+import { Image } from "astro:assets";
 
 const works = (await getCollection("works", ({ data }) => data.featured && !data.draft)).sort(
     (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
@@ -28,10 +30,90 @@ const postCards = posts.map(({ data }) => ({
 ---
 
 <Layout
-    title="Barrett Long — Web, Software & Mobile App Developer Portfolio"
-    description="Barrett Long's Edmonton developer portfolio showcasing web design, web development, software development, mobile app development, and digital product work."
+    title="Barrett Long — Engineering Leader, Product Architect & Senior Full-Stack Developer"
+    description="Barrett Long designs, builds, and leads complex digital products as an engineering leader, product architect, and senior full-stack developer in Edmonton."
 >
-    <h1 class="sr-only">Barrett Long web, software, and mobile app developer portfolio</h1>
+    <section
+        class="relative isolate flex min-h-[calc(100svh-80px)] items-center overflow-hidden bg-[#121212] text-white"
+        aria-labelledby="home-heading"
+    >
+        <div
+            class="pointer-events-none absolute right-[-5rem] bottom-4 size-72 rotate-[4deg] min-[700px]:right-[3vw] min-[700px]:bottom-[10vh] min-[700px]:size-[42vw] min-[700px]:max-h-[34rem] min-[700px]:max-w-[34rem] min-[1100px]:right-[6vw]"
+            aria-hidden="true"
+        >
+            <div class="h-full w-full overflow-hidden rounded-[52px] border border-white/20">
+                <Image
+                    class="h-full w-full object-cover object-[50%_28%]"
+                    src="/images/app/barrett-long-portrait-2023.jpg"
+                    width={1800}
+                    height={2400}
+                    loading="eager"
+                    alt=""
+                />
+            </div>
+            <span
+                class="solid-icon absolute -bottom-6 -left-6 grid size-26 rotate-[-10deg] place-items-center rounded-2xl border-[3px] border-[#121212] bg-white text-[40px] text-[#121212] shadow-[6px_6px_0_#00fdc7] min-[700px]:-bottom-8 min-[700px]:-left-8 min-[700px]:size-34 min-[700px]:rounded-[22px] min-[700px]:border-4 min-[700px]:text-[54px] min-[700px]:shadow-[8px_8px_0_#00fdc7]"
+            >
+                &#xf120;
+            </span>
+        </div>
+        <div
+            class="relative z-10 w-full px-6 py-20 min-[501px]:px-12 min-[850px]:px-[clamp(4rem,10vw,11rem)] min-[850px]:py-28"
+        >
+            <p class="font-regular mb-7 text-xs tracking-[3px] text-[#00fdc7] uppercase">
+                Barrett Long · Edmonton, Alberta
+            </p>
+            <h1
+                id="home-heading"
+                class="font-display-italic max-w-6xl text-[clamp(44px,8vw,116px)] leading-[.94] tracking-[-2px]"
+            >
+                I design, build, and lead complex digital products.
+            </h1>
+            <div class="mt-9 h-1 w-20 bg-[#00fdc7]" aria-hidden="true"></div>
+            <p
+                class="font-regular mt-8 max-w-5xl text-[13px] leading-[1.8] tracking-[2px] text-white uppercase min-[501px]:text-[15px] min-[850px]:text-[17px]"
+            >
+                Engineering Leader <span class="px-1 text-[#00fdc7]">·</span> Product Architect
+                <span class="px-1 text-[#00fdc7]">·</span> Senior Full-Stack Developer
+            </p>
+            <p
+                class="mt-6 max-w-3xl font-sans text-[18px] leading-[1.7] tracking-[1px] text-[#cdcccf] min-[850px]:text-[22px]"
+            >
+                I bring product thinking, hands-on engineering, architecture, and team leadership
+                together to turn difficult ideas into useful, scalable software.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+                <a
+                    class="border-b-2 border-[#00fdc7] pb-1 text-sm font-bold tracking-[2px] text-white uppercase hover:text-[#00fdc7]"
+                    href="#selected-work">View selected work ↓</a
+                >
+                <a
+                    class="border-b-2 border-[#3d3d3d] pb-1 text-sm font-bold tracking-[2px] text-[#cdcccf] uppercase hover:border-[#00fdc7] hover:text-[#00fdc7]"
+                    href="/about">More about me →</a
+                >
+            </div>
+        </div>
+    </section>
+    <section
+        id="selected-work"
+        class="flex scroll-mt-20 items-center justify-center bg-white px-6 py-20 min-[501px]:px-12 min-[850px]:px-[clamp(4rem,10vw,11rem)] min-[850px]:py-24 min-[960px]:scroll-mt-25"
+        aria-labelledby="selected-work-heading"
+    >
+        <div class="mx-auto w-full max-w-6xl text-center">
+            <h2
+                id="selected-work-heading"
+                class="font-display-italic text-[clamp(48px,7vw,92px)] leading-[1] tracking-[-1px] text-[#121212]"
+            >
+                Selected work.
+            </h2>
+            <p
+                class="mx-auto mt-8 max-w-4xl font-sans text-xl leading-[1.7] tracking-[1px] text-[#686868] min-[850px]:text-2xl"
+            >
+                Products and digital experiences I’ve helped take from early concepts through
+                design, architecture, development, launch, and long-term evolution.
+            </p>
+        </div>
+    </section>
     <FeaturedSlider
         works={works.map(({ data }) => ({
             title: data.title,
@@ -44,26 +126,74 @@ const postCards = posts.map(({ data }) => ({
         <h3 class="with-line"><span>Thanks for<br />stopping by...</span></h3>
         <p class="mt-20 mb-4">
             I’m Barrett Long, a product-focused software engineer and architect based in Edmonton.
-            My background is somewhat unusual. I studied fine art and digital media, began
-            professionally in design and web development, and gradually moved into full-stack
-            engineering, mobile development, platform architecture, and engineering management. That
-            path taught me to look at software from several directions at once. I care about how a
-            product feels to use, how its parts fit together, how it performs as it grows, and
-            whether another developer can understand it six months later.
+            My background is somewhat unusual: I studied fine art and digital media, began
+            professionally in design and web development, and over nearly a decade at Aivia
+            progressed from UI/UX and hands-on development into technical leadership, product
+            management, software architecture, and engineering management. Throughout that
+            progression, I remained closely involved in building the products themselves—across
+            frontend, backend, mobile, infrastructure, and user experience.
         </p>
         <p class="mb-4">
-            Since 2017, my primary work has been COM•MU•NI•KIT, a community communications platform
-            that grew from a single deployment into a SaaS product serving more than 260 communities
-            across Canada and the United States. I built significant portions of the original
-            product, led its complete redesign, helped grow its engineering team, and remained
-            involved in both product and technical decisions throughout its evolution.
+            Since 2017, my primary work has been COM•MU•NI•KIT, a communications platform that grew
+            from a single community application into a multi-tenant SaaS product serving more than
+            260 communities and 100,000+ users. I helped shape that evolution across product
+            strategy, user experience, architecture, web and mobile development, team leadership,
+            and delivery.
         </p>
-        <p class="mb-4">
-            I’m now looking for opportunities where I can contribute at that same intersection of
-            product, architecture, engineering, and user experience.
-        </p>
-        <div class="mt-20">
-            <Button href="/contact">Talk to me about your product</Button>
+        <dl
+            class="mx-auto mt-12 grid max-w-5xl border-y border-[#cdcccf] text-center min-[700px]:mt-16 min-[700px]:grid-cols-2 min-[1100px]:grid-cols-3"
+            aria-label="Career impact"
+        >
+            <div
+                class="border-b border-[#e6e6e6] px-2 py-6 min-[501px]:px-5 min-[501px]:py-8 min-[700px]:border-r min-[1100px]:border-b-0"
+            >
+                <dt
+                    class="font-regular text-[27px] leading-none text-[#121212] min-[501px]:text-[32px] min-[850px]:text-[40px]"
+                >
+                    260<span class="text-[#00fdc7]">+</span>
+                </dt>
+                <dd
+                    class="mt-2 text-[10px] font-bold tracking-[2px] text-[#808080] uppercase min-[501px]:mt-3 min-[501px]:text-xs min-[501px]:tracking-[3px]"
+                >
+                    Communities
+                </dd>
+            </div>
+            <div
+                class="border-b border-[#e6e6e6] px-2 py-6 min-[501px]:px-5 min-[501px]:py-8 min-[1100px]:border-r min-[1100px]:border-b-0"
+            >
+                <dt
+                    class="font-regular text-[27px] leading-none text-[#121212] min-[501px]:text-[32px] min-[850px]:text-[40px]"
+                >
+                    100,000<span class="text-[#00fdc7]">+</span>
+                </dt>
+                <dd
+                    class="mt-2 text-[10px] font-bold tracking-[2px] text-[#808080] uppercase min-[501px]:mt-3 min-[501px]:text-xs min-[501px]:tracking-[3px]"
+                >
+                    Platform Users
+                </dd>
+            </div>
+            <div
+                class="px-2 py-6 min-[501px]:px-5 min-[501px]:py-8 min-[700px]:col-span-2 min-[1100px]:col-span-1"
+            >
+                <dt
+                    class="font-regular text-[27px] leading-none text-[#121212] min-[501px]:text-[32px] min-[850px]:text-[40px]"
+                >
+                    2017 <span class="text-[#00fdc7]">→</span> 2026
+                </dt>
+                <dd
+                    class="mt-3 flex flex-col items-center gap-1 text-[10px] leading-tight font-bold tracking-[1.5px] text-[#808080] uppercase min-[501px]:text-xs min-[700px]:block min-[700px]:tracking-[2px] min-[1100px]:tracking-[1px] min-[1250px]:tracking-[2px]"
+                >
+                    <span>Developer</span>
+                    <span
+                        class="inline-flex items-center self-center text-[#00fdc7] min-[700px]:relative min-[700px]:-top-px min-[700px]:px-1"
+                        aria-hidden="true">→</span
+                    >
+                    <span>Engineering Manager</span>
+                </dd>
+            </div>
+        </dl>
+        <div class="mt-16 min-[700px]:mt-20">
+            <Button href="/#contact" class="px-8!">Get in Touch</Button>
         </div>
     </section>
     <section class="bg-[#f9f8f9] px-5 py-20 min-[850px]:px-32.5">
@@ -75,4 +205,5 @@ const postCards = posts.map(({ data }) => ({
             <Button href="/journal">more journal articles</Button>
         </div>
     </section>
+    <ContactSection />
 </Layout>

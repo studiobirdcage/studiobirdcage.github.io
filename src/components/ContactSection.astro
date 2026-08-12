@@ -1,0 +1,102 @@
+---
+import resumePdf from "../assets/Barrett_Long-Main_Resume_2026.pdf";
+
+const contactLinks = [
+    {
+        label: "Email",
+        value: "b@rrett.dev",
+        href: "mailto:b@rrett.dev",
+        glyph: "\uf0e0",
+        iconClass: "solid-icon",
+    },
+    {
+        label: "LinkedIn",
+        value: "Barrett Long",
+        href: "https://www.linkedin.com/in/barrett-long-315982119/",
+        glyph: "\uf08c",
+        iconClass: "social-icon",
+    },
+    {
+        label: "GitHub",
+        value: "barrett-dev",
+        href: "https://github.com/barrett-dev",
+        glyph: "\uf09b",
+        iconClass: "social-icon",
+    },
+];
+---
+
+<section
+    id="contact"
+    class="scroll-mt-20 bg-[#121212] px-6 py-20 text-white min-[700px]:px-16 min-[960px]:scroll-mt-25 min-[1100px]:px-24 min-[1100px]:py-28"
+    aria-labelledby="contact-heading"
+>
+    <div class="mx-auto grid max-w-6xl gap-14 min-[960px]:grid-cols-[1.1fr_1fr] min-[960px]:gap-20">
+        <div>
+            <div class="mb-8 flex items-center gap-5">
+                <span
+                    aria-hidden="true"
+                    class="solid-icon grid size-14 shrink-0 place-items-center rounded-lg border-[3px] border-white text-2xl text-white shadow-[4px_4px_0_#00fdc7] min-[700px]:size-16 min-[700px]:text-[28px]"
+                >
+                    &#xf120;
+                </span>
+                <p class="font-regular text-xs tracking-[3px] text-[#00fdc7] uppercase">
+                    Get in touch
+                </p>
+            </div>
+            <h2
+                id="contact-heading"
+                class="font-display-italic max-w-2xl text-[38px] leading-[1.08] tracking-[-1px] min-[700px]:text-[56px]"
+            >
+                Let’s build what comes next.
+            </h2>
+            <p
+                class="font-sans mt-8 max-w-2xl text-[18px] leading-[1.7] tracking-[1px] text-[#cdcccf] min-[700px]:text-[22px]"
+            >
+                I’m looking for the next opportunity to help shape useful products, solve difficult
+                technical problems, and work with a strong team.
+            </p>
+            <p class="font-regular mt-8 text-sm tracking-[2px] text-white uppercase">
+                Edmonton, Alberta, Canada
+            </p>
+        </div>
+
+        <div class="flex flex-col justify-center">
+            <dl class="border-t border-[#3d3d3d]">
+                {
+                    contactLinks.map(({ label, value, href, glyph, iconClass }) => (
+                        <div class="grid grid-cols-[2rem_1fr] gap-x-4 border-b border-[#3d3d3d] py-5 min-[501px]:grid-cols-[2rem_7rem_1fr] min-[501px]:items-center">
+                            <span
+                                aria-hidden="true"
+                                class:list={[
+                                    iconClass,
+                                    "row-span-2 self-center text-xl text-[#00fdc7] min-[501px]:row-span-1",
+                                ]}
+                            >
+                                {glyph}
+                            </span>
+                            <dt class="font-bold text-[10px] tracking-[2px] text-[#808080] uppercase min-[501px]:text-xs">
+                                {label}
+                            </dt>
+                            <dd class="min-w-0">
+                                <a
+                                    class="font-sans wrap-break-words text-[18px] text-white hover:text-[#00fdc7] min-[700px]:text-[21px]"
+                                    href={href}
+                                    target={href.startsWith("http") ? "_blank" : undefined}
+                                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                                >
+                                    {value}
+                                </a>
+                            </dd>
+                        </div>
+                    ))
+                }
+            </dl>
+            <a
+                class="button mt-10 w-full px-8! text-center min-[501px]:w-fit"
+                href={resumePdf}
+                download="Barrett-Long-Resume.pdf">Download Résumé</a
+            >
+        </div>
+    </div>
+</section>
