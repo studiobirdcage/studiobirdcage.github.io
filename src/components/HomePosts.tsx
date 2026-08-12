@@ -19,11 +19,12 @@ export default function HomePosts({ posts }: { posts: Post[] }) {
           key={post.slug}
         >
           <div className="relative h-75 overflow-hidden bg-[#121212] min-[1150px]:h-[15vw]">
-            <img
-              className="absolute top-full left-1/2 z-10 w-40 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-200 group-hover:top-1/2 group-hover:opacity-100"
-              src="/images/app/single_cage_icon.svg"
-              alt=""
-            />
+            <span
+              aria-hidden="true"
+              className="solid-icon absolute top-full left-1/2 z-10 grid size-32 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border-4 border-white text-[56px] text-white opacity-0 shadow-[6px_6px_0_#00fdc7] transition-all duration-200 group-hover:top-1/2 group-hover:opacity-100"
+            >
+              &#xf120;
+            </span>
             <img
               className="h-full w-full object-cover grayscale transition-opacity duration-200 group-hover:opacity-50"
               src={post.image}

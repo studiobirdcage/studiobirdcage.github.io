@@ -50,23 +50,22 @@ import { Image } from "astro:assets";
     <section
         class="hidden h-full -translate-x-full items-center justify-center bg-[#121212] p-20 transition-transform duration-600 min-[960px]:flex"
     >
-        <Image
-            class="w-full max-w-162.5"
-            src="/images/app/studio_birdcage_light_logo.svg"
-            width={702}
-            height={708}
-            alt="Barrett.dev"
-        />
+        <span
+            aria-hidden="true"
+            class="solid-icon grid size-[clamp(12rem,25vw,20rem)] place-items-center rounded-[2rem] border-8 border-white text-[clamp(5rem,12vw,9rem)] text-white shadow-[12px_12px_0_#00fdc7]"
+        >
+            &#xf120;
+        </span>
     </section>
     <nav
         class="relative flex h-full min-h-0 translate-x-full flex-col justify-between overflow-y-auto bg-[#f9f8f9] p-[clamp(30px,8vh,80px)] transition-transform duration-600"
     >
         <button
             id="menu-close"
-            class="absolute top-7 right-7 h-8 w-8 cursor-pointer p-1"
+            class="group absolute top-7 right-7 h-8 w-8 cursor-pointer p-1"
             aria-label="Close navigation"
             ><Image
-                class="h-full w-full"
+                class="h-full w-full drop-shadow-[2px_2px_0_#00fdc7] transition-all group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:drop-shadow-none"
                 src="/images/app/menu_close_icon.svg"
                 width={21}
                 height={21}

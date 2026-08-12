@@ -26,11 +26,12 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
           alt=""
           loading="lazy"
         />
-        <img
-          className="absolute top-full left-1/2 w-40 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-200 group-hover:top-[42%] group-hover:opacity-100"
-          src="/images/app/single_cage_icon.svg"
-          alt=""
-        />
+        <span
+          aria-hidden="true"
+          className="solid-icon absolute top-full left-1/2 grid size-32 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border-4 border-white text-[56px] text-white opacity-0 shadow-[6px_6px_0_#00fdc7] transition-all duration-200 group-hover:top-[42%] group-hover:opacity-100"
+        >
+          &#xf120;
+        </span>
       </a>
       <div
         className={`relative z-10 mx-auto -mt-20 w-[85%] bg-[#f9f8f9] px-8 py-10 text-center shadow-[0_0_35px_rgba(0,0,0,.15)] ${featured ? "md:px-30" : "md:px-16"}`}

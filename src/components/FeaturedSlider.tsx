@@ -20,11 +20,12 @@ export default function FeaturedSlider({ works }: { works: Work[] }) {
             alt=""
           />
           <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center justify-center bg-[#f4f4f4] px-5 py-5 text-center min-[850px]:top-1/2 min-[850px]:left-1/2 min-[850px]:w-105 min-[850px]:-translate-x-1/2 min-[850px]:-translate-y-1/2 min-[850px]:bg-transparent min-[850px]:px-0 min-[850px]:py-0 min-[850px]:opacity-0 min-[850px]:transition-opacity min-[850px]:group-hover:opacity-100">
-            <img
-              className="mb-2 h-auto w-16.25 min-[850px]:mb-6 min-[850px]:w-50"
-              src="/images/app/studio_birdcage_logo.svg"
-              alt=""
-            />
+            <span
+              aria-hidden="true"
+              className="solid-icon mb-2 grid size-12 place-items-center rounded-lg border-2 border-[#121212] bg-white text-xl text-[#121212] shadow-[3px_3px_0_#00fdc7] min-[850px]:mb-6 min-[850px]:size-24 min-[850px]:rounded-xl min-[850px]:border-4 min-[850px]:text-[42px] min-[850px]:shadow-[6px_6px_0_#00fdc7]"
+            >
+              &#xf120;
+            </span>
             <h2 className="font-display-italic text-[clamp(12px,6vw,24px)] leading-none tracking-[-1px] text-[#121212] min-[850px]:text-[34px] min-[850px]:leading-[1.2]">
               {work.title}
             </h2>

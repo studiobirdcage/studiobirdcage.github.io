@@ -23,11 +23,12 @@ export default function WorksGrid({ works }: { works: Work[] }) {
             loading="lazy"
           />
           <div className="flex h-full flex-col items-center justify-center bg-black/60 p-8 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-lg:opacity-100 min-[480px]:p-10">
-            <img
-              className="mosaic-logo mb-3 w-auto"
-              src="/images/app/single_cage_icon.svg"
-              alt="Barrett Dev mosaic logo"
-            />
+            <span
+              aria-hidden="true"
+              className="mosaic-terminal-logo solid-icon grid place-items-center rounded-[12%] border-[3px] border-white text-white shadow-[4px_4px_0_#00fdc7]"
+            >
+              &#xf120;
+            </span>
             <h2 className="mosaic-title font-display wrap-break-words max-w-full leading-[1.2] tracking-[-1px] text-white">
               {work.title}
             </h2>

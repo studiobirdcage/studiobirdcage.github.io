@@ -427,6 +427,13 @@
   height: 35%;
   max-height: 140px;
 }
+.mosaic-terminal-logo {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  margin-bottom: 24px;
+  font-size: 32px;
+}
 .mosaic-tags {
   font-size: 12px;
   letter-spacing: 2px;
@@ -475,6 +482,13 @@
     height: 22%;
     max-height: 70px;
   }
+  .mosaic-terminal-logo {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+    margin-bottom: 18px;
+    font-size: 23px;
+  }
   .mosaic-tags {
     font-size: 10px;
     letter-spacing: 2px;
@@ -485,6 +499,14 @@
   .works-mosaic [data-mosaic-position="1"] .mosaic-logo {
     height: 35%;
     max-height: 140px;
+  }
+  .works-mosaic [data-mosaic-position="1"] .mosaic-terminal-logo {
+    width: 112px;
+    height: 112px;
+    flex-basis: 112px;
+    margin-bottom: 32px;
+    border-width: 5px;
+    font-size: 50px;
   }
   .works-mosaic [data-mosaic-position="1"] .mosaic-tags {
     font-size: 14px;
@@ -500,6 +522,16 @@
   .works-mosaic [data-mosaic-position="10"] .mosaic-logo {
     height: 30%;
     max-height: 110px;
+  }
+  .works-mosaic [data-mosaic-position="6"] .mosaic-terminal-logo,
+  .works-mosaic [data-mosaic-position="9"] .mosaic-terminal-logo,
+  .works-mosaic [data-mosaic-position="10"] .mosaic-terminal-logo {
+    width: 88px;
+    height: 88px;
+    flex-basis: 88px;
+    margin-bottom: 28px;
+    border-width: 4px;
+    font-size: 39px;
   }
   .works-mosaic [data-mosaic-position="6"] .mosaic-tags,
   .works-mosaic [data-mosaic-position="9"] .mosaic-tags,
