@@ -428,11 +428,11 @@
   max-height: 140px;
 }
 .mosaic-terminal-logo {
-  width: 72px;
-  height: 72px;
-  flex: 0 0 72px;
-  margin-bottom: 24px;
-  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  margin-bottom: 20px;
+  font-size: 27px;
 }
 .mosaic-tags {
   font-size: 12px;

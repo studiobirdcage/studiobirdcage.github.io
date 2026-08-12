@@ -104,20 +104,21 @@ const education = [
             alt="Barrett Long"
         />
         <div
-            class="absolute inset-x-0 bottom-0 z-10 bg-[#121212] p-6.5 text-white min-[501px]:inset-x-5 min-[501px]:bottom-5 min-[501px]:p-10 min-[960px]:top-1/2 min-[960px]:right-20 min-[960px]:left-auto min-[960px]:flex min-[960px]:h-[calc(100%-40px)] min-[960px]:max-h-187.5 min-[960px]:w-150 min-[960px]:-translate-y-1/2 min-[960px]:flex-col min-[960px]:justify-center min-[960px]:p-20"
+            class="absolute inset-x-0 bottom-0 z-10 bg-[#121212] p-6.5 text-white min-[501px]:inset-x-5 min-[501px]:bottom-5 min-[501px]:p-10 min-[960px]:top-1/2 min-[960px]:right-20 min-[960px]:bottom-auto min-[960px]:left-auto min-[960px]:flex min-[960px]:h-auto min-[960px]:w-150 min-[960px]:-translate-y-1/2 min-[960px]:flex-col min-[960px]:justify-center min-[960px]:p-14"
         >
-            <Image
-                class="mx-auto mb-5 h-14 w-auto min-[501px]:h-16 min-[960px]:mb-8 min-[960px]:h-20"
-                src="/images/app/studio_birdcage_icon.svg"
-                width={20}
-                height={27}
-                alt="Barrett.dev"
-            />
-            <h1
-                class="mt-0 mb-5 text-[44px] leading-none font-black uppercase min-[501px]:mb-5 min-[501px]:text-[60px] min-[960px]:mb-5 min-[960px]:text-[84px]"
-            >
-                Barrett <br class="min-[960px]:hidden" />Long
-            </h1>
+            <div class="mb-5 flex items-center gap-5 min-[960px]:mb-8 min-[960px]:gap-7">
+                <span
+                    aria-hidden="true"
+                    class="solid-icon grid size-14 shrink-0 place-items-center rounded-lg border-[3px] border-white text-2xl text-white shadow-[4px_4px_0_#00fdc7] min-[501px]:size-16 min-[501px]:text-[28px] min-[960px]:size-20 min-[960px]:rounded-xl min-[960px]:border-4 min-[960px]:text-4xl min-[960px]:shadow-[6px_6px_0_#00fdc7]"
+                >
+                    &#xf120;
+                </span>
+                <h1
+                    class="m-0 text-[36px] leading-[.9] font-black uppercase min-[501px]:text-[46px] min-[960px]:text-[50px]"
+                >
+                    Barrett<br />Long
+                </h1>
+            </div>
             <p class="font-sans-italic mb-5 text-lg min-[960px]:mb-8 min-[960px]:text-[22px]">
                 Product Architect and Principal Software Engineer
             </p>

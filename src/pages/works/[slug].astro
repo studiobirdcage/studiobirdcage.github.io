@@ -161,7 +161,7 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         </p>
                         <ul
                             id="work-toc-list"
-                            class="font-sans-italic wrap-break-words mt-3 space-y-3 text-[18px] leading-[1.25] text-[#808080] min-[1150px]:text-lg"
+                            class="font-sans-italic wrap-break-words mt-3 space-y-3 text-[18px] leading-tight text-[#808080] min-[1150px]:text-lg"
                         >
                         </ul>
                     </nav>
@@ -229,11 +229,15 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
             </div>
         </aside>
     </section>
-    <nav id="work-navigation" class="flex h-20 bg-[#f9f8f9] min-[960px]:hidden">
+    <nav
+        id="work-navigation"
+        class="grid min-h-24 grid-cols-2 bg-[#f9f8f9] min-[960px]:hidden"
+        aria-label="Previous and next work"
+    >
         {
             previous ? (
                 <a
-                    class="group font-sans-italic relative flex flex-1 items-center overflow-hidden px-10 text-2xl text-[#121212]"
+                    class="group font-sans-italic relative isolate flex min-w-0 items-center gap-2 overflow-hidden px-4 py-4 text-[clamp(13px,3.5vw,18px)] leading-tight text-[#121212] min-[501px]:px-8"
                     href={`/works/${previous.data.slug}`}
                 >
                     <Image
@@ -243,16 +247,17 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         height={prevSize!.height}
                         alt=""
                     />
-                    ← {previous.data.title}
+                    <span class="shrink-0" aria-hidden="true">←</span>
+                    <span class="wrap-break-words min-w-0">{previous.data.title}</span>
                 </a>
             ) : (
-                <div class="flex-1" />
+                <div aria-hidden="true" />
             )
         }
         {
             next ? (
                 <a
-                    class="group font-sans-italic relative flex flex-1 items-center justify-end overflow-hidden px-10 text-right text-2xl text-[#121212]"
+                    class="group font-sans-italic relative isolate flex min-w-0 items-center justify-end gap-2 overflow-hidden px-4 py-4 text-right text-[clamp(13px,3.5vw,18px)] leading-tight text-[#121212] min-[501px]:px-8"
                     href={`/works/${next.data.slug}`}
                 >
                     <Image
@@ -262,10 +267,11 @@ const nextSize = next ? await imageSize(next.data.thumbnailImage) : null;
                         height={nextSize!.height}
                         alt=""
                     />
-                    {next.data.title} →
+                    <span class="wrap-break-words min-w-0">{next.data.title}</span>
+                    <span class="shrink-0" aria-hidden="true">→</span>
                 </a>
             ) : (
-                <div class="flex-1" />
+                <div aria-hidden="true" />
             )
         }
     </nav>
